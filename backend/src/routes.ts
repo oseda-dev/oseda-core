@@ -1,11 +1,8 @@
 import { Router, Response, Request } from "express";
+import { getState } from "./controller";
 
 export const router = Router();
 
-router.get("/state", (req: Request, res: Response) => {
-  res.json({
-    message: "Server should have no state!",
-  });
-});
+router.get("/state", getState);
 
 export default router;
