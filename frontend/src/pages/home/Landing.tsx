@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Button from "../../components/Button/Button";
 
 const Landing = () => {
   interface ResType {
@@ -7,7 +8,7 @@ const Landing = () => {
 
   const [data, setData] = useState<ResType>();
   useEffect(() => {
-    fetch("http://localhost:3001")
+    fetch("http://localhost:3001/api/state")
       .then((res) => {
         return res.json();
       })
@@ -19,6 +20,7 @@ const Landing = () => {
     <>
       <h1>Landing Page</h1>
       <div>Data: {data?.message}</div>
+      <Button text={"Go to Courses!"} />
     </>
   );
 };

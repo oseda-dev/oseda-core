@@ -17,8 +17,8 @@
   ],
   "scripts": {
     "build": "tsc",
-    "start": "node dist/index.ts",
-    "dev": "ts-node-dev --respawn src/index.ts"
+    "start": "node build/server.js",
+    "dev": "ts-node-dev --respawn src/server.ts"
   },
   "dependencies": {
     "cors": "^2.8.5",
