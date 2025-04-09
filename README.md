@@ -18,3 +18,5 @@ npm install -g typescript ts-node eslint prettier
 # repo
 git clone https://github.com/ReeseHatfield/oseda-core.git
 ```
+
+Run with `./run.sh`
