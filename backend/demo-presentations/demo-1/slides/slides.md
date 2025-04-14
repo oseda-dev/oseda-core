@@ -26,3 +26,4 @@ Note: This note will show in presenter mode.
 function hello() {
   console.log("Hello from Reveal.js!");
 }
+```
