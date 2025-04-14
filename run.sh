@@ -7,5 +7,3 @@ cd ..
 
 cd frontend
 ./run-frontend.sh
-
-./run.sh
