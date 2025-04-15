@@ -1,5 +1,5 @@
 import { Response, Request } from "express";
-import { loadPresentation } from "./oseda-fs";
+import { getAllPresentationNames, loadPresentation } from "./oseda-fs";
 
 export const getState = (req: Request, res: Response) => {
   res.json({
@@ -10,5 +10,11 @@ export const getState = (req: Request, res: Response) => {
 export const getDemo = (req: Request, res: Response) => {
   res.json({
     page: loadPresentation("demo-presentations/demo-1"),
+  });
+};
+
+export const getAllCourses = (req: Request, res: Response) => {
+  res.json({
+    courses: getAllPresentationNames(),
   });
 };

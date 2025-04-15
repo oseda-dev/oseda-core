@@ -1,4 +1,5 @@
-import { readFileSync } from "fs";
+import { json } from "express";
+import { readdirSync, readFileSync } from "fs";
 import path from "path";
 
 // also this should absolutely be done asynchronesly eventually
@@ -13,4 +14,16 @@ export const loadPresentation = (directory: string) => {
   );
 
   return content;
+};
+
+export const getAllPresentationNames = (): string[] => {
+  const presentationDirectory = path.join(
+    __dirname,
+    "..",
+    "demo-presentations",
+  );
+
+  const files = readdirSync(presentationDirectory);
+
+  return files;
 };

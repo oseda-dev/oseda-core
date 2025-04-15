@@ -1,31 +1,50 @@
 import { useEffect, useState } from "react";
 import DOMPurify from "dompurify";
 import RawHtmlViewer from "../../components/RawHtmlViewer/RawHtmlViewer";
+import CoursePreview from "../../components/CoursePreview/CoursePreview";
+import Course from "../course-page/Course";
 
 const Courses = () => {
-  interface ResType {
-    page: string;
-  }
+  // interface ResType {
+  //   page: string;
+  // }
 
-  const [data, setData] = useState("");
+  // const [data, setData] = useState("");
+  // useEffect(() => {
+  //   fetch("http://localhost:3001/api/demoOne")
+  //     .then((res) => {
+  //       return res.json();
+  //     })
+  //     .then((data: ResType) => {
+  //       setData(data.page);
+  //     });
+  // }, []);
+
+  // console.log(data);
+  //
+  //
+
+  const [courses, setCourses] = useState<string[]>([]);
+  interface ResType {
+    courses: string[];
+  }
   useEffect(() => {
-    fetch("http://localhost:3001/api/demoOne")
+    fetch("http://localhost:3001/api/all-courses")
       .then((res) => {
         return res.json();
       })
       .then((data: ResType) => {
-        setData(data.page);
+        setCourses(data.courses);
       });
   }, []);
 
-  console.log(data);
+  console.log("Courses: " + courses);
 
-  return (
-    <>
-      <h1>Courses Page</h1>
-      <RawHtmlViewer htmlContent={data} />
-    </>
-  );
+  const listItems = courses.map((courseTitle) => {
+    return <CoursePreview title={`${courseTitle}`} />;
+  });
+
+  return <>{listItems}</>;
 };
 
 export default Courses;
