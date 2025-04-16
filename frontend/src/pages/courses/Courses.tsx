@@ -2,28 +2,9 @@ import { useEffect, useState } from "react";
 import DOMPurify from "dompurify";
 import RawHtmlViewer from "../../components/RawHtmlViewer/RawHtmlViewer";
 import CoursePreview from "../../components/CoursePreview/CoursePreview";
-import Course from "../course-page/Course";
+import Course from "../course/Course";
 
 const Courses = () => {
-  // interface ResType {
-  //   page: string;
-  // }
-
-  // const [data, setData] = useState("");
-  // useEffect(() => {
-  //   fetch("http://localhost:3001/api/demoOne")
-  //     .then((res) => {
-  //       return res.json();
-  //     })
-  //     .then((data: ResType) => {
-  //       setData(data.page);
-  //     });
-  // }, []);
-
-  // console.log(data);
-  //
-  //
-
   const [courses, setCourses] = useState<string[]>([]);
   interface ResType {
     courses: string[];

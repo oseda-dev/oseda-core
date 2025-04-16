@@ -8,8 +8,9 @@ router.get("/state", getState);
 router.get("/demoOne", getDemo);
 router.get("/all-courses", getAllCourses);
 
-const dynamicCourseRoutes = getAllPresentationNames().map((course) => {
-  const route = `/${course}`;
+getAllPresentationNames().forEach((course) => {
+  const route = `/courses/${course}`;
+  console.log("adding route " + route);
   router.get(route, (req: Request, res: Response) => {
     res.json({
       page: loadPresentation(`demo-presentations/${course}`),

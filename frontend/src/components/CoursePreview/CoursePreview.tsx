@@ -11,7 +11,7 @@ const CoursePreview = ({ title }: CoursePreviewProps) => {
   return (
     <div>
       <h1> {title}</h1>
-      <NavButton text="Go To Course" url={`/${title}`}></NavButton>
+      <NavButton text="Go To Course" url={`/courses/${title}`}></NavButton>
     </div>
   );
 };
