@@ -10,7 +10,7 @@ const Courses = () => {
     courses: string[];
   }
   useEffect(() => {
-    fetch("http://localhost:3001/api/all-courses")
+    fetch("/api/all-courses")
       .then((res) => {
         return res.json();
       })

@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "reveal.js": "^5.2.1",
-    "serve": "^14.2.4"
+    "serve": "^14.2.4",
+    "vite-plugin-singlefile": "^2.2.0"
   }
 }

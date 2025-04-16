@@ -10,11 +10,7 @@ const Course = () => {
   useEffect(() => {
     if (!title) return;
 
-    console.log(
-      "I am about to fetch " + `http://localhost:3001/api/course/${title}`,
-    );
-
-    fetch(`http://localhost:3001/api/courses/${title}`)
+    fetch(`/api/courses/${title}`)
       .then((res) => res.json())
       .then((data: { page: string }) => {
         console.log(data);

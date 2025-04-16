@@ -9,7 +9,7 @@ const Landing = () => {
 
   const [data, setData] = useState<ResType>();
   useEffect(() => {
-    fetch("http://localhost:3001/api/state")
+    fetch("/api/state")
       .then((res) => {
         return res.json();
       })
