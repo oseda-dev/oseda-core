@@ -1,5 +1,6 @@
 import { NavigateFunction, NavLink, useNavigate } from "react-router-dom";
 import NavButton from "../NavButton/NavButton";
+import "./CoursePreview.css";
 
 // buttons should have a consistent styling in theory lol, so component here.
 // also good example for like. How to do this stuff in general
