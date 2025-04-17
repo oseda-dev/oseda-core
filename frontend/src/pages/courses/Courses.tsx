@@ -12,7 +12,7 @@ const Courses = () => {
   useEffect(() => {
     fetch("/api/all-courses")
       .then((res) => {
-        console.log("GOt back: " + res.text());
+        // console.log("GOt back: " + res.text());
         return res.json();
       })
       .then((data: ResType) => {
