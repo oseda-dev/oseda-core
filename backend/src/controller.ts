@@ -23,9 +23,11 @@ export const getAllCourses = (req: Request, res: Response) => {
 
 export const getCourseConfig = (req: Request, res: Response) => {
   const rawTitle = req.headers["title"];
+  console.log("hit conf endpoint");
 
   if (typeof rawTitle !== "string") {
     // TODO check this exists
+    throw new Error("type was wrong");
 
     return;
   }
