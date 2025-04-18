@@ -1,13 +1,20 @@
 import { Router, Response, Request } from "express";
-import { getAllCourses, getDemo, getState } from "./controller";
+import {
+  getAllCourses,
+  getCourseConfig,
+  getDemo,
+  getState,
+} from "./controller";
 import { getAllPresentationNames, loadPresentation } from "./oseda-fs";
 
 export const router = Router();
 
-router.get("/state", getState);
-router.get("/demoOne", getDemo);
+router.get("/state", getState); // testing endpoint
+router.get("/demoOne", getDemo); // kill this at some point
 router.get("/all-courses", getAllCourses);
+router.get("/info", getCourseConfig);
 
+// this is annoying because these will effectly map to pages in the react router
 getAllPresentationNames().forEach((course) => {
   const route = `/courses/${course}`;
   console.log("adding route " + route);
