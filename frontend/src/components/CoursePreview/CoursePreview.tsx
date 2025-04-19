@@ -36,11 +36,15 @@ const CoursePreview = ({ title }: CoursePreviewProps) => {
   if (!config) return <div>Loading... (skeleton screen stuff here)</div>;
 
   return (
-    <div>
-      <h1> {config.title} </h1>
-      <h2> {config.header} </h2>
-      <h2> {config.author} </h2>
-      <NavButton text="Go To Course" url={`/courses/${title}`}></NavButton>
+    <div className="course-preview">
+      <h1>{config.title}</h1>
+      <img
+        src={config.header}
+        alt={`${config.title} header`}
+        className="course-header-img"
+      />
+      <h2>{config.author}</h2>
+      <NavButton text="Go To Course" url={`/courses/${title}`} />
     </div>
   );
 };
