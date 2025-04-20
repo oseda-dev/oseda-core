@@ -20,6 +20,7 @@ const Landing = () => {
   return (
     <>
       <h1>Landing Page</h1>
+      <div> deploy test 1</div>
       <div>Data: {data?.message}</div>
       <NavButton text={"Go to Courses!"} url={"/courses"} />
     </>
