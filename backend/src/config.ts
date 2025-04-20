@@ -1,6 +1,10 @@
 import { readFileSync } from "fs";
 import path from "path";
-import mime from "mime";
+
+let mime: any;
+(async () => {
+  mime = await import("mime");
+})();
 
 export interface OsedaConfig {
   title: string;
