@@ -13,6 +13,6 @@ cd ..
 
 cd frontend
 npm install
-nohup ./run-frontend-actuall.sh &
+nohup ./run-frontend-actually.sh &
 
 EOF
