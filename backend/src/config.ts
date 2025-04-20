@@ -1,16 +1,29 @@
 import { readFileSync } from "fs";
 import path from "path";
 
-let mime: any;
-(async () => {
-  mime = await import("mime");
-})();
-
 export interface OsedaConfig {
   title: string;
   author: string;
   header: string; // now will be base64 data URL
 }
+
+// rolling this function myself bc importing the library is causing too many problems
+const getImageMimeType = (filePath: string): string => {
+  const extname = path.extname(filePath).toLowerCase();
+  const imageMimeTypes: Record<string, string> = {
+    ".jpg": "image/jpeg",
+    ".jpeg": "image/jpeg",
+    ".png": "image/png",
+    ".gif": "image/gif",
+    ".bmp": "image/bmp",
+    ".webp": "image/webp",
+    ".svg": "image/svg+xml",
+    ".tiff": "image/tiff",
+    ".ico": "image/x-icon",
+  };
+
+  return imageMimeTypes[extname] || "application/octet-stream"; // get the thingy or grab this as default
+};
 
 export const loadConfigForCourse = (coursePath: string): OsedaConfig => {
   const content = readFileSync(
@@ -20,10 +33,9 @@ export const loadConfigForCourse = (coursePath: string): OsedaConfig => {
 
   const conf: OsedaConfig = JSON.parse(content);
 
-  // weird base 64 stuff i stole from the internet
   const headerPath = path.join(coursePath, conf.header);
   const headerBuffer = readFileSync(headerPath);
-  const mimeType = mime.getType(headerPath) || "application/octet-stream";
+  const mimeType = getImageMimeType(headerPath);
   const base64Header = `data:${mimeType};base64,${headerBuffer.toString("base64")}`;
 
   return {
