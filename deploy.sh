@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # hope your conf has this exact setup lol
 ssh aws << 'EOF'
