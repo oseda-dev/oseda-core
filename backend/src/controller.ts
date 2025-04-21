@@ -1,17 +1,15 @@
 import { Response, Request } from "express";
-import { getAllPresentationNames, loadPresentation } from "./oseda-fs";
+import {
+  COURSES_ROOT,
+  getAllPresentationNames,
+  loadPresentation,
+} from "./oseda-fs";
 import { loadConfigForCourse, OsedaConfig } from "./config";
 import path from "path";
 
 export const getState = (req: Request, res: Response) => {
   res.json({
     message: "Server should have no state!",
-  });
-};
-
-export const getDemo = (req: Request, res: Response) => {
-  res.json({
-    page: loadPresentation("demo-presentations/demo-1"),
   });
 };
 
@@ -34,9 +32,7 @@ export const getCourseConfig = (req: Request, res: Response) => {
   const title: string = rawTitle;
 
   // const thing = path.resolve(path.join("demo-presentations", title));
-  const conf: OsedaConfig = loadConfigForCourse(
-    path.join("demo-presentations", title),
-  );
+  const conf: OsedaConfig = loadConfigForCourse(path.join(COURSES_ROOT, title));
 
   res.json(conf);
 };

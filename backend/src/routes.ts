@@ -1,16 +1,14 @@
 import { Router, Response, Request } from "express";
+import { getAllCourses, getCourseConfig, getState } from "./controller";
 import {
-  getAllCourses,
-  getCourseConfig,
-  getDemo,
-  getState,
-} from "./controller";
-import { getAllPresentationNames, loadPresentation } from "./oseda-fs";
+  COURSES_ROOT,
+  getAllPresentationNames,
+  loadPresentation,
+} from "./oseda-fs";
 
 export const router = Router();
 
 router.get("/state", getState); // testing endpoint
-router.get("/demoOne", getDemo); // kill this at some point
 router.get("/all-courses", getAllCourses);
 router.get("/info", getCourseConfig);
 
@@ -20,7 +18,7 @@ getAllPresentationNames().forEach((course) => {
   console.log("adding route " + route);
   router.get(route, (req: Request, res: Response) => {
     res.json({
-      page: loadPresentation(`demo-presentations/${course}`),
+      page: loadPresentation(`${COURSES_ROOT}/${course}`),
     });
   });
 });
