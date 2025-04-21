@@ -4,6 +4,10 @@ set -e
 # hope your conf has this exact setup lol
 ssh aws << 'EOF'
 
+cd oseda-lib
+git pull
+cd ..
+
 cd oseda-core
 git pull
 
