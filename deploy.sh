@@ -18,7 +18,6 @@ set -e
 # hope your conf has this exact setup lol
 ssh aws << 'EOF'
 
-
 kill $(pgrep node)
 kill $(pgrep npm)
 
@@ -40,11 +39,11 @@ git pull
 
 cd backend
 npm install
-nohup ./run-backend.sh &
+nohup ./run-backend.sh > backend.log 2>&1 &
 cd ..
 
 cd frontend
 npm install
-nohup ./run-frontend-actually.sh &
+nohup ./run-frontend-actually.sh > frontend.log 2>&1 &
 
 EOF
