@@ -25,6 +25,7 @@ cd oseda-lib
 cd courses
 git pull
 
+# TODO remove this when send-repo is fixed
 for dir in */; do
     cd "$dir"
     npm install
