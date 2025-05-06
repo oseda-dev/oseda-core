@@ -4,6 +4,7 @@
 cd ..
 cd oseda-lib
 git pull
+cd courses
 
 
 #
