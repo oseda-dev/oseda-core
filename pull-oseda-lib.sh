@@ -17,18 +17,20 @@ for dir in */; do
     cd "$dir"
     npm install
     npx vite build
+    echo "ran vite build on $dir"
     cd ..
 done
 
+
 cd $HOME
-# complete restart server to push new course material :/
-# this is currently ripped from the deploy script
 
 kill $(pgrep node)
 kill $(pgrep npm)
 
 
 
+# complete restart server to push new course material :/
+# this is currently ripped from the deploy script
 cd oseda-core
 
 cd backend
