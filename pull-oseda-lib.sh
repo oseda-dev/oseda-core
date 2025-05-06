@@ -24,6 +24,7 @@ cd oseda-core
 
 # complete restart server to push new course material :/
 # this is currently ripped from the deploy script
+touch got-here.txt
 kill $(pgrep node)
 kill $(pgrep npm)
 
