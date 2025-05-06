@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-cd ..
+cd $HOME
 cd oseda-lib
 git pull
 cd courses
@@ -21,8 +21,6 @@ for dir in */; do
 done
 
 cd $HOME
-cd oseda-core
-
 # complete restart server to push new course material :/
 # this is currently ripped from the deploy script
 
@@ -30,7 +28,6 @@ kill $(pgrep node)
 kill $(pgrep npm)
 
 
-cd $HOME
 
 cd oseda-core
 
