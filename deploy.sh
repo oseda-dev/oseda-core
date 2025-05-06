@@ -1,16 +1,10 @@
 #!/bin/bash
 
+# this will just update core codebase. The libraries should update automatically
+# see action in oseda-lib
+
 # assuming running from oseda core and you have this in another repo relative to this one
 OSEDA_LIB_DIR="../oseda-lib"
-
-if [ "$1" = "--send-repos" ]; then
-    echo "Pushing library to github server"
-    cd "$OSEDA_LIB_DIR"
-    # will push with you local git setup
-    git add --all
-    git commit -m "$(date)"
-    git push
-fi
 
 echo "sshing..."
 set -e
@@ -21,17 +15,6 @@ ssh aws << 'EOF'
 kill $(pgrep node)
 kill $(pgrep npm)
 
-cd oseda-lib
-cd courses
-git pull
-
-# TODO remove this when send-repo is fixed
-for dir in */; do
-    cd "$dir"
-    npm install
-    npx vite build
-    cd ..
-done
 
 cd $HOME
 
