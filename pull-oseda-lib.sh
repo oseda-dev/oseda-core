@@ -11,6 +11,9 @@ cd courses
 # cd oseda-lib
 # cd courses
 # git pull
+#
+pwd
+echo "was my wd before the loop"
 
 # # TODO remove this when send-repo is fixedg
 for dir in */; do
