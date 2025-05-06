@@ -4,7 +4,7 @@
 cd ..
 cd oseda-lib
 git pull
-touch temp_file.txt
+# touch temp_file.txt
 
 
 #
@@ -13,9 +13,9 @@ touch temp_file.txt
 # git pull
 
 # # TODO remove this when send-repo is fixedg
-# for dir in */; do
-#     cd "$dir"
-#     npm install
-#     npx vite build
-#     cd ..
-# done
+for dir in */; do
+    cd "$dir"
+    npm install
+    npx vite build
+    cd ..
+done
