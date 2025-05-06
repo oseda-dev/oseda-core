@@ -4,7 +4,7 @@
 cd ..
 cd oseda-lib
 git pull
-# touch temp_file.txt
+touch temp_file.txt
 
 
 #
