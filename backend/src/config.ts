@@ -4,7 +4,9 @@ import path from "path";
 export interface OsedaConfig {
   title: string;
   author: string;
-  header: string; // now will be base64 data URL
+  // header: string; // now will be base64 data URL
+  category: string[];
+  last_updated: string;
 }
 
 // rolling this function myself bc importing the library is causing too many problems
@@ -33,13 +35,10 @@ export const loadConfigForCourse = (coursePath: string): OsedaConfig => {
 
   const conf: OsedaConfig = JSON.parse(content);
 
-  const headerPath = path.join(coursePath, conf.header);
-  const headerBuffer = readFileSync(headerPath);
-  const mimeType = getImageMimeType(headerPath);
-  const base64Header = `data:${mimeType};base64,${headerBuffer.toString("base64")}`;
+  // const headerPath = path.join(coursePath, conf.header);
+  // const headerBuffer = readFileSync(headerPath);
+  // const mimeType = getImageMimeType(headerPath);
+  // const base64Header = `data:${mimeType};base64,${headerBuffer.toString("base64")}`;
 
-  return {
-    ...conf,
-    header: base64Header,
-  };
+  return conf;
 };

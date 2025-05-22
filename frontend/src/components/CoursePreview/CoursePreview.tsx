@@ -8,11 +8,11 @@ import { useEffect, useState } from "react";
 interface CoursePreviewProps {
   title: string;
 }
-
 interface OsedaConfig {
   title: string;
   author: string;
-  header: string;
+  category: string[];
+  last_updated: string;
 }
 
 const CoursePreview = ({ title }: CoursePreviewProps) => {
@@ -38,12 +38,10 @@ const CoursePreview = ({ title }: CoursePreviewProps) => {
   return (
     <div className="course-preview">
       <h1>{config.title}</h1>
-      <img
-        src={config.header}
-        alt={`${config.title} header`}
-        className="course-header-img"
-      />
       <h2>{config.author}</h2>
+      <h2>{config.last_updated}</h2>
+      <h2>{config.category}</h2>
+
       <NavButton text="Go To Course" url={`/courses/${title}`} />
     </div>
   );
