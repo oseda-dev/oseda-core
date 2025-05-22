@@ -39,9 +39,12 @@ const CoursePreview = ({ title }: CoursePreviewProps) => {
     <div className="course-preview">
       <h1>{config.title}</h1>
       <h2>{config.author}</h2>
-      <h2>{config.last_updated}</h2>
+      <div>
+        {config.category.map((txt) => (
+          <p>{txt}</p>
+        ))}
+      </div>{" "}
       <h2>{config.category}</h2>
-
       <NavButton text="Go To Course" url={`/courses/${title}`} />
     </div>
   );
