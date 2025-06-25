@@ -36,3 +36,34 @@ export const getCourseConfig = (req: Request, res: Response) => {
 
   res.json(conf);
 };
+
+export const loadAuthorCourses = (req: Request, res: Response): void => {
+  const { name } = req.params;
+  // this is gonna take a lot of file system reading, so this might be really slow for now lol
+
+  console.log("name was: ", name);
+
+  const courses = getAllPresentationNames();
+
+  console.log("all presentation names was, ", courses);
+  const configs: OsedaConfig[] = [];
+
+  courses.forEach((title) => {
+    const conf: OsedaConfig = loadConfigForCourse(
+      path.join(COURSES_ROOT, title),
+    );
+    configs.push(conf);
+  });
+
+  const coursesByAuthor: string[] = configs
+    .filter((conf) => {
+      return conf.author === name;
+    })
+    .map((conf) => {
+      return conf.title;
+    });
+
+  console.log(`courses by ${name} was `, coursesByAuthor);
+
+  res.json(coursesByAuthor);
+};

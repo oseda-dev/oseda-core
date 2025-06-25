@@ -1,5 +1,11 @@
 import { Router, Response, Request } from "express";
-import { getAllCourses, getCourseConfig, getState } from "./controller";
+import {
+  getAllCourses,
+  getCourseConfig,
+  getState,
+  loadAuthorCourses,
+} from "./controller";
+
 import {
   COURSES_ROOT,
   getAllPresentationNames,
@@ -11,6 +17,8 @@ export const router = Router();
 router.get("/state", getState); // testing endpoint
 router.get("/all-courses", getAllCourses);
 router.get("/info", getCourseConfig);
+
+router.get("/author/:name", loadAuthorCourses);
 
 // this is annoying because these will effectly map to pages in the react router
 getAllPresentationNames().forEach((course) => {

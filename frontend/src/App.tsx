@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Landing from "./pages/home/Landing";
 import Courses from "./pages/courses/Courses";
 import Course from "./pages/course/Course";
+import Author from "./pages/author/Author";
 
 function App() {
   const [courses, setCourses] = useState<string[]>([]);
@@ -28,6 +29,7 @@ function App() {
         <Route path="/landing" element={<Landing />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/courses/:title" element={<Course />} />
+        <Route path="/author/:name" element={<Author />} />
       </Routes>
     </BrowserRouter>
   );
