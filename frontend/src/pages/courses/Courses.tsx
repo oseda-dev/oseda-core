@@ -10,6 +10,11 @@ const Courses = () => {
     courses: string[];
   }
   useEffect(() => {
+    console.log("When I hit /api/all-courses");
+    console.log("it should resolve to: ");
+    const fullURL = new URL("/api/all-courses", window.location.href);
+    console.log(fullURL.toString());
+
     fetch("/api/all-courses")
       .then((res) => {
         return res.json();
