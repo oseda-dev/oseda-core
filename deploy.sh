@@ -12,8 +12,26 @@ set -e
 # hope your conf has this exact setup lol
 ssh aws << 'EOF'
 
-kill $(pgrep node)
-kill $(pgrep npm)
+pgrep node | xargs kill
+pgrep npm | xargs kill
+
+cd $OSEDA_LIB_DIR
+cd courses
+echo "Building courses with npx vite build..."
+for dir in */; do
+# only run if package json exists, in theory it always should but who knows
+  if [ -f "$dir/package.json" ]; then
+    echo "Installing and building $dir"
+    cd "$dir"
+    npm install
+    npx vite build
+    cd ..
+  else
+    echo "Skipping $dir - no package.json"
+  fi
+done
+
+
 
 
 cd $HOME
