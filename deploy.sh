@@ -19,7 +19,7 @@ kill $(pgrep npm)
 cd $HOME
 
 cd oseda-core
-git pull
+git reset --hard origin/main
 
 cd backend
 npm install
