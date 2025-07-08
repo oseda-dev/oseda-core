@@ -4,7 +4,7 @@
 # see action in oseda-lib
 
 # assuming running from oseda core and you have this in another repo relative to this one
-OSEDA_LIB_DIR="../oseda-lib"
+OSEDA_LIB_DIR="oseda-lib"
 
 echo "sshing..."
 set -e
