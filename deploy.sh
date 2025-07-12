@@ -15,8 +15,8 @@ ssh aws << 'EOF'
 pgrep node | xargs kill
 pgrep npm | xargs kill
 
-cd $OSEDA_LIB_DIR
-cd courses
+cd oseda-lib/courses
+
 echo "Building courses with npx vite build..."
 for dir in */; do
 # only run if package json exists, in theory it always should but who knows
