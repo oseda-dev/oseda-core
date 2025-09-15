@@ -1,0 +1,25 @@
+button {
+    background-color: #e0e0e0;
+    border-radius: 50px; /* rounded button my beloved */
+    box-shadow: inset 4px 4px 10px #bcbcbc, inset -4px -4px 10px #ffffff; /* It got dem soft neuromorphic shadows */
+    color: #4d4d4d;
+    cursor: pointer;
+    font-size: 1.125rem;
+    padding: 0.75rem 2.5rem;
+    transition: all 0.2s ease-in-out;
+    border: 2px solid rgb(206, 206, 206);
+}
+
+button:hover {
+    box-shadow: inset 2px 2px 5px #bcbcbc, inset -2px -2px 5px #ffffff, 2px 2px 5px #bcbcbc, -2px -2px 5px #ffffff;
+}
+
+button:focus {
+    outline: none;
+    box-shadow: inset 2px 2px 5px #bcbcbc, inset -2px -2px 5px #ffffff, 2px 2px 5px #bcbcbc, -2px -2px 5px #ffffff;
+}
+
+button:active {
+    box-shadow: inset 4px 4px 10px #bcbcbc, inset -4px -4px 10px #ffffff; /* pressed effect */
+    transform: translateY(1px);
+}

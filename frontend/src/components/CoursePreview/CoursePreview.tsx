@@ -13,6 +13,7 @@ interface OsedaConfig {
   author: string;
   category: string[];
   last_updated: string;
+  color: string;
 }
 
 const CoursePreview = ({ title }: CoursePreviewProps) => {

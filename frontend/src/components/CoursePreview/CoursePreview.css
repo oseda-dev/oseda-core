@@ -1,0 +1,93 @@
+.card {
+    width: 17em;
+    min-height: auto; /* dynamic height */
+    background: linear-gradient(165deg, #0d1b4c, #ffffff); /* dark blue → white */
+    transition: 1s ease-in-out;
+    clip-path: polygon(30px 0%, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0% 30px);
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    box-sizing: border-box;
+}
+
+.card .img {
+width: 5.5em;
+    height: 5.5em;
+    background: white;
+    border-radius: 50px;
+    margin: 0.5em auto 0 auto;
+}
+
+.card span {
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    display: block;
+    font-size: 1.2em;
+    margin-top: 0.3em;
+}
+
+.card .author {
+    font-weight: 350;
+    color: white;
+    text-align: center;
+    font-size: 1em;
+    margin: 0.2em 0 0.5em 0;
+}
+
+.card .categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.40em;
+    margin: 0.5em 0;
+}
+
+.card .category {
+    background-color: #e0e0e0;
+    color: #171717;
+    font-size: 0.85em;
+    padding: 0.35em 0.75em;
+    border-radius: 50px;
+    font-weight: 500;
+    box-shadow: inset 2px 2px 5px rgba(188, 188, 188, 0.7),
+                inset -2px -2px 5px rgba(255, 255, 255, 0.7);
+}
+
+.card .share {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    margin-top: auto;
+}
+
+.card a {
+    color: white;
+    transition: .4s ease-in-out;
+    font-size: 1.5em;
+}
+
+.card a:hover {
+    color: #0d1b4c;
+}
+
+.card button {
+    padding: 0.8em 1.7em;
+    display: block;
+    margin: 0.5em auto 0 auto;
+    border-radius: 25px;
+    border: none;
+    font-weight: bold;
+    font-size: .75em;
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+    transition: .4s ease-in-out;
+}
+
+.card button:hover {
+    background: #0d1b4c;
+    color: white;
+    cursor: pointer;
+}
