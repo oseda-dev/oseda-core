@@ -45,6 +45,7 @@ const CoursePreview = ({ title }: CoursePreviewProps) => {
           <p className="category">{txt}</p>
         ))}
       </div>{" "}
+      <div> {config.color}</div>
       {/*<h2>{config.category}</h2>*/}
       <NavButton text="Go To Course" url={`/courses/${title}`} />
     </div>

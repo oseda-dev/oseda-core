@@ -7,6 +7,7 @@ export interface OsedaConfig {
   // header: string; // now will be base64 data URL
   category: string[];
   last_updated: string;
+  color: string;
 }
 
 // rolling this function myself bc importing the library is causing too many problems
