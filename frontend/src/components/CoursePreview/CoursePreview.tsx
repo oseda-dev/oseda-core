@@ -37,15 +37,15 @@ const CoursePreview = ({ title }: CoursePreviewProps) => {
   if (!config) return <div>Loading... (skeleton screen stuff here)</div>;
 
   return (
-    <div className="course-preview">
+    <div className="course-preview card">
       <h1>{config.title}</h1>
-      <h2>{config.author}</h2>
-      <div>
+      <h2 className="author">{config.author}</h2>
+      <div className="categories">
         {config.category.map((txt) => (
-          <p>{txt}</p>
+          <p className="category">{txt}</p>
         ))}
       </div>{" "}
-      <h2>{config.category}</h2>
+      {/*<h2>{config.category}</h2>*/}
       <NavButton text="Go To Course" url={`/courses/${title}`} />
     </div>
   );

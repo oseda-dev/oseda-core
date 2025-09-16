@@ -3,6 +3,7 @@ import DOMPurify from "dompurify";
 import RawHtmlViewer from "../../components/RawHtmlViewer/RawHtmlViewer";
 import CoursePreview from "../../components/CoursePreview/CoursePreview";
 import Course from "../course/Course";
+import "./Courses.css"
 
 const Courses = () => {
   const [courses, setCourses] = useState<string[]>([]);

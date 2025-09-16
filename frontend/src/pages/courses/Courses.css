@@ -5,4 +5,5 @@
     padding: 2em;
     justify-items: center;
     align-items: start;
+    overflow-wrap: break-word;
 }
