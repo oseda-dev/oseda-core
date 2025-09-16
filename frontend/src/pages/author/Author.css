@@ -1,0 +1,17 @@
+.author-page {
+    padding: 2em;
+    text-align: center;
+}
+
+.author-page h1 {
+    font-size: 2em;
+    color: #171717;
+    margin-bottom: 1.5em;
+}
+
+.author-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18em, 1fr));
+    gap: 2em;
+    justify-items: center;
+}

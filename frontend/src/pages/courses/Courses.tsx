@@ -30,7 +30,8 @@ const Courses = () => {
     return <CoursePreview title={`${courseTitle}`} />;
   });
 
-  return <>{listItems}</>;
+  // Added this. Hopefully it wraps listItems in a grid container - Rose
+  return <div className="courses-grid">{listItems}</div>;
 };
 
 export default Courses;
