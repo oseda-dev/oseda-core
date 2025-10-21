@@ -33,11 +33,12 @@ done
 
 
 
-
 cd $HOME
 
+rm -rf oseda-core
+
+git clone git@github.com:oseda-dev/oseda-core.git
 cd oseda-core
-git reset --hard origin/main
 
 cd backend
 npm install
