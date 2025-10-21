@@ -7,4 +7,4 @@ cd backend
 cd ..
 
 cd frontend
-./run-frontend.sh
+./run-frontend-actually.sh
