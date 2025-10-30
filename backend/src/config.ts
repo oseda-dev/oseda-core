@@ -36,6 +36,11 @@ export const loadConfigForCourse = (coursePath: string): OsedaConfig => {
 
   const conf: OsedaConfig = JSON.parse(content);
 
+  if(!conf.color) {
+    console.log("Found config without color, needs migration")
+    conf.color = "#000000"
+  }
+
   // const headerPath = path.join(coursePath, conf.header);
   // const headerBuffer = readFileSync(headerPath);
   // const mimeType = getImageMimeType(headerPath);
