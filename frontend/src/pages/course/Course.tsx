@@ -13,7 +13,6 @@ const Course = () => {
     fetch(`/api/courses/${title}`)
       .then((res) => res.json())
       .then((data: { page: string }) => {
-        console.log(data);
         setData(data.page);
       });
   }, [title]);

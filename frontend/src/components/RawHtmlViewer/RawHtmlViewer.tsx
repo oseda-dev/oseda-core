@@ -17,7 +17,7 @@ const RawHtmlViewer: React.FC<RawHtmlViewerProps> = ({ htmlContent }) => {
   return (
     <iframe
       ref={iframeRef}
-      style={{ width: "100%", height: "100vh", border: "none" }}
+      style={{ width: "100%", height: "100%", border: "none" }}
       title="Raw HTML Viewer"
     />
   );
