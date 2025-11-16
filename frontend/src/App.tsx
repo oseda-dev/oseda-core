@@ -13,7 +13,7 @@ function App() {
   }
 
   useEffect(() => {
-    fetch("/api/all-courses")
+    fetch("/api/courses")
       .then((res) => {
         return res.json();
       })

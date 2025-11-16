@@ -16,8 +16,7 @@
     "node_modules"
   ],
   "scripts": {
-    "build": "tsc",
-    "start": "node build/server.js",
+    "start": "node src/server.js",
     "dev": "ts-node-dev --respawn src/server.ts"
   },
   "dependencies": {

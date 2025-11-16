@@ -1,28 +1,19 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import RawHtmlViewer from "../../components/RawHtmlViewer/RawHtmlViewer";
 
 const Course = () => {
-  const { title } = useParams<{ title: string }>();
+    const { title } = useParams<{ title: string }>();
 
-  const [data, setData] = useState("");
+    if (!title) return <div>No course selected</div>;
 
-  useEffect(() => {
-    if (!title) return;
 
-    fetch(`/api/courses/${title}`)
-      .then((res) => res.json())
-      .then((data: { page: string }) => {
-        setData(data.page);
-      });
-  }, [title]);
-
-  return (
-    <>
-      <h1>{title}</h1>
-      <RawHtmlViewer htmlContent={data} />
-    </>
-  );
+    return (
+        <iframe
+            src={`/api/courses/${title}/index.html`} // prob break in prod
+            style={{ width: "100%", height: "80vh", border: "none" }}
+            title={title}
+        />
+    );
 };
 
 export default Course;

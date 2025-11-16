@@ -1,10 +1,23 @@
 #!/bin/bash
+clear
 set -e
 
-cd backend
-./run-backend.sh &
+# --- FRONTEND ---
+echo "Installing frontend dependencies..."
+cd frontend
+npm install
 
+echo "Building frontend..."
+npm run build
 cd ..
 
-cd frontend
-./run-frontend-actually.sh
+# --- BACKEND ---
+echo "Installing backend dependencies..."
+cd backend
+npm install
+
+# echo "Building backend..."
+# npm run build
+
+echo "Starting backend (serving frontend + API)..."
+npm start
