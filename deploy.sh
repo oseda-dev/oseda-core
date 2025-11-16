@@ -37,20 +37,15 @@ done
 
 cd $HOME
 
-sudo ln -s /home/ubuntu/oseda-core/net/oseda.conf /etc/apache2/sites-available/oseda.conf
+# -f force override old one
+sudo ln -sfn /home/ubuntu/oseda-core/net/oseda.conf /etc/apache2/sites-available/oseda.conf
 
 rm -rf oseda-core
 
 git clone git@github.com:oseda-dev/oseda-core.git
+
 cd oseda-core
 
-cd backend
-npm install
-nohup ./run-backend.sh > backend.log 2>&1 &
-cd ..
-
-cd frontend
-npm install
-nohup ./run-frontend-actually.sh > frontend.log 2>&1 &
+nohup ./run.sh &
 
 EOF
