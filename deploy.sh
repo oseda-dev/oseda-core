@@ -15,6 +15,8 @@ ssh aws << 'EOF'
 pgrep node | xargs kill
 pgrep npm | xargs kill
 
+
+
 cd oseda-lib/courses
 
 echo "Building courses with npx vite build..."
@@ -34,6 +36,8 @@ done
 
 
 cd $HOME
+
+sudo ln -s /home/ubuntu/oseda-core/net/oseda.conf /etc/apache2/sites-available/oseda.conf
 
 rm -rf oseda-core
 

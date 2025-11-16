@@ -6,7 +6,7 @@ const Courses = () => {
     const [courses, setCourses] = useState<string[]>([]);
 
     useEffect(() => {
-        fetch("/api/courses") // full backend URL
+        fetch("/api/courses") 
             .then(res => res.json())
             .then((data: string[]) => setCourses(data))
             .catch(err => console.error("Failed to fetch courses:", err));

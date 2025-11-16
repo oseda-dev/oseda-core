@@ -9,7 +9,7 @@ const Course = () => {
 
     return (
         <iframe
-            src={`/api/courses/${title}/index.html`} // prob break in prod
+            src={`/api/courses/${title}/index.html`}
             style={{ width: "100%", height: "80vh", border: "none" }}
             title={title}
         />
