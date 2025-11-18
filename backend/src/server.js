@@ -4,11 +4,8 @@ const cors = require("cors");
 const path = require("path");
 const fs = require("fs");
 
-// allow override from env or CLI
 const COURSES_ROOT = path.join(__dirname, "..", "..", "..", "oseda-lib", "courses");
 
-// const MODE = process.argv[2] || process.env.MODE || "dev";
-// const HOST = MODE === "prod" ? "0.0.0.0" : "localhost";
 const MODE = process.argv[2];
 if (!MODE) {
   console.error("You must pass a mode (dev or prod)");
@@ -20,8 +17,6 @@ const HOST = MODE === "prod" ? "0.0.0.0" : "localhost";
 console.log("Backend starting in mode:", MODE, "host:", HOST);
 
 const PORT = 3001
-
-
 
 const app = express();
 
@@ -78,7 +73,6 @@ app.use("/api/courses/:courseName", (req, res, next) => {
   }
 
   // strip the prefix /api/courses/:courseName and serve the rest from dist
-  // use express.static to serve files (and index.html fallback)
   const requestSubPath = req.path === "/" ? "/index.html" : req.path;
   const fullPath = path.join(distDir, requestSubPath);
 
