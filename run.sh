@@ -42,4 +42,4 @@ echo "Starting backend with MODE=$MODE"
 echo "------------------------------------------------------"
 
 
-npm start -- "$MODE"
+node src/server.js "$MODE"
