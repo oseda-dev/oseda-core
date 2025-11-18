@@ -1,24 +1,44 @@
+// server.js
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const fs = require("fs");
 
+// allow override from env or CLI
 const COURSES_ROOT = path.join(__dirname, "..", "..", "..", "oseda-lib", "courses");
 
+// const MODE = process.argv[2] || process.env.MODE || "dev";
+// const HOST = MODE === "prod" ? "0.0.0.0" : "localhost";
+const MODE = process.argv[2];
+if (!MODE) {
+  console.error("You must pass a mode (dev or prod)");
+  process.exit(1);
+}
+
+const HOST = MODE === "prod" ? "0.0.0.0" : "localhost";
+
+console.log("Backend starting in mode:", MODE, "host:", HOST);
+
+const PORT = 3001
+
+
+
+
+
 const app = express();
-const port = 3001;
+
+app.use(express.static(path.join(__dirname, "../../frontend/build")));
 
 app.use(cors());
-
-// serve main frontend build
-app.use(express.static(path.join(__dirname, "../../frontend/build")));
 
 // list all courses
 app.get("/api/courses", (req, res) => {
   try {
-    const projects = fs.readdirSync(COURSES_ROOT).filter((name) =>
-      fs.statSync(path.join(COURSES_ROOT, name)).isDirectory()
-    );
+    const projects = fs
+      .readdirSync(COURSES_ROOT)
+      .filter((name) =>
+        fs.statSync(path.join(COURSES_ROOT, name)).isDirectory()
+      );
     res.json(projects);
   } catch (err) {
     console.error(err);
@@ -46,36 +66,36 @@ app.get("/api/info", (req, res) => {
   }
 });
 
-// precompute and serve courses 
-try {
-  const courses = fs.readdirSync(COURSES_ROOT).filter((name) =>
-    fs.statSync(path.join(COURSES_ROOT, name)).isDirectory()
-  );
+/*
+  serve course dist dynamically:
+  requests to /api/courses/:courseName/* will try to serve files from
+  <COURSES_ROOT>/<courseName>/dist/<requested path>
+*/
+app.use("/api/courses/:courseName", (req, res, next) => {
+  const courseName = req.params.courseName;
+  const distDir = path.join(COURSES_ROOT, courseName, "dist");
 
-  courses.forEach((courseName) => {
-    const distPath = path.join(COURSES_ROOT, courseName, "dist");
-    if (!fs.existsSync(distPath)) {
-      console.log("dist path did not exist for " + courseName);
-      return;
-    }
+  if (!fs.existsSync(distDir) || !fs.statSync(distDir).isDirectory()) {
+    return res.status(404).send("course not found");
+  }
 
-    app.use(
-      `/api/courses/${courseName}`,
-      express.static(distPath, { index: "index.html" })
-    );
+  // strip the prefix /api/courses/:courseName and serve the rest from dist
+  // use express.static to serve files (and index.html fallback)
+  const requestSubPath = req.path === "/" ? "/index.html" : req.path;
+  const fullPath = path.join(distDir, requestSubPath);
 
-    console.log(`Serving course ${courseName} at /api/courses/${courseName}`);
-  });
-} catch (err) {
-  console.error("Failed to precompute course static routes:", err);
-}
-
-// disgusting regex fallback for main frontend -> iterally any /api/ routes
-app.get(/^\/(?!api).*/, (req, res) => {
-  res.sendFile(path.join(__dirname, "../../frontend/build/index.html"));
+  // if file exists, send it, otherwise fall back to index.html for SPA
+  if (fs.existsSync(fullPath) && fs.statSync(fullPath).isFile()) {
+    return res.sendFile(fullPath);
+  } else {
+    return res.sendFile(path.join(distDir, "index.html"));
+  }
 });
 
-// start server
-app.listen(port, '0.0.0.0', () => {
-    console.log(`Backend running at http://localhost:${port}`);
+
+
+
+app.listen(PORT, HOST, () => {
+  console.log(`Backend listening on http://${HOST}:${PORT} (mode=${MODE})`);
+  console.log(`COURSES_ROOT=${COURSES_ROOT}`);
 });
