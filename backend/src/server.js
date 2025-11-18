@@ -23,8 +23,6 @@ const PORT = 3001
 
 
 
-
-
 const app = express();
 
 app.use(express.static(path.join(__dirname, "../../frontend/build")));
@@ -91,6 +89,15 @@ app.use("/api/courses/:courseName", (req, res, next) => {
     return res.sendFile(path.join(distDir, "index.html"));
   }
 });
+
+
+// catch-all for frontend routes (anything not /api/)
+// technically, is just a reroute for everything.
+// works fine without it, but a link directly to a course breaks
+app.get(/^\/(?!api\/).*/, (req, res) => {
+  res.sendFile(path.join(__dirname, "../../frontend/build/index.html"));
+});
+
 
 
 
