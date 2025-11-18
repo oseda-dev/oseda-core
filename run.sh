@@ -16,7 +16,7 @@ fi
 
 
 if [[ "$MODE" == "prod" ]]; then
-    sudo ln -s /home/ubuntu/oseda-core/net/oseda.conf /etc/apache2/sites-available/oseda.conf
+    sudo ln -sfn /home/ubuntu/oseda-core/net/oseda.conf /etc/apache2/sites-available/oseda.conf
 fi
 
 echo "======================================================"
