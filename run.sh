@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 if [ $# -ne 1 ]; then
     echo "Usage: $0 [dev|prod]"
@@ -7,16 +6,9 @@ if [ $# -ne 1 ]; then
 fi
 
 MODE=$1
-
-if [ "$MODE" != "dev" ] && [ "$MODE" != "prod" ]; then
+if [[ "$MODE" != "dev" && "$MODE" != "prod" ]]; then
     echo "Invalid mode: $MODE"
-    echo "Usage: $0 [dev|prod]"
     exit 1
-fi
-
-
-if [[ "$MODE" == "prod" ]]; then
-    sudo ln -sfn /home/ubuntu/oseda-core/net/oseda.conf /etc/apache2/sites-available/oseda.conf
 fi
 
 echo "======================================================"
@@ -36,10 +28,28 @@ cd ..
 echo "[3/3] Installing backend dependencies..."
 cd backend
 npm install
+cd ..
 
-echo "------------------------------------------------------"
-echo "Starting backend with MODE=$MODE"
-echo "------------------------------------------------------"
+# --- APACHE SETUP IN PROD
+if [[ "$MODE" == "prod" ]]; then
+    echo "[4/5] Configuring Apache for prod..."
+    
+    # rahhh idk where this file keeps coming from, but kill it if exists
+    if [ -f /etc/apache2/sites-enabled/oseda-le-ssl.conf ]; then
+        sudo a2dissite oseda-le-ssl.conf
+    fi
+
+    sudo ln -sfn /home/ubuntu/oseda-core/net/oseda.conf /etc/apache2/sites-available/oseda.conf
+    sudo a2ensite oseda.conf
 
 
-node src/server.js "$MODE"
+    #  should already be enabled
+    sudo a2enmod proxy proxy_http ssl rewrite
+
+# restart server
+    sudo systemctl reload apache2
+fi
+
+# --- START NODE BACKEND ---
+echo "[5/5] Starting backend..."
+node backend/src/server.js "$MODE"
