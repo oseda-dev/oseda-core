@@ -2,9 +2,6 @@
 set -e
 echo "Starting deployment..."
 
-# Path to oseda-lib (relative to this repo)
-OSEDA_LIB_DIR="oseda-lib"
-
 ssh aws << 'EOF'
 
 set -e
@@ -57,7 +54,7 @@ npm run build
 
 echo "Starting backend..."
 cd ../
-nohup ./run.sh > oseda.log 2>&1 &
+nohup ./run.sh prod > oseda.log 2>&1 &
 
 EOF
 
