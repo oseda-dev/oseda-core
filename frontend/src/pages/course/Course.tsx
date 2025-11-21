@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import "./Course.css"
 
 const Course = () => {
     const { title } = useParams<{ title: string }>();
@@ -9,13 +10,17 @@ const Course = () => {
     const src = `/api/courses/${encodeURIComponent(
         title
     )}/index.html`;
-
     return (
-        <iframe
-            src={src}
-            style={{ width: "100%", height: "80vh", border: "none" }}
-            title={title}
-        />
+        <>
+            <h1>{title}</h1>
+            <iframe
+                className="courseFrame"
+                src={src}
+                title={title}
+                allow="fullscreen"
+            />
+
+        </>
     );
 };
 

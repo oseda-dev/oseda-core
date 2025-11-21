@@ -1,0 +1,9 @@
+.courseFrame {
+    width: 85vw;
+    height: 80vh;
+}
+
+.courseFrameFullscreen {
+    width: 100vw;
+    height: 100vh;
+}
