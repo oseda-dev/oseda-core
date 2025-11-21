@@ -1,4 +1,3 @@
-// server.js
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
@@ -25,6 +24,7 @@ app.use(express.static(path.join(__dirname, "../../frontend/build")));
 app.use(cors());
 
 // list all courses
+// need to add author support eventually as well here
 app.get("/api/courses", (req, res) => {
   try {
     const projects = fs
