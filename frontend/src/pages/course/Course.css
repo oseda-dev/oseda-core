@@ -1,9 +1,10 @@
 .courseFrame {
     width: 85vw;
     height: 80vh;
+    border: none;
 }
 
-.courseFrameFullscreen {
+.fullscreen.enabled .courseFrame {
     width: 100vw;
     height: 100vh;
 }
