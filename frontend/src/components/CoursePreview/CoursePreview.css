@@ -1,5 +1,6 @@
 .card {
-    width: 17em;
+    width: auto !important;
+    /* max-width: 20em;  */
     min-height: auto; /* dynamic height */
     background: linear-gradient(165deg, #0d1b4c, #ffffff); /* dark blue → white */
     transition: 1s ease-in-out;
