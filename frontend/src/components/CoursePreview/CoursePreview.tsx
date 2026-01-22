@@ -10,7 +10,7 @@ interface CoursePreviewProps {
 interface OsedaConfig {
     title: string;
     author: string;
-    category: string[];
+    tags: string[];
     last_updated: string;
     color: string;
 }
@@ -38,9 +38,9 @@ const CoursePreview = ({ title }: CoursePreviewProps) => {
                 <h2 className="author">{config.author}</h2>
             </div>
             
-            <div className="categories">
-                {config.category.map((txt, idx) => (
-                    <p key={idx} className="category">{txt}</p>
+            <div className="tags">
+                {config.tags.map((txt, idx) => (
+                    <p key={idx} className="tag">{txt}</p>
                 ))}
             </div>
             <div>
