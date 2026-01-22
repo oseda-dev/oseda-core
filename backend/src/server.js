@@ -2,15 +2,20 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const fs = require("fs");
-const hosts = require("./hosts")
+const hosts = require("./hosts");
+const courses = require("./courses");
 
+const COURSES_ROOT = path.join(
+    __dirname,
+    "..",
+    "..",
+    "..",
+    "oseda-lib",
+    "courses"
+);
 
-const COURSES_ROOT = path.join(__dirname, "..", "..", "..", "oseda-lib", "courses");
-
-
-const HOST = hosts.determineHost()
-const PORT = 3001
-
+const HOST = hosts.determineHost();
+const PORT = 3001;
 
 /**
  * Description
@@ -18,91 +23,70 @@ const PORT = 3001
  * @param {number} port
  * @returns {}
  */
-const buildAndRunExpressServer = (HOST, PORT) => {
-  const app = express();
+const buildOsedaExpressServer = (COURSES_ROOT) => {
+    const server = express();
 
-  app.use(express.static(path.join(__dirname, "../../frontend/build")));
+    server.use(express.static(path.join(__dirname, "../../frontend/build")));
 
-  app.use(cors());
+    server.use(cors());
 
-  // list all courses
-  // need to add author support eventually as well here
-  app.get("/api/courses", (req, res) => {
-    try {
-      const projects = fs
-        .readdirSync(COURSES_ROOT)
-        .filter((name) =>
-          fs.statSync(path.join(COURSES_ROOT, name)).isDirectory()
-        );
-      res.json(projects);
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ error: "Failed to load courses" });
-    }
-  });
+    /*
+      serve course dist dynamically:
+      requests to /api/courses/:courseName/* will try to serve files from
+      <COURSES_ROOT>/<courseName>/dist/<requested path>
+    */
+    server.use("/api/courses/:courseName", courses.serveCourseDir(COURSES_ROOT));
 
-  // load oseda-config.json for a particular course via query params
-  app.get("/api/info", (req, res) => {
-    const title = req.query.title;
-    if (!title) return res.status(400).json({ error: "No title provided" });
+    // list all courses
+    // need to add author support eventually as well here
+    server.get("/api/courses", (req, res) => {
+        try {
+            const projects = fs
+                .readdirSync(COURSES_ROOT)
+                .filter((name) =>
+                    fs.statSync(path.join(COURSES_ROOT, name)).isDirectory()
+                );
+            res.json(projects);
+        } catch (err) {
+            console.error(err);
+            res.status(500).json({ error: "Failed to load courses" });
+        }
+    });
 
-    const configPath = path.join(COURSES_ROOT, title, "oseda-config.json");
+    // load oseda-config.json for a particular course via query params
+    server.get("/api/info", (req, res) => {
+        const title = req.query.title;
+        if (!title) return res.status(400).json({ error: "No title provided" });
 
-    if (!fs.existsSync(configPath)) {
-      return res.status(404).json({ error: "Course not found" });
-    }
+        const configPath = path.join(COURSES_ROOT, title, "oseda-config.json");
 
-    try {
-      const config = JSON.parse(fs.readFileSync(configPath, "utf-8"));
-      res.json(config);
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ error: "Failed to read config" });
-    }
-  });
+        if (!fs.existsSync(configPath)) {
+            return res.status(404).json({ error: "Course not found" });
+        }
 
-  /*
-    serve course dist dynamically:
-    requests to /api/courses/:courseName/* will try to serve files from
-    <COURSES_ROOT>/<courseName>/dist/<requested path>
-  */
-  app.use("/api/courses/:courseName", (req, res, next) => {
-    const courseName = req.params.courseName;
-    const distDir = path.join(COURSES_ROOT, courseName, "dist");
-
-    if (!fs.existsSync(distDir) || !fs.statSync(distDir).isDirectory()) {
-      return res.status(404).send("course not found");
-    }
-
-    // strip the prefix /api/courses/:courseName and serve the rest from dist
-    const requestSubPath = req.path === "/" ? "/index.html" : req.path;
-    const fullPath = path.join(distDir, requestSubPath);
-
-    // if file exists, send it, otherwise fall back to index.html for SPA
-    if (fs.existsSync(fullPath) && fs.statSync(fullPath).isFile()) {
-      return res.sendFile(fullPath);
-    } else {
-      return res.sendFile(path.join(distDir, "index.html"));
-    }
-  });
+        try {
+            const config = JSON.parse(fs.readFileSync(configPath, "utf-8"));
+            res.json(config);
+        } catch (err) {
+            console.error(err);
+            res.status(500).json({ error: "Failed to read config" });
+        }
+    });
 
 
-  // catch-all for frontend routes (anything not /api/)
-  // technically, is just a reroute for everything.
-  // works fine without it, but a link directly to a course breaks
-  app.get(/^\/(?!api\/).*/, (req, res) => {
-    res.sendFile(path.join(__dirname, "../../frontend/build/index.html"));
-  });
+    // catch-all for frontend routes (anything not /api/)
+    // technically, is just a reroute for everything.
+    // works fine without it, but a link directly to a course breaks
+    server.get(/^\/(?!api\/).*/, (req, res) => {
+        res.sendFile(path.join(__dirname, "../../frontend/build/index.html"));
+    });
 
+    return server;
+};
 
+const oseda = buildOsedaExpressServer(COURSES_ROOT);
 
-
-
-  app.listen(PORT, HOST, () => {
+oseda.listen(PORT, HOST, () => {
     console.log(`Backend listening on http://${HOST}:${PORT}`);
     console.log(`COURSES_ROOT=${COURSES_ROOT}`);
-  });
-
-}
-
-buildAndRunExpressServer(HOST, PORT)
+});

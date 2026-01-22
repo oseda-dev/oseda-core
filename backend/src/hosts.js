@@ -1,9 +1,9 @@
-export const Hosts = Object.freeze({
+const Hosts = Object.freeze({
     LOCAL: "localhost",
     ALL_NETWORK_INTERFACES: "0.0.0.0",
 });
 
-export const determineHost = () => {
+const determineHost = () => {
     const mode = process.argv[2];
 
     if (!mode) {
@@ -19,3 +19,9 @@ export const determineHost = () => {
 
     return Hosts.LOCAL;
 };
+
+
+module.exports = {
+    Hosts,
+    determineHost
+}
