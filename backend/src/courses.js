@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
+// Handles getting a SPECIFIC COURSE
 const serveCourseDir = (COURSES_ROOT) => {
 
     return (req, res, next) => {
@@ -24,7 +25,24 @@ const serveCourseDir = (COURSES_ROOT) => {
     }
 };
 
-
+// Serve ALL courses
+// may want to paginate here
+const serveAllCourses = (COURSES_ROOT) => {
+    return (req, res) => {
+        try {
+            const projects = fs
+                .readdirSync(COURSES_ROOT)
+                .filter((name) =>
+                    fs.statSync(path.join(COURSES_ROOT, name)).isDirectory()
+                );
+            res.json(projects);
+        } catch (err) {
+            console.error(err);
+            res.status(500).json({ error: "Failed to load courses" });
+        }
+    }
+}
 module.exports = {
-    serveCourseDir
+    serveCourseDir,
+    serveAllCourses
 }
