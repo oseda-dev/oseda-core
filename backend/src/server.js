@@ -2,43 +2,13 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const fs = require("fs");
+const hosts = require("./hosts")
+
 
 const COURSES_ROOT = path.join(__dirname, "..", "..", "..", "oseda-lib", "courses");
 
 
-// const HOST = MODE === "prod" ? "0.0.0.0" : "localhost";
-
-
-const Host = Object.freeze({
-  LOCAL: "localhost",
-  ALL_NETWORK_INTERFACES: "0.0.0.0"
-})
-
-
-
-const determineHost = () => {
-  const mode = process.argv[2];
-
-  if (!mode) {
-    console.error("You must pass a mode (dev or prod)");
-    process.exit(1);
-  }
-
-  console.log(`Running backend server in mode=${mode}...`)
-
-  // console.log("Backend starting in mode:", MODE, "host:", HOST);
-
-  // return mode === "prod" ? "0.0.0.0" : "localhost";
-
-  if(mode === "prod"){
-    return Host.ALL_NETWORK_INTERFACES;
-  }
-
-
-  return Host.LOCAL;
-}
-
-const HOST = determineHost()
+const HOST = hosts.determineHost()
 const PORT = 3001
 
 
