@@ -1,24 +1,37 @@
 .card {
-    width: auto !important;
-    /* max-width: 20em;  */
-    min-height: auto; /* dynamic height */
-    background: linear-gradient(165deg, #0d1b4c, #ffffff); /* dark blue → white */
-    transition: 1s ease-in-out;
-    clip-path: polygon(30px 0%, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0% 30px);
-    border-top-right-radius: 20px;
-    border-bottom-left-radius: 20px;
+    width: 23vw;
+    height: 45vh;
+    transition: 0.25s ease-in-out;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
-    padding: 1em;
     box-sizing: border-box;
+    overflow: hidden;
+
+    /* Adding in the old glass for the time being */
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 0 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.card .img {
-width: 5.5em;
-    height: 5.5em;
-    background: white;
-    border-radius: 50px;
-    margin: 0.5em auto 0 auto;
+.card:hover {
+    transform: scale(1.10);
+    cursor: pointer;
+}
+
+.course-preview-header {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    height: 20%;
+    overflow: hidden;
+}
+
+.card h1, .card h2 {
+    margin: 0;
+    overflow-wrap: break-word;
+    text-wrap: balance;
 }
 
 .card span {
@@ -30,10 +43,14 @@ width: 5.5em;
     margin-top: 0.3em;
 }
 
+.card div {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
 .card .author {
     font-weight: 350;
     color: white;
-    text-align: center;
     font-size: 1em;
     margin: 0.2em 0 0.5em 0;
 }
@@ -41,7 +58,7 @@ width: 5.5em;
 .card .categories {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: left;
     gap: 0.40em;
     margin: 0.5em 0;
 }
@@ -51,7 +68,7 @@ width: 5.5em;
     color: #171717;
     font-size: 0.85em;
     padding: 0.35em 0.75em;
-    border-radius: 50px;
+    border-radius: 10px;
     font-weight: 500;
     box-shadow: inset 2px 2px 5px rgba(188, 188, 188, 0.7),
                 inset -2px -2px 5px rgba(255, 255, 255, 0.7);
