@@ -5,6 +5,7 @@ import Landing from "./pages/home/Landing";
 import Courses from "./pages/courses/Courses";
 import Course from "./pages/course/Course";
 import Author from "./pages/author/Author";
+import MarkdownRender from "./components/MarkdownRenderer/MarkdownRenderer";
 
 function App() {
   const [courses, setCourses] = useState<string[]>([]);
@@ -25,6 +26,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/docs" element={<MarkdownRender />} />
         <Route path="/" element={<Landing />} />
         <Route path="/landing" element={<Landing />} />
         <Route path="/courses" element={<Courses />} />
