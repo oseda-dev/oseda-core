@@ -1,8 +1,6 @@
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import "./NavButton.css";
 
-// buttons should have a consistent styling in theory lol, so component here.
-// also good example for like. How to do this stuff in general
 interface ButtonProps {
   text: string;
   url: string;
@@ -10,16 +8,14 @@ interface ButtonProps {
 
 const NavButton = ({ text, url }: ButtonProps) => {
   const nav = useNavigate();
+
   return (
-    <>
-      <button
-        onClick={() => {
-          nav(url);
-        }}
-      >
-        {text}
-      </button>
-    </>
+    <button
+      className="nav-button glass"
+      onClick={() => nav(url)}
+    >
+      <span className="glass-content">{text}</span>
+    </button>
   );
 };
 
