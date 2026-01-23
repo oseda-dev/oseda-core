@@ -1,7 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 
-const getCourseConfig = (title) => {
+const getCourseConfig = (title, COURSES_ROOT) => {
     if (!title) throw { status: 400, message: "No title provided" };
 
     const configPath = path.join(COURSES_ROOT, title, "oseda-config.json");

@@ -3,6 +3,7 @@ const cors = require("cors");
 const path = require("path");
 const hosts = require("./hosts");
 const courses = require("./courses");
+const config = require("./config");
 
 const COURSES_ROOT = path.join(
     __dirname,
@@ -43,10 +44,11 @@ const buildOsedaExpressServer = (COURSES_ROOT) => {
     // load oseda-config.json for a particular course via query params
     server.get("/api/info", (req, res) => {
         const title = req.query.title;
+        // console.log("got here")
 
         try {
-            const config = config.getCourseConfig(title);
-            res.json(config);
+            const conf = config.getCourseConfig(title, COURSES_ROOT);
+            res.json(conf);
         } catch (err) {
             res.status(err.status || 500).json({ error: err.message || "Unknown error" });
         }
