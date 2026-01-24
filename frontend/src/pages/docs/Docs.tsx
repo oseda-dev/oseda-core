@@ -4,6 +4,18 @@ import MarkdownRenderer from '../../components/MarkdownRenderer/MarkdownRenderer
 
 const Docs: React.FC = () => {
 
+    //Docs
+    // left bar style
+    // Contributing
+    // CLI  docs
+    // - cargo docs
+    // README 
+    // Core documentation (README)
+    // - Frontend
+    // - Backend
+    // Lib documentation
+    //  
+
 
     return (
         
