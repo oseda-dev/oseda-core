@@ -9,6 +9,7 @@
     "react-dom": "^18.3.1",
     "react-full-screen": "^1.1.1",
     "react-markdown": "^10.1.0",
+    "react-pro-sidebar": "^1.1.0",
     "react-router-dom": "^7.5.0",
     "react-scripts": "5.0.1",
     "remark-gfm": "^4.0.1",

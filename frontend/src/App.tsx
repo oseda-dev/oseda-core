@@ -6,6 +6,7 @@ import Courses from "./pages/courses/Courses";
 import Course from "./pages/course/Course";
 import Author from "./pages/author/Author";
 import Docs from "./pages/docs/Docs";
+import { ProSidebarProvider } from "react-pro-sidebar"
 
 function App() {
   const [courses, setCourses] = useState<string[]>([]);
@@ -29,7 +30,11 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/landing" element={<Landing />} />
         <Route path="/courses" element={<Courses />} />
-        <Route path="/docs" element={<Docs />} />
+        <Route path="/docs" element={
+          <ProSidebarProvider>
+            <Docs />
+          </ProSidebarProvider>
+          } />
         <Route path="/courses/:title" element={<Course />} />
         <Route path="/author/:name" element={<Author />} />
       </Routes>
