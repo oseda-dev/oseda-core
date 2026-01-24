@@ -3,55 +3,54 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from "remark-gfm";
 
 
-// interface RendererProps {
-//     markdown: string
-// }
+interface RendererProps {
+    markdown: string
+}
 
-const MarkdownRenderer: React.FC = ( ) => {
+const MarkdownRenderer: React.FC<RendererProps> = ( { markdown }: RendererProps) => {
     
 
-    const content = `
-# gfm test
+//     const content = `
+// # gfm test
 
-this is **bold**, *italic*, ~~strikethrough~~, and \`inline code\`.
+// this is **bold**, *italic*, ~~strikethrough~~, and \`inline code\`.
 
-## task list
-- [x] done item
-- [ ] not done item
+// ## task list
+// - [x] done item
+// - [ ] not done item
 
-## table
-| name | value | note |
-|------|-------|------|
-| foo  | 123   | ok   |
-| bar  | 456   | yes  |
+// ## table
+// | name | value | note |
+// |------|-------|------|
+// | foo  | 123   | ok   |
+// | bar  | 456   | yes  |
 
-## blockquote
-> this is a quote  
-> with multiple lines
+// ## blockquote
+// > this is a quote  
+// > with multiple lines
 
-## code block
-\`\`\`js
-const x = 42
-console.log(x)
-\`\`\`
+// ## code block
+// \`\`\`js
+// const x = 42
+// console.log(x)
+// \`\`\`
 
-## link and image
-[github](https://github.com)
+// ## link and image
+// [github](https://github.com)
 
-![alt text](https://placehold.co/300x100)
+// ![alt text](https://placehold.co/300x100)
 
-## list
-1. first
-2. second
-- nested
-- items
-`;
+// ## list
+// 1. first
+// 2. second
+// - nested
+// - items
+// `;
     
     return (
         <>
-            <h1>Markdown Renderer</h1>
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                {content}
+                {markdown}
             </ReactMarkdown>
         </>
     );
