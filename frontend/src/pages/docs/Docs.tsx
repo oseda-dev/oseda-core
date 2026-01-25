@@ -82,6 +82,10 @@ const Docs: React.FC = () => {
                         </SubMenu>
 
                         <SubMenu label="oseda-cli">
+                            <MenuItem component={<NavLink to="cli/overview" />}>
+                                Overview
+                            </MenuItem>
+
                             <MenuItem component={<NavLink to="cli/cargo" />}>
                                 Cargo
                             </MenuItem>
@@ -110,7 +114,7 @@ const Docs: React.FC = () => {
                     </Menu>
                 </Sidebar>
 
-                <GlassPanel as="main" style={{ flex: 1, padding: "2rem" }}>
+                <GlassPanel as="main" style={{ flex: 1, padding: "2rem", width: "60vh" }}>
                     <Outlet />
                 </GlassPanel>
             </div>

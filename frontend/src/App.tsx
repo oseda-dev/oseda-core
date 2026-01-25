@@ -12,6 +12,7 @@ import GettingStarted from "./pages/docs/GettingStarted/GettingStarted";
 import Guidelines from "./pages/docs/Guidelines/Guidelines";
 import Cargo from "./pages/docs/Cargo/Cargo";
 import Commands from "./pages/docs/Commands/Commands";
+import CLI from "./pages/docs/CLI/CLI";
 
 function App() {
   const [courses, setCourses] = useState<string[]>([]);
@@ -37,6 +38,7 @@ function App() {
         <Route path="/courses" element={<Courses />} />
 
         {/* All this doc stuff is a little annoying, but I really want the docs to be link-safe */}
+        {/* Docs added here must also be added to Docs.tsx */}
         <Route
           path="/docs"
           element={
@@ -55,6 +57,7 @@ function App() {
           </Route>
 
           <Route path="cli">
+            <Route path="overview" element={<CLI />} />
             <Route path="cargo" element={<Cargo />} />
             <Route path="commands" element={<Commands />} />
           </Route>

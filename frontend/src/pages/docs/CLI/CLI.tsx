@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import MarkdownRenderer from '../../../components/MarkdownRenderer/MarkdownRenderer';
 
 // CLI overview
-const Commands: React.FC = () => {
+const CLI: React.FC = () => {
     
     
     const [content, setContent] = useState("");
     
         useEffect(() => {
-            fetch("/api/docs/cli/usage")
+            fetch("/api/docs/cli")
                 // comes back as raw text
                 .then(res => res.text())
                 .then(text => {
@@ -27,4 +27,4 @@ const Commands: React.FC = () => {
     );
 };
 
-export default Commands;
+export default CLI;

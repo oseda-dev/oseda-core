@@ -17,10 +17,10 @@ this is **bold**, *italic*, ~~strikethrough~~, and \`inline code\`.
 > with multiple lines
 
 ## code block
-\`\`\`js
+```js
 const x = 42
 console.log(x)
-\`\`\`
+```
 
 ## link and image
 [github](https://github.com)
