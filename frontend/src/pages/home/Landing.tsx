@@ -26,6 +26,11 @@ const Landing = () => {
         <div className="nav-button">
           <NavButton text="Go to Courses!" url="/courses" />
         </div>
+
+        <div className="nav-button">
+          <NavButton text="Documentation" url="/docs" />
+        </div>
+
       </GlassPanel>
     </div>
   );
