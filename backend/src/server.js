@@ -4,6 +4,7 @@ const path = require("path");
 const hosts = require("./hosts");
 const courses = require("./courses");
 const config = require("./config");
+const docs = require("./docs");
 
 const COURSES_ROOT = path.join(
     __dirname,
@@ -27,6 +28,9 @@ const buildOsedaExpressServer = (COURSES_ROOT) => {
     const server = express();
 
     server.use(express.static(path.join(__dirname, "../../frontend/build")));
+
+    docs.serveDocs(server)
+
 
     server.use(cors());
 
