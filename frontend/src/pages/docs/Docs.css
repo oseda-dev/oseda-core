@@ -3,9 +3,5 @@
     height: 80vh;
     padding-top: 40pt;
     all: unset;
+    color:black
 }
-
-.docs-container .p {
-    color: black; 
-}
-
