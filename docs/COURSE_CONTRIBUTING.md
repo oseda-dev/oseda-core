@@ -105,5 +105,20 @@ Open that link in your browser to view the default presentation.
 
 You may now edit the course files (usually just the `slides.html/md`) to fit your desired course.
 
-Once you are finished, 
-TODO: off to go implement oseda fork
+You can leave it there if you only want the course for personal reasons, but if you would like to add your course to oseda.net, a few things must be done.
+
+1. Ensure your project is ready for deployment with the `oseda check` command.
+
+2. Run `oseda fork`. This will open the fork website for the course repository repo.
+Once this is forked to your personal Github, copy the link to the fork and continue. 
+
+3. Run `oseda deploy [FORK_URL]`. 
+This will add your course to your personal fork.
+(Don't worry, this will not do a full `git clone`, only a `sparse checkout` without pulling down every course).
+
+4. Open the final link given to you after `oseda deploy` runs and make a PR.
+
+5. The OSEDA core team will consider your course for approval. 
+
+In a few days, you should expect to see the course available at oseda.net
+
