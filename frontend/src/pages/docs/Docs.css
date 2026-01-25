@@ -2,4 +2,10 @@
     display: flex;
     height: 80vh;
     padding-top: 40pt;
+    all: unset;
 }
+
+.docs-container .p {
+    color: black; 
+}
+
