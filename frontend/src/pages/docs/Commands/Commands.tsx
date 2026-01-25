@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import MarkdownRenderer from '../../../components/MarkdownRenderer/MarkdownRenderer';
 
 // CLI overview
+// Pulled from oseda-cli README.md
 const Commands: React.FC = () => {
-    
     
     const [content, setContent] = useState("");
     
