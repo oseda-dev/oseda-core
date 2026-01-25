@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../Docs.css"
+import MarkdownRenderer from "../../../components/MarkdownRenderer/MarkdownRenderer";
 
 const OverviewDoc = () => {
 
@@ -20,10 +21,7 @@ const OverviewDoc = () => {
 
 
     return (
-        <div>
-            <h1>Overview</h1>
-            <p>OSEDA documentation overview.</p>
-        </div>
+        <MarkdownRenderer markdown={content} />
     )
 }
 
