@@ -35,6 +35,8 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/landing" element={<Landing />} />
         <Route path="/courses" element={<Courses />} />
+
+        {/* All this doc stuff is a little annoying, but I really want the docs to be link-safe */}
         <Route
           path="/docs"
           element={
@@ -43,6 +45,7 @@ function App() {
             </ProSidebarProvider>
           }
         >
+          {/* index = "default" route when docs selected */}
           <Route index element={<OverviewDoc />} />
           <Route path="overview" element={<OverviewDoc />} />
 
@@ -56,7 +59,6 @@ function App() {
             <Route path="commands" element={<Commands />} />
           </Route>
         </Route> 
-
 
         <Route path="/courses/:title" element={<Course />} />
         <Route path="/author/:name" element={<Author />} />
