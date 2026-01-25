@@ -27,9 +27,83 @@ To share your new ideas for the project, perform the following actions:
 To set up your environment, perform the following actions:
 
 * Unix environment (Linux preferred)
-* Git
+* Git (signed into Github)
 * Cargo
 * NPM
 
 
-## Follow the project initialization and deployment methods detailed in [github.com/oseda-dev/oseda-cli](github.com/oseda-dev/oseda-cli)
+# Install `oseda-cli`
+
+OSEDA projects are generated using the oseda-cli. This can be installed through cargo.
+
+```bash
+cargo install oseda-cli
+```
+
+If you have cargo installations in your `$PATH`, you will have access to the `oseda` binary.
+You can use the `oseda` command to build your presenatations.
+
+Use the `oseda init` command to create your first project. 
+This will walk you through a list of interactive options regarding your presentation.
+Any of these options can be changed at later time if needed.
+
+
+## Template:
+OSEDA presentations can be made entirely in markdown, but HTML provides the most flexibility.
+
+## Title:
+Give your course a good name
+
+## Tags:
+Select from any predefined tags. 
+You can always add custom tags later, but only the predefined tags will get a unique color on oseda.net
+
+## Color:
+Select a theme color for your course (e.g. Math=Red, Science=Blue, etc)
+
+After running `oseda init`, you will have a new directory with the name of your project.
+Take a look at the structure of an OSEDA project
+
+```
+OSEDA-Project-Name 
+├── css
+│   └── custom.css
+├── index.html
+├── oseda-config.json
+├── package-lock.json
+├── package.json
+├── public
+│   └── ferris.png
+├── slides
+│   └── slides.html
+├── src
+│   └── main.js
+└── vite.config.js
+```
+If you selected the markdown template, you will instead have a `slides.md` file.
+
+## `oseda-config.json`
+
+This file contains the OSEDA project information. It should look something like:
+```
+{
+  "title": "ProgrammingFlyingMachines",
+  "author": "ReeseHatfield",
+  "tags": [
+    "Aerospace",
+    "ComputerScience"
+  ],
+  "last_updated": "2026-01-25T22:34:30.097833938Z",
+  "color": "#FF0000"
+}
+```
+You can edit these fields as you see fit, but note that your author *MUST* match your Github username.
+If you are unsure, check this with `git config --list`
+
+If everything looks right, you may now run the `oseda run` command from the project directory.
+Open that link in your browser to view the default presentation.
+
+You may now edit the course files (usually just the `slides.html/md`) to fit your desired course.
+
+Once you are finished, 
+TODO: off to go implement oseda fork

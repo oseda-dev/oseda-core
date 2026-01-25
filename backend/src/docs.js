@@ -20,6 +20,7 @@ const serveDocs = (server) => {
     const cliUsagePath = path.join(__dirname, "../../../oseda-cli/Usage.md");
     server.use("/api/docs/cli/usage", express.static(cliUsagePath))
 
+
     // serve other weird stuff we need to here
 
 }
