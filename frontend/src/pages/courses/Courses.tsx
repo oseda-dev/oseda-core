@@ -10,8 +10,6 @@ const Courses = () => {
 
     const coursesPerPage = 5;
 
-
-
     useEffect(() => {
 
         const fetchCourses = async () => {
@@ -33,7 +31,6 @@ const Courses = () => {
                 ))}
             </div>
 
-            {/* TODO implement this class */}
             <span className="page-buttons-container">
                 {curPage != 0 ? (<GlassPanel className="page-button" as="button" onClick={() => { setCurPage(curPage - 1) }}> Prev </GlassPanel>) : <></>}
                 <GlassPanel className="page-button" as="button">

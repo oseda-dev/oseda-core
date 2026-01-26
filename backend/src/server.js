@@ -45,6 +45,9 @@ const buildOsedaExpressServer = (COURSES_ROOT) => {
     // need to add author support eventually as well here
     server.get("/api/courses", courses.serveAllCourses(COURSES_ROOT));
 
+
+    server.get("/api/author/:author", courses.serveCoursesFromAuthor(COURSES_ROOT));
+
     // load oseda-config.json for a particular course via query params
     server.get("/api/info", (req, res) => {
         const title = req.query.title;

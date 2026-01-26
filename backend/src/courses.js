@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const { getCourseConfig } = require("./config");
 
 // Handles getting a SPECIFIC COURSE
 const serveCourseDir = (COURSES_ROOT) => {
@@ -25,43 +26,82 @@ const serveCourseDir = (COURSES_ROOT) => {
     }
 };
 
-// Serve ALL courses
-// may want to paginate here
-const serveAllCourses = (COURSES_ROOT) => {
-    return async (req, res) => {
-        const start = Number(req.query.start ?? 0);
-        const limit = Number(req.query.limit ?? 9);
 
-        let index = 0;
-        const result = [];
+const paginateDirs = async ({ root, start, limit, filter }) => {
+    let index = 0
+    const result = []
+
+    const dir = await fs.promises.opendir(root)
+
+    for await (const dirent of dir) {
+        if (!dirent.isDirectory()) continue
+        // atm only using this for authors
+        // OOO but also tags?
+        if (!filter(dirent.name)) continue
+
+        if (index >= start && result.length < limit) {
+            result.push(dirent.name)
+        }
+
+        index++
+        if (result.length === limit) break
+    }
+
+    return result
+}
+
+
+const serveCourses = (COURSES_ROOT) => {
+    return async (req, res) => {
+        const start = Number(req.query.start ?? 0)
+        const limit = Number(req.query.limit ?? 9)
 
         try {
-            const dir = await fs.promises.opendir(COURSES_ROOT);
+            const courses = await paginateDirs({
+                root: COURSES_ROOT,
+                start,
+                limit,
+                filter: () => true
+            })
 
-            for await (const dirent of dir) {
-                if (!dirent.isDirectory()) {
-                    index++;
-                    continue;
-                }
-
-                if (index >= start && result.length < limit) {
-                    result.push(dirent.name);
-                }
-
-                index++;
-
-                if (result.length === limit) break;
-            }
-
-            res.json(result);
+            res.json(courses)
         } catch (err) {
-            console.error(err);
-            res.status(500).json({ error: "Failed to load courses" });
+            console.error(err)
+            res.status(500).json({ error: "Failed to load courses" })
         }
-    };
-};
+    }
+}
+
+
+const serveCoursesFromAuthor = (COURSES_ROOT) => {
+    return async (req, res) => {
+        const start = Number(req.query.start ?? 0)
+        const limit = Number(req.query.limit ?? 9)
+        const requestedAuthor = req.params.author
+
+        try {
+            const courses = await paginateDirs({
+                root: COURSES_ROOT,
+                start,
+                limit,
+                filter: (courseName) => {
+                    const config = getCourseConfig(courseName, COURSES_ROOT)
+                    return config.author === requestedAuthor
+                }
+            })
+
+            res.json(courses)
+        } catch (err) {
+            console.error(err)
+            res.status(500).json({ error: "Failed to load courses" })
+        }
+    }
+}
+
+
 
 module.exports = {
+    serveCoursesFromAuthor,
     serveCourseDir,
-    serveAllCourses
+    serveAllCourses: serveCourses
 }
