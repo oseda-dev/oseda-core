@@ -15,21 +15,7 @@ import Commands from "./pages/docs/Commands/Commands";
 import CLI from "./pages/docs/CLI/CLI";
 
 function App() {
-  const [courses, setCourses] = useState<string[]>([]);
-  interface ResType {
-    courses: string[];
-  }
-
-  useEffect(() => {
-    fetch("/api/courses")
-      .then((res) => {
-        return res.json();
-      })
-      .then((data: ResType) => {
-        setCourses(data.courses);
-      });
-  }, []);
-
+  
   return (
     <BrowserRouter>
       <Routes>

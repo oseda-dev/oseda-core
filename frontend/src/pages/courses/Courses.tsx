@@ -3,13 +3,21 @@ import CoursePreview from "../../components/CoursePreview/CoursePreview";
 import "./Courses.css";
 
 const Courses = () => {
+
     const [courses, setCourses] = useState<string[]>([]);
+    const curPage = useState<number>(0);
+
 
     useEffect(() => {
-        fetch("/api/courses") 
-            .then(res => res.json())
-            .then((data: string[]) => setCourses(data))
-            .catch(err => console.error("Failed to fetch courses:", err));
+
+        const fetchCourses = async () => {
+            await fetch("/api/courses?start=9&limit=5") 
+                .then(res => res.json())
+                .then((data: string[]) => setCourses(data))
+                .catch(err => console.error("Failed to fetch courses:", err));
+        }
+
+        fetchCourses();
     }, []);
 
     return (
