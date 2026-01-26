@@ -7,3 +7,27 @@
     overflow: hidden;
     padding: 2em;
 }
+
+
+.page-buttons-container {
+    display: flex;
+    justify-content: center;
+}
+
+.page-buttons-container .glass .glass-content {
+    /* Display Horizontally */
+    display: flex;
+    justify-content: center;
+    width: 4em;
+    height: 3em;
+    color: white;
+    font-size: 15pt;
+    align-items: center;
+
+}
+
+.page-button .glass-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

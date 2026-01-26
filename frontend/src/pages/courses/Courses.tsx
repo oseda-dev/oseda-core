@@ -35,12 +35,12 @@ const Courses = () => {
 
             {/* TODO implement this class */}
             <span className="page-buttons-container">
-                {curPage != 0 ? (<GlassPanel as="button" onClick={() => { setCurPage(curPage - 1) }}> Prev </GlassPanel>) : <></>}
-                <GlassPanel>
+                {curPage != 0 ? (<GlassPanel className="page-button" as="button" onClick={() => { setCurPage(curPage - 1) }}> Prev </GlassPanel>) : <></>}
+                <GlassPanel className="page-button" as="button">
                     {curPage}
                 </GlassPanel>
                 {/* should probably conditionally render on last page, but would need the backend to track that */}
-                <GlassPanel as="button" onClick={() => { setCurPage(curPage + 1) }}>
+                <GlassPanel className="page-button" as="button" onClick={() => { setCurPage(curPage + 1) }}>
                     Next
                 </GlassPanel>
             </span>
