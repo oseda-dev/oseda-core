@@ -1,8 +1,28 @@
-const Guidelines = () => (
-    <>
-        <h1>Guidelines</h1>
-        <p>idk</p>
-    </>
-)
+import { useEffect, useState } from "react";
+import "../Docs.css"
+import MarkdownRenderer from "../../../components/MarkdownRenderer/MarkdownRenderer";
+
+const Guidelines = () => {
+
+    const [content, setContent] = useState("");
+
+    useEffect(() => {
+        fetch("/api/docs/contributing/guidelines")
+            // comes back as raw text
+            .then(res => res.text())
+            .then(text => {
+                setContent(text);
+                console.log(text);
+            })
+            .catch(err => {
+                console.error(err)
+            })
+    }, [])
+
+
+    return (
+        <MarkdownRenderer markdown={content} />
+    )
+}
 
 export default Guidelines

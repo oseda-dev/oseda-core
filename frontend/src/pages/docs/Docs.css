@@ -3,5 +3,9 @@
     height: 80vh;
     padding-top: 40pt;
     all: unset;
-    color:black
+    color:black;
+}
+
+.docs-container .glass {
+    overflow: auto;
 }
