@@ -7,7 +7,6 @@
     flex-direction: column;
     box-sizing: border-box;
     overflow: hidden;
-
     /* Adding in the old glass for the time being */
     background: rgba(0, 0, 0, 0.35);
     backdrop-filter: blur(14px);
@@ -28,10 +27,22 @@
     overflow: hidden;
 }
 
+/* multi-line ellipses :sob: */
+/* https://stackoverflow.com/questions/33058004/applying-an-ellipsis-to-multiline-text */
+.course-preview-header h1 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+
+    overflow: hidden;
+}
+
+
 .card h1, .card h2 {
     margin: 0;
     overflow-wrap: break-word;
     text-wrap: balance;
+    text-overflow: ellipsis;
 }
 
 .card span {
@@ -87,6 +98,7 @@
     font-size: 1.5em;
 }
 
+
 .card a:hover {
     color: #0d1b4c;
 }
@@ -108,4 +120,14 @@
     background: #0d1b4c;
     color: white;
     cursor: pointer;
+}
+
+.course-description {
+    min-height: 0;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.course-description p {
+    margin: 0;
 }

@@ -4,7 +4,7 @@
     gap: 2em;
     width: 100vw;
     box-sizing: border-box;
-    overflow: hidden;
+    overflow: auto;
     padding: 2em;
 }
 

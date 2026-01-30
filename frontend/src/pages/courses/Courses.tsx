@@ -8,7 +8,7 @@ const Courses = () => {
     const [courses, setCourses] = useState<string[]>([]);
     const [curPage, setCurPage] = useState<number>(0);
 
-    const coursesPerPage = 5;
+    const coursesPerPage = 8;
 
     useEffect(() => {
 
