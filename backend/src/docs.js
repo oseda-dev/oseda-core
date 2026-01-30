@@ -27,7 +27,12 @@ const serveDocs = (server) => {
     const codeOfConduct = path.join(__dirname, "../../docs/CODE_OF_CONDUCT.MD");
     server.use("/api/docs/contributing/guidelines", express.static(codeOfConduct));
 
-    // serve other weird stuff we need to here
+    const frontendReadme = path.join(__dirname, "../../frontend/README.md");
+    server.use("/api/docs/core/frontend", express.static(frontendReadme));
+
+    const backendReadme = path.join(__dirname, "../../backend/README.md");
+    server.use("/api/docs/core/backend", express.static(backendReadme));
+
 
 }
 

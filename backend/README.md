@@ -1,4 +1,4 @@
-# [oseda-core](https://github.com/oseda-dev/oseda-core/tree/main/backend)
+# [oseda-backend](https://github.com/oseda-dev/oseda-core/tree/main/backend)
 ## Backend
 
 This directory of oseda-core contains all of the backend code for the oseda.net
@@ -20,3 +20,7 @@ backend
     ├── [Various other endpoints/modules]
     └── ...
 ```
+
+## Notes:
+- The frontend's build directory is served statically from the backend `server.js`
+- Each course is served from its corresponded directory from the `COURSES_ROOT` configured in `server.js`

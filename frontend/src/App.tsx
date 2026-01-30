@@ -13,6 +13,8 @@ import Guidelines from "./pages/docs/Guidelines/Guidelines";
 import Cargo from "./pages/docs/Cargo/Cargo";
 import Commands from "./pages/docs/Commands/Commands";
 import CLI from "./pages/docs/CLI/CLI";
+import Backend from "./pages/docs/Backend/Backend";
+import Frontend from "./pages/docs/Frontend/Frontend";
 
 function App() {
   
@@ -46,6 +48,11 @@ function App() {
             <Route path="overview" element={<CLI />} />
             <Route path="cargo" element={<Cargo />} />
             <Route path="commands" element={<Commands />} />
+          </Route>
+
+          <Route path="core">
+            <Route path="frontend" element={<Frontend />} />
+            <Route path="backend" element={<Backend />}/>
           </Route>
         </Route> 
 

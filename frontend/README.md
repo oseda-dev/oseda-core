@@ -1,4 +1,4 @@
-# [oseda-core](https://github.com/oseda-dev/oseda-core/tree/main/frontend)
+# [oseda-frontend](https://github.com/oseda-dev/oseda-core/tree/main/frontend)
 ## Frontend
 
 This directory of oseda-core contains all of the frontend code for the oseda.net
