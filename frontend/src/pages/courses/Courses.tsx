@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import CoursePreview from "../../components/CoursePreview/CoursePreview";
 import "./Courses.css";
 import GlassPanel from "../../components/GlassPanel/GlassPanel";
+import Paginator from "../../components/Paginator/Paginator";
 
 const Courses = () => {
 
@@ -30,17 +31,13 @@ const Courses = () => {
                     <CoursePreview key={courseTitle} title={courseTitle} />
                 ))}
             </div>
-
-            <span className="page-buttons-container">
-                {curPage != 0 ? (<GlassPanel className="page-button" as="button" onClick={() => { setCurPage(curPage - 1) }}> Prev </GlassPanel>) : <></>}
-                <GlassPanel className="page-button" as="button">
-                    {curPage}
-                </GlassPanel>
-                {/* should probably conditionally render on last page, but would need the backend to track that */}
-                <GlassPanel className="page-button" as="button" onClick={() => { setCurPage(curPage + 1) }}>
-                    Next
-                </GlassPanel>
-            </span>
+            
+            <Paginator
+                curPage={curPage}
+                onPrev={() => setCurPage(curPage - 1)}
+                onNext={() => setCurPage(curPage + 1)}
+                disablePrev={curPage === 0}
+            />
         </>
     );
 };
