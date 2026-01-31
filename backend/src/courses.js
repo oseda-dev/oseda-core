@@ -73,35 +73,9 @@ const serveCourses = (COURSES_ROOT) => {
 }
 
 
-const serveCoursesFromAuthor = (COURSES_ROOT) => {
-    return async (req, res) => {
-        const start = Number(req.query.start ?? 0)
-        const limit = Number(req.query.limit ?? 9)
-        const requestedAuthor = req.params.author
-
-        try {
-            const courses = await paginateDirs({
-                root: COURSES_ROOT,
-                start,
-                limit,
-                filter: (courseName) => {
-                    const config = getCourseConfig(courseName, COURSES_ROOT)
-                    return config.author === requestedAuthor
-                }
-            })
-
-            res.json(courses)
-        } catch (err) {
-            console.error(err)
-            res.status(500).json({ error: "Failed to load courses" })
-        }
-    }
-}
-
-
 
 module.exports = {
-    serveCoursesFromAuthor,
     serveCourseDir,
-    serveAllCourses: serveCourses
+    serveAllCourses: serveCourses,
+    paginateDirs
 }

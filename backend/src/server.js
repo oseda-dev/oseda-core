@@ -5,6 +5,7 @@ const hosts = require("./hosts");
 const courses = require("./courses");
 const config = require("./config");
 const docs = require("./docs");
+const authors = require("./authors");
 
 const COURSES_ROOT = path.join(
     __dirname,
@@ -46,7 +47,7 @@ const buildOsedaExpressServer = (COURSES_ROOT) => {
     server.get("/api/courses", courses.serveAllCourses(COURSES_ROOT));
 
 
-    server.get("/api/author/:author", courses.serveCoursesFromAuthor(COURSES_ROOT));
+    server.get("/api/author/:author", authors.serveCoursesFromAuthor(COURSES_ROOT));
 
     // load oseda-config.json for a particular course via query params
     server.get("/api/info", (req, res) => {
