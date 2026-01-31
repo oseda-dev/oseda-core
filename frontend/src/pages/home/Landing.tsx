@@ -2,6 +2,7 @@ import "./Landing.css";
 import { useEffect, useState } from "react";
 import NavButton from "../../components/NavButton/NavButton";
 import GlassPanel from "../../components/GlassPanel/GlassPanel";
+import AuthorSearcher from "../../components/AuthorSearcher/AuthorSearcher";
 
 const Landing = () => {
   interface ResType {
@@ -30,6 +31,8 @@ const Landing = () => {
         <div className="nav-button">
           <NavButton text="Documentation" url="/docs" />
         </div>
+
+        <AuthorSearcher />
 
       </GlassPanel>
     </div>

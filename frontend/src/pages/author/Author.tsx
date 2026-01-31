@@ -10,10 +10,7 @@ const Author = () => {
     courses: string[];
   }
   useEffect(() => {
-    console.log("When I hit /api/author/", name);
-    console.log("it should resolve to: ");
     const fullURL = new URL(`/api/author/${name}`, window.location.href);
-    console.log(fullURL.toString());
 
     fetch(`/api/author/${name}`)
       .then((res) => {

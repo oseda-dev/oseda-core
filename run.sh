@@ -20,6 +20,7 @@ echo "[1/3] Installing frontend dependencies..."
 cd frontend
 npm install
 
+# this is really slow, but the way the backend works, it needs all files statically
 echo "[2/3] Building frontend..."
 npm run build
 cd ..
