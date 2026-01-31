@@ -48,6 +48,7 @@ const buildOsedaExpressServer = (COURSES_ROOT) => {
 
 
     server.get("/api/author/:author", authors.serveCoursesFromAuthor(COURSES_ROOT));
+    server.get("/api/author/:author/avatar", authors.getAuthorAvatarURL())
 
     // load oseda-config.json for a particular course via query params
     server.get("/api/info", (req, res) => {

@@ -32,6 +32,27 @@ const serveCoursesFromAuthor = (COURSES_ROOT) => {
 }
 
 
+const getAuthorAvatarURL = () => {
+    return async (req, res) => {
+        try {
+            const requestedAuthor = req.params.author
+            const authorUrl = `https://api.github.com/users/${requestedAuthor}`;
+
+            const response = await fetch(authorUrl);
+            const data = await response.json();
+
+            res.json(data.avatar_url);
+
+        }
+        catch(err) {
+            console.log(err)
+            res.status(500).json({ error: "Failed to get author avatar" })
+        }
+    }
+}
+
+
 module.exports = {
-    serveCoursesFromAuthor
+    serveCoursesFromAuthor,
+    getAuthorAvatarURL
 }
