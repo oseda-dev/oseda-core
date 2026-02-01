@@ -1,6 +1,7 @@
 import { ChangeEvent, FormEvent, KeyboardEventHandler, useState } from "react";
 import { NavigateFunction, useNavigate } from "react-router-dom";
-
+import GlassPanel from "../GlassPanel/GlassPanel";
+import "./AuthorSearcher.css";
 
 
 const AuthorSearcher = () => {
@@ -12,7 +13,7 @@ const AuthorSearcher = () => {
     }
 
     const goToAuthorPage = () => {
-        if(author.length >= 0){
+        if (author.length >= 0) {
             nav(`/author/${author}`);
         }
     }
@@ -24,24 +25,22 @@ const AuthorSearcher = () => {
     };
 
     return (
-            <span className="glass nav-button">
-
-                <input
-                    className="glass"
-                    type="text"
-                    onChange={typedInputHandler}
-                    value={author}
-                    placeholder="Go to author..."
-                    onKeyDown={handleKeyDown}
-
-                ></input>
-                <button
-                    className="glass"
-                    onClick={(e: any) =>{
-                        goToAuthorPage()
-                    }}
-                > → </button>
-            </span>
+        <GlassPanel as="main" className="author-searcher">
+            <input
+                className="glass"
+                type="text"
+                value={author}
+                placeholder="Go to author..."
+                onChange={typedInputHandler}
+                onKeyDown={handleKeyDown}
+            />
+            <button
+                className="glass"
+                onClick={goToAuthorPage}
+            >
+                →
+            </button>
+        </GlassPanel>
     );
 };
 

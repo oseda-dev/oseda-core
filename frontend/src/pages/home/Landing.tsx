@@ -5,24 +5,13 @@ import GlassPanel from "../../components/GlassPanel/GlassPanel";
 import AuthorSearcher from "../../components/AuthorSearcher/AuthorSearcher";
 
 const Landing = () => {
-  interface ResType {
-    message: string;
-  }
-
-  const [data, setData] = useState<ResType>();
-
-  useEffect(() => {
-    fetch("/api/state")
-      .then((res) => res.json())
-      .then((tmpData) => setData(tmpData));
-  }, []);
 
   return (
     <div className="landing-wrapper">
       <GlassPanel as="main" className="landing-container" noise>
-        <h1>Landing Page</h1>
-        <div>Deploy test 1</div>
-        <div>Data: {data?.message}</div>
+
+        <img src="OsedaLogoDark.png"></img>
+        <h1>OSEDA</h1>
 
         <div className="nav-button">
           <NavButton text="Go to Courses!" url="/courses" />
@@ -33,6 +22,8 @@ const Landing = () => {
         </div>
 
         <AuthorSearcher />
+        {/* <div className="nav-button">
+        </div> */}
 
       </GlassPanel>
     </div>

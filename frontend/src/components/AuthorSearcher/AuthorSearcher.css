@@ -1,0 +1,13 @@
+.author-searcher {
+    max-width: 45%;
+    margin-left: auto;  
+    margin-right: auto; 
+    margin-top: 1em;
+}
+
+
+/* defaults to black, make it white for consistency */
+.glass::placeholder {
+    color: white;
+    opacity: 0.8;
+}
