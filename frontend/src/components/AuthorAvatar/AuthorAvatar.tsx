@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./AuthorAvatar.css"
 
 interface AuthorAvatarProps {
     author: string
@@ -17,7 +18,7 @@ const AuthorAvatar = ({ author }: AuthorAvatarProps) => {
     }, [])
 
     return (
-        <img src={avatarURL} className="circular-image" />
+        <img src={avatarURL} className="avatar" />
     );
 }
 

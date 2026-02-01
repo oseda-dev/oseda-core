@@ -3,15 +3,36 @@
     text-align: center;
 }
 
-.author-page h1 {
-    font-size: 2em;
-    color: #171717;
-    margin-bottom: 1.5em;
+.author-title {
+    display: flex; 
+    align-items: center;
+    justify-content: flex-start; 
+    margin-left: 3rem;
+    margin-top: 1rem;
+    width: 100%; 
 }
 
-.author-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(18em, 1fr));
-    gap: 2em;
-    justify-items: center;
+.author-title h1 {
+    margin-left: 2rem;
+    font-size: 4em;
+    color: #171717;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.gh-logo {
+    margin-left: 1rem;
+    width: 3em;
+    height: 3em;
+    transition: transform 0.2s ease;
+}
+
+.gh-logo:hover {
+    transform: scale(1.1);
+}
+
+.courses-title {
+    margin-left: 3.5rem;
+    margin-bottom: 0;
+    text-align: left;
 }
