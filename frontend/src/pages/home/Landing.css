@@ -9,7 +9,7 @@ body {
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   color: #ffffff;
 }
 
@@ -38,6 +38,7 @@ body {
 .landing-container h1 {
   font-size: clamp(2rem, 4vw, 2.8rem);
   margin-bottom: 1.5rem;
+  margin-top: 1rem;
   color: #ffffff;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
@@ -50,7 +51,7 @@ body {
 
 
 .landing-container img {
-  margin-top: 3rem;
+  margin-top: 1rem;
   max-width: 50%;
   height: auto;
 }

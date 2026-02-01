@@ -12,6 +12,7 @@ const Landing = () => {
 
         <img src="OsedaLogoDark.png"></img>
         <h1>OSEDA</h1>
+        <p>Open Source Education Association</p>
 
         <div className="nav-button">
           <NavButton text="Go to Courses!" url="/courses" />
