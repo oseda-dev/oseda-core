@@ -5,8 +5,15 @@
     /* circular */
     border-radius: 50%; 
     
-    border: 4px solid #007bff; 
-    
     /* Optional: ensure the image covers the area without distortion */
     object-fit: cover; 
+}
+
+.avatarContainer {
+  width: 155px;
+  height: 155px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

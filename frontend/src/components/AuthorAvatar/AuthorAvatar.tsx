@@ -18,8 +18,10 @@ const AuthorAvatar = ({ author }: AuthorAvatarProps) => {
     }, [])
 
     return (
-        <img src={avatarURL} className="avatar" />
-    );
+        <div className="glass avatarContainer">
+           <img src={avatarURL} className="avatar" />
+        </div>
+           );
 }
 
 
