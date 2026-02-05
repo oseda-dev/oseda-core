@@ -7,12 +7,6 @@
     flex-direction: column;
     box-sizing: border-box;
     overflow: hidden;
-    /* Adding in the old glass for the time being */
-    background: rgba(0, 0, 0, 0.35);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    box-shadow: 0 0 32px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .card:hover {
@@ -130,4 +124,15 @@
 
 .course-description p {
     margin: 0;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 1em 0px 1em 0px;
+}
+.tag {
+  padding: 2px 4px 2px 4px;
+  margin: 0;
 }

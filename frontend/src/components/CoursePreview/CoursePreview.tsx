@@ -32,7 +32,7 @@ const CoursePreview = ({ title }: CoursePreviewProps) => {
     if (!config) return <div>Loading...</div>;
 
     return (
-        <div className="course-preview card" onClick={() => {navigate(`/courses/${title}`)}}>
+        <div className="course-preview card glass" onClick={() => {navigate(`/courses/${title}`)}}>
             <div className="course-preview-header" style={{background: config.color}}>
                 <h1>{config.title}</h1>
                 <h2 className="author">{config.author}</h2>
@@ -40,7 +40,7 @@ const CoursePreview = ({ title }: CoursePreviewProps) => {
             
             <div className="tags">
                 {config.tags.map((txt, idx) => (
-                    <p key={idx} className="tag">{txt}</p>
+                    <p key={idx} className="tag glass">{txt}</p>
                 ))}
             </div>
             <div className="course-description">
