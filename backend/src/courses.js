@@ -57,19 +57,30 @@ const serveCourses = (COURSES_ROOT) => {
         const start = Number(req.query.start ?? 0)
         const limit = Number(req.query.limit ?? 9)
 
-        const tags = parseTags(req.query.tag); 
-        // => ["a", "b", "c"] or [] if undefined
+        const requestedTags = parseTags(req.query.tag);
 
-        console.log("tags:");
-        console.log(tags);
+        console.log("tags = " + requestedTags);
+        let courseFilter;
+        if (requestedTags.length == 0) {
+            console.log("no filter")
+            courseFilter = () => true;
+        } else {
+            console.log("using tag filter")
+            courseFilter = (courseName) => {
+                const config = getCourseConfig(courseName, COURSES_ROOT);
 
-        
+                return requestedTags.every(t => config.tags.includes(t));
+            }
+        }
+
+
+
         try {
             const courses = await paginateDirs({
                 root: COURSES_ROOT,
                 start,
                 limit,
-                filter: () => true
+                filter: courseFilter
             })
 
             res.json(courses)
