@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const { getCourseConfig } = require("./config");
+const { parseTags } = require("./tags");
 
 // Handles getting a SPECIFIC COURSE
 const serveCourseDir = (COURSES_ROOT) => {
@@ -56,6 +57,13 @@ const serveCourses = (COURSES_ROOT) => {
         const start = Number(req.query.start ?? 0)
         const limit = Number(req.query.limit ?? 9)
 
+        const tags = parseTags(req.query.tag); 
+        // => ["a", "b", "c"] or [] if undefined
+
+        console.log("tags:");
+        console.log(tags);
+
+        
         try {
             const courses = await paginateDirs({
                 root: COURSES_ROOT,
