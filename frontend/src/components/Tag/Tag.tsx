@@ -1,40 +1,52 @@
 import React from 'react';
 import GlassPanel from '../GlassPanel/GlassPanel';
+import "./Tag.css";
 
-interface TagProps {
+
+// random colors for now
+export const tagToColor = {
+    "aerospace": "#4f8cff",
+    "business": "#2ecc71",
+    "computerscience": "#9b59b6",
+    "economics": "#f1c40f",
+    "education": "#1abc9c",
+    "engineering": "#e67e22",
+    "geography": "#27ae60",
+    "healthmedicine": "#e74c3c",
+    "history": "#8e44ad",
+    "languagearts": "#3498db",
+    "liberalarts": "#95a5a6",
+    "mathematics": "#16a085",
+    "politics": "#c0392b",
+    "psychology": "#ff6f91",
+    "science": "#2980b9",
+} as const;
+
+
+export type TagName = keyof typeof tagToColor
+
+export interface TagProps {
     tagName: string;
-    key: number
 }
 
-const Tag: React.FC<TagProps> = ({ tagName, key }: TagProps) => {
-    
-    // <p key={idx} className="tag">{txt}</p>
+const Tag: React.FC<TagProps> = ({ tagName }: TagProps) => {
+    const normaledTagName = tagName.toLowerCase() as TagName
+
+    const safeKey: TagName =
+        normaledTagName in tagToColor
+            ? normaledTagName
+            : "computerscience"
+
     return (
-        <GlassPanel as="p" className="author-searcher tag" key={key}  >
+        <GlassPanel
+            as="p"
+            className="author-searcher tag"
+            style={{ backgroundColor: tagToColor[safeKey] }}
+        >
             {tagName}
         </GlassPanel>
     )
-    
 };
 
 export default Tag;
 
-
-// random colors for now
-const tagToClors = {
-    Aerospace: "#4f8cff",
-    Business: "#2ecc71",
-    ComputerScience: "#9b59b6",
-    Economics: "#f1c40f",
-    Education: "#1abc9c",
-    Engineering: "#e67e22",
-    Geography: "#27ae60",
-    HealthMedicine: "#e74c3c",
-    History: "#8e44ad",
-    LanguageArts: "#3498db",
-    LiberalArts: "#95a5a6",
-    Mathematics: "#16a085",
-    Politics: "#c0392b",
-    Psychology: "#ff6f91",
-    Science: "#2980b9",
-}

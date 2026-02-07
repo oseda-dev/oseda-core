@@ -131,3 +131,11 @@
 .course-description p {
     margin: 0;
 }
+
+
+.tags{
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 8px;
+    margin-bottom: 16px;
+}
