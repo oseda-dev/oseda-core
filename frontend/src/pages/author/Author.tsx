@@ -8,7 +8,6 @@ import "./Author.css";
 const Author = () => {
     const { name } = useParams<{ name: string }>();
 
-
     const [courses, setCourses] = useState<string[]>([]);
     const [curPage, setCurPage] = useState<number>(0);
 

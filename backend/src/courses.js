@@ -59,21 +59,16 @@ const serveCourses = (COURSES_ROOT) => {
 
         const requestedTags = parseTags(req.query.tag);
 
-        console.log("tags = " + requestedTags);
         let courseFilter;
         if (requestedTags.length == 0) {
-            console.log("no filter")
             courseFilter = () => true;
         } else {
-            console.log("using tag filter")
             courseFilter = (courseName) => {
                 const config = getCourseConfig(courseName, COURSES_ROOT);
 
                 return requestedTags.every(t => config.tags.includes(t));
             }
         }
-
-
 
         try {
             const courses = await paginateDirs({

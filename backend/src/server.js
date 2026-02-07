@@ -36,9 +36,9 @@ const buildOsedaExpressServer = (COURSES_ROOT) => {
     server.use(cors());
 
     /*
-      serve course dist dynamically:
-      requests to /api/courses/:courseName/* will try to serve files from
-      <COURSES_ROOT>/<courseName>/dist/<requested path>
+    serve course dist dynamically:
+    requests to /api/courses/:courseName/* will try to serve files from
+    <COURSES_ROOT>/<courseName>/dist/<requested path>
     */
     server.use("/api/courses/:courseName", courses.serveCourseDir(COURSES_ROOT));
 
