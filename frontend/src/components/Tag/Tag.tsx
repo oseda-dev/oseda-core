@@ -37,11 +37,19 @@ const Tag: React.FC<TagProps> = ({ tagName }: TagProps) => {
             ? normaledTagName
             : "computerscience"
 
+    const onTagClick = () => {
+        const url = new URL(window.location.href);
+        url.searchParams.append('tag', tagName);
+        // reload
+        window.location.href = url.toString();
+    }
+
     return (
         <GlassPanel
             as="p"
             className="author-searcher tag"
             style={{ backgroundColor: tagToColor[safeKey] }}
+            onClick={onTagClick}
         >
             {tagName}
         </GlassPanel>
