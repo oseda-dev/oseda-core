@@ -6,7 +6,7 @@ import Paginator from "../../components/Paginator/Paginator";
 import { useSearchParams } from "react-router-dom";
 
 
-const tagsToQueryString = (tags: string[]): string => tags.map(tag => `&tag=${tag}`).join()
+export const tagsToQueryString = (tags: string[]): string => tags.map(tag => `&tag=${tag}`).join()
 
 
 const Courses = () => {

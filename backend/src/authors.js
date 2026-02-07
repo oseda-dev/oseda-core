@@ -1,5 +1,6 @@
 const { paginateDirs } = require("./courses");
 const { getCourseConfig } = require("./config");
+const { parseTags, filterFromTags } = require("./tags");
 
 
 const serveCoursesFromAuthor = (COURSES_ROOT) => {
@@ -12,6 +13,10 @@ const serveCoursesFromAuthor = (COURSES_ROOT) => {
         // we need to look this up in a redis cache or something first
         // moving this to a separate file so we can do this easier if needed one day
 
+        const requestedTags = parseTags(req.query.tag);
+
+        const tagCourseFilter = filterFromTags(requestedTags, COURSES_ROOT);
+
         try {
             const courses = await paginateDirs({
                 root: COURSES_ROOT,
@@ -19,7 +24,7 @@ const serveCoursesFromAuthor = (COURSES_ROOT) => {
                 limit,
                 filter: (courseName) => {
                     const config = getCourseConfig(courseName, COURSES_ROOT)
-                    return config.author === requestedAuthor
+                    return config.author === requestedAuthor && tagCourseFilter(courseName)
                 }
             })
 

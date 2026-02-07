@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import CoursePreview from "../../components/CoursePreview/CoursePreview";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import Paginator from "../../components/Paginator/Paginator";
 import AuthorAvatar from "../../components/AuthorAvatar/AuthorAvatar";
 import "./Author.css";
+import { tagsToQueryString } from "../courses/Courses";
 
 const Author = () => {
     const { name } = useParams<{ name: string }>();
@@ -11,10 +12,16 @@ const Author = () => {
     const [courses, setCourses] = useState<string[]>([]);
     const [curPage, setCurPage] = useState<number>(0);
 
+    const [queryParams] = useSearchParams();
+    const tags = queryParams.getAll("tag");
+
+
     const coursesPerPage = 8;
 
+    console.log(`/api/author/${name}?start=${curPage * coursesPerPage}&limit=${coursesPerPage}${tagsToQueryString(tags)}`)
+
     useEffect(() => {
-        const fullURL = new URL(`/api/author/${name}?start=${curPage * coursesPerPage}&limit=${coursesPerPage}`, window.location.href);
+        const fullURL = new URL(`/api/author/${name}?start=${curPage * coursesPerPage}&limit=${coursesPerPage}${tagsToQueryString(tags)}`, window.location.href);
 
         fetch(fullURL)
             .then(res => res.json())

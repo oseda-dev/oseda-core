@@ -1,3 +1,4 @@
+const { getCourseConfig } = require("./config");
 
 
 const parseTags = (tags) => {
@@ -12,6 +13,29 @@ const parseTags = (tags) => {
     }
 }
 
+/**
+ * 
+ * @param {string[]} requestedTags 
+ * @param {string} COURSES_ROOT 
+ * @returns {function(string): boolean}
+ */
+const filterFromTags = (requestedTags, COURSES_ROOT) => {
+    let courseFilter;
+    if (requestedTags.length == 0) {
+        courseFilter = () => true;
+    } else {
+        courseFilter = (courseName) => {
+            const config = getCourseConfig(courseName, COURSES_ROOT);
+
+            return requestedTags.every(t => config.tags.includes(t));
+        }
+    }
+
+    return courseFilter;
+
+}
+
 module.exports = {
     parseTags,
+    filterFromTags
 }

@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const { getCourseConfig } = require("./config");
-const { parseTags } = require("./tags");
+const { parseTags, filterFromTags } = require("./tags");
 
 // Handles getting a SPECIFIC COURSE
 const serveCourseDir = (COURSES_ROOT) => {
@@ -59,17 +59,8 @@ const serveCourses = (COURSES_ROOT) => {
 
         const requestedTags = parseTags(req.query.tag);
 
-        let courseFilter;
-        if (requestedTags.length == 0) {
-            courseFilter = () => true;
-        } else {
-            courseFilter = (courseName) => {
-                const config = getCourseConfig(courseName, COURSES_ROOT);
-
-                return requestedTags.every(t => config.tags.includes(t));
-            }
-        }
-
+        const courseFilter = filterFromTags(requestedTags, COURSES_ROOT);
+        
         try {
             const courses = await paginateDirs({
                 root: COURSES_ROOT,
