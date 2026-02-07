@@ -6,7 +6,8 @@ import Paginator from "../../components/Paginator/Paginator";
 import { useSearchParams } from "react-router-dom";
 
 
-export const tagsToQueryString = (tags: string[]): string => tags.map(tag => `&tag=${tag}`).join()
+// defaults to "," as default join if "" is not passed
+export const tagsToQueryString = (tags: string[]): string => tags.map(tag => `&tag=${tag}`).join("")
 
 
 const Courses = () => {
@@ -15,12 +16,14 @@ const Courses = () => {
     const [curPage, setCurPage] = useState<number>(0);
 
     const [queryParams] = useSearchParams();
-    const tags = queryParams.getAll("tag");
 
+    const tags = queryParams.getAll("tag");
 
     const coursesPerPage = 8;
 
     useEffect(() => {
+
+        console.log(`/api/courses?start=${curPage * coursesPerPage}&limit=${coursesPerPage}${tagsToQueryString(tags)}`)
 
         const fetchCourses = async () => {
             await fetch(`/api/courses?start=${curPage * coursesPerPage}&limit=${coursesPerPage}${tagsToQueryString(tags)}`)
