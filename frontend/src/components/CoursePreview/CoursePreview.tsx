@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import NavButton from "../NavButton/NavButton";
 import "./CoursePreview.css";
 import { useEffect, useState } from "react";
+import Tag from "../Tag/Tag";
 
 interface CoursePreviewProps {
     title: string;
@@ -40,7 +41,7 @@ const CoursePreview = ({ title }: CoursePreviewProps) => {
             
             <div className="tags">
                 {config.tags.map((txt, idx) => (
-                    <p key={idx} className="tag">{txt}</p>
+                    <Tag tagName={txt} key={idx} />
                 ))}
             </div>
             <div className="course-description">
