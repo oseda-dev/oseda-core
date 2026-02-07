@@ -57,11 +57,7 @@ const serveCourses = (COURSES_ROOT) => {
         const start = Number(req.query.start ?? 0)
         const limit = Number(req.query.limit ?? 9)
         
-        console.log(`Pre parse: ${req.query.tag}`)
-
         const requestedTags = parseTags(req.query.tag);
-
-        console.log(`Post parse: ${requestedTags}`)
 
         const courseFilter = filterFromTags(requestedTags, COURSES_ROOT);
         
