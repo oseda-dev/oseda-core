@@ -5,6 +5,7 @@ import Paginator from "../../components/Paginator/Paginator";
 import AuthorAvatar from "../../components/AuthorAvatar/AuthorAvatar";
 import "./Author.css";
 import { tagsToQueryString } from "../courses/Courses";
+import ClearTags from "../../components/ClearTags/ClearTags";
 
 const Author = () => {
     const { name } = useParams<{ name: string }>();
@@ -50,6 +51,8 @@ const Author = () => {
             </span>
 
             <h1 className="courses-title">Courses:</h1>
+
+            {tags.length !== 0 ? <ClearTags /> : <></>}
 
             <div className="courses-grid">
                 {courses.map(courseTitle => (
