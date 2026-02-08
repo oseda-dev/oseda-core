@@ -8,6 +8,7 @@ const ClearTags: React.FC = ({ }) => {
         const url = new URL(window.location.href);
         url.search = "";
         
+        // this potentially causes some issues with the back button.
         window.history.replaceState({}, document.title, url.toString());
         window.location.href = url.toString();
     }

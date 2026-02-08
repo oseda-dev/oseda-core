@@ -39,6 +39,13 @@ const Tag: React.FC<TagProps> = ({ tagName }: TagProps) => {
 
     const onTagClick = () => {
         const url = new URL(window.location.href);
+        const params = url.searchParams;
+        
+        // skip if already filtering for tag
+        if(params.getAll('tag').includes(tagName)){
+            return;
+        }
+        
         url.searchParams.append('tag', tagName);
         // reload
         window.location.href = url.toString();
