@@ -15,7 +15,7 @@ const Controller = ({ tags }: ControllerProps) => {
     return (
         <div className='controller'>
 
-            <img src="OsedaHomeDark.png" onClick={() => {nav("/")}}></img>
+            <img src="/OsedaHomeDark.png" onClick={() => {nav("/")}}></img>
             {tags.length != 0 ? <ClearTags /> : <></>}
             {tags.map(t => (
                 <Tag key={t} tagName={t} />

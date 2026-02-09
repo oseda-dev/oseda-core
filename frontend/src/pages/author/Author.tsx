@@ -6,6 +6,7 @@ import AuthorAvatar from "../../components/AuthorAvatar/AuthorAvatar";
 import "./Author.css";
 import { tagsToQueryString } from "../courses/Courses";
 import ClearTags from "../../components/ClearTags/ClearTags";
+import Controller from "../../components/Controller/Controller";
 
 const Author = () => {
     const { name } = useParams<{ name: string }>();
@@ -52,8 +53,7 @@ const Author = () => {
 
             <h1 className="courses-title">Courses:</h1>
 
-            {tags.length !== 0 ? <ClearTags /> : <></>}
-
+            <Controller tags={tags} />
             <div className="courses-grid">
                 {courses.map(courseTitle => (
                     <CoursePreview key={courseTitle} title={courseTitle} />

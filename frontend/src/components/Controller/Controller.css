@@ -2,6 +2,8 @@
     display: flex;
     align-items: center;
     gap: 12px;
+    margin-left: 3rem;
+    margin-top: 1rem;
 }
 
 .controller img {
