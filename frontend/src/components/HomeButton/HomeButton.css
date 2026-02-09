@@ -1,0 +1,7 @@
+img.home-btn {
+    /* im sorry - Reese */
+    width: 100px !important;
+    height: 100px !important;
+    object-fit: contain;
+    cursor: pointer;
+}
