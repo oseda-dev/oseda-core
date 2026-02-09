@@ -150,3 +150,11 @@ code {
     transform: translate3d(1.5%, -1.5%, 0);
   }
 }
+
+.outline {
+  filter:
+    drop-shadow(1px 0 0 black)
+    drop-shadow(-1px 0 0 black)
+    drop-shadow(0 1px 0 black)
+    drop-shadow(0 -1px 0 black);
+}
