@@ -11,6 +11,7 @@
     height: 40px;
     object-fit: contain;
     cursor: pointer;
+    filter: drop-shadow(4px 4px 4px black);
 }
 
 .controller .tag {
