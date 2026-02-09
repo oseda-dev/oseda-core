@@ -35,7 +35,7 @@ const Courses = () => {
 
         fetchCourses();
 
-    }, [curPage]);
+    }, [curPage, queryParams]);
 
     return (
         <>
