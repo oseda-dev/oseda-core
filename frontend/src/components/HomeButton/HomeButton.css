@@ -1,0 +1,15 @@
+.outline {
+  filter:
+    drop-shadow(1px 0 0 black)
+    drop-shadow(-1px 0 0 black)
+    drop-shadow(0 1px 0 black)
+    drop-shadow(0 -1px 0 black);
+}
+
+
+img.home-btn {
+    width: 100px;
+    height: 100px ;
+    object-fit: contain;
+    cursor: pointer;
+}

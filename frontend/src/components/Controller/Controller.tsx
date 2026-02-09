@@ -3,6 +3,7 @@ import ClearTags from '../ClearTags/ClearTags';
 import Tag, { TagName } from '../Tag/Tag';
 import { useNavigate } from 'react-router-dom';
 import "./Controller.css";
+import HomeButton from '../HomeButton/HomeButton';
 
 interface ControllerProps {
     tags: string[];
@@ -15,7 +16,7 @@ const Controller = ({ tags }: ControllerProps) => {
     return (
         <div className='controller'>
 
-            <img src="/OsedaHomeDark.png" onClick={() => {nav("/")}}></img>
+            <HomeButton />
             {tags.length != 0 ? <ClearTags /> : <></>}
             {tags.map(t => (
                 <Tag key={t} tagName={t} />
