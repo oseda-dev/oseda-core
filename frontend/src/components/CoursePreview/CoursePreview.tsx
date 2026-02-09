@@ -4,6 +4,7 @@ import "./CoursePreview.css";
 import { useEffect, useState } from "react";
 import Tag, { tagToColor } from "../Tag/Tag";
 
+
 interface CoursePreviewProps {
     title: string;
 }

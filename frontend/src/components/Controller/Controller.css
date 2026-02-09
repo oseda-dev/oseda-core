@@ -1,0 +1,20 @@
+.controller {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.controller img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.controller .tag {
+    display: inline-flex;
+}
+
+.controller .glass-content {
+    text-align: left;
+}

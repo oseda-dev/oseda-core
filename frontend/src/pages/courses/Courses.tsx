@@ -5,6 +5,7 @@ import GlassPanel from "../../components/GlassPanel/GlassPanel";
 import Paginator from "../../components/Paginator/Paginator";
 import { useSearchParams } from "react-router-dom";
 import ClearTags from "../../components/ClearTags/ClearTags";
+import Controller from "../../components/Controller/Controller";
 
 
 // evil function
@@ -38,8 +39,7 @@ const Courses = () => {
 
     return (
         <>
-            {tags.length !== 0 ? <ClearTags /> : <></>}
-
+            <Controller tags={tags}/>
             <div className="courses-grid">
                 {courses.map(courseTitle => (
                     <CoursePreview key={courseTitle} title={courseTitle} />
