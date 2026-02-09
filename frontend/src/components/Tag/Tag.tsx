@@ -1,6 +1,7 @@
 import React from 'react';
 import GlassPanel from '../GlassPanel/GlassPanel';
 import "./Tag.css";
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 // random colors for now
@@ -37,11 +38,34 @@ const Tag: React.FC<TagProps> = ({ tagName }: TagProps) => {
             ? normaledTagName
             : "computerscience"
 
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const onTagClick = (e: React.MouseEvent) => {
+
+        e.stopPropagation();
+
+        const params = new URLSearchParams(location.search);
+
+        if (params.getAll("tag").includes(tagName)) {
+            return;
+        }
+
+        params.append("tag", tagName);
+
+        navigate({
+            pathname: location.pathname,
+            search: params.toString(),
+        });
+
+    };
+
     return (
         <GlassPanel
             as="p"
             className="author-searcher tag"
             style={{ backgroundColor: tagToColor[safeKey] }}
+            onClick={onTagClick}
         >
             {tagName}
         </GlassPanel>

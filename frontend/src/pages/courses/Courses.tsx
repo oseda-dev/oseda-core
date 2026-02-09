@@ -4,9 +4,13 @@ import "./Courses.css";
 import GlassPanel from "../../components/GlassPanel/GlassPanel";
 import Paginator from "../../components/Paginator/Paginator";
 import { useSearchParams } from "react-router-dom";
+import ClearTags from "../../components/ClearTags/ClearTags";
+import Controller from "../../components/Controller/Controller";
 
 
-const tagsToQueryString = (tags: string[]): string => tags.map(tag => `&tag=${tag}`).join()
+// evil function
+// defaults to "," as default join if "" is not passed
+export const tagsToQueryString = (tags: string[]): string => tags.map(tag => `&tag=${tag}`).join("")
 
 
 const Courses = () => {
@@ -15,8 +19,8 @@ const Courses = () => {
     const [curPage, setCurPage] = useState<number>(0);
 
     const [queryParams] = useSearchParams();
-    const tags = queryParams.getAll("tag");
 
+    const tags = queryParams.getAll("tag");
 
     const coursesPerPage = 8;
 
@@ -31,10 +35,11 @@ const Courses = () => {
 
         fetchCourses();
 
-    }, [curPage]);
+    }, [curPage, queryParams]);
 
     return (
         <>
+            <Controller tags={tags}/>
             <div className="courses-grid">
                 {courses.map(courseTitle => (
                     <CoursePreview key={courseTitle} title={courseTitle} />
