@@ -37,9 +37,14 @@ const Courses = () => {
 
     }, [curPage, queryParams]);
 
+    // reset current page on tag change
+    useEffect(() => {
+        setCurPage(0);
+    }, [queryParams]);
+
     return (
         <>
-            <Controller tags={tags}/>
+            <Controller tags={tags} />
             <div className="courses-grid">
                 {courses.map(courseTitle => (
                     <CoursePreview key={courseTitle} title={courseTitle} />

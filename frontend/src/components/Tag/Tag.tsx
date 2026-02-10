@@ -27,7 +27,7 @@ export const tagToColor = {
 export type TagName = keyof typeof tagToColor
 
 export interface TagProps {
-    tagName: string;
+    tagName: string;    
 }
 
 const Tag: React.FC<TagProps> = ({ tagName }: TagProps) => {
