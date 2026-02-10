@@ -9,7 +9,8 @@
     border-radius: 20px;
     overflow: hidden;
     position: relative;
-    background: rgba(15, 20, 25, 0.55); 
+    /* you can use this to fake a tint. Kind of lol
+    /* background: rgba(167, 165, 165, 0.55);  */
 }
 
 .course-preview.card:hover {
@@ -86,7 +87,7 @@
     padding: 0.5rem 1.2rem 1.5rem 1.2rem;
     flex: 1;
     overflow-y: auto;
-    mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
 }
 
 .course-description h2 {

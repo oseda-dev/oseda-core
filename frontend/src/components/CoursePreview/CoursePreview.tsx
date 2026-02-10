@@ -3,6 +3,7 @@ import NavButton from "../NavButton/NavButton";
 import "./CoursePreview.css";
 import { useEffect, useState } from "react";
 import Tag, { tagToColor } from "../Tag/Tag";
+import GlassPanel from "../GlassPanel/GlassPanel";
 
 
 interface CoursePreviewProps {
@@ -35,7 +36,7 @@ const CoursePreview = ({ title }: CoursePreviewProps) => {
     if (!config) return <div>Loading...</div>;
 
     return (
-        <div className="course-preview card" onClick={() => {navigate(`/courses/${title}`)}}>
+        <GlassPanel as="div" className="course-preview card" onClick={() => {navigate(`/courses/${title}`)}}>
             <div className="course-preview-header" style={{background: config.color}}>
                 <h1>{config.title}</h1>
                 <h2 className="author">{config.author}</h2>
@@ -53,7 +54,7 @@ const CoursePreview = ({ title }: CoursePreviewProps) => {
                 <h2>Course Description:</h2>
                 <p>{config.description}</p>
             </div>
-        </div>
+        </GlassPanel>
     );
 };
 

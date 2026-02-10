@@ -37,22 +37,3 @@
     text-align: left;
 }
 
-
-.profile-header-flex {
-    display: flex;
-    flex-direction: row; 
-    align-items: center;  
-    gap: 15px;            
-    padding: 10px 20px;   
-}
-
-.profile-name {
-    margin: 0;            
-    line-height: 1;
-    font-size: 2.5rem;    
-}
-
-
-.gh-link {
-    display: flex;
-}
