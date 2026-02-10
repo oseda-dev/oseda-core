@@ -4,20 +4,13 @@ import "./CoursePreview.css";
 import { useEffect, useState } from "react";
 import Tag, { tagToColor } from "../Tag/Tag";
 import GlassPanel from "../GlassPanel/GlassPanel";
+import { OsedaConfig } from "../..";
 
 
 interface CoursePreviewProps {
     title: string;
 }
 
-interface OsedaConfig {
-    title: string;
-    author: string;
-    tags: string[];
-    last_updated: string;
-    color: string;
-    description: string;
-}
 
 const CoursePreview = ({ title }: CoursePreviewProps) => {
     const [config, setConfig] = useState<OsedaConfig | null>(null);
