@@ -4,11 +4,12 @@ echo "Starting deployment..."
 
 ssh aws << 'EOF'
 
-set -e
 
 echo "Killing old Node processes..."
-pgrep node | xargs -r kill
-pgrep npm  | xargs -r kill
+sudo kill $(pgrep node)
+sudo kill $(pgrep npm)
+
+set -e
 
 # --- BUILD COURSES ---
 cd ~/oseda-lib/courses
