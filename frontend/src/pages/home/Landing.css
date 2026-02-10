@@ -4,39 +4,34 @@ body {
   font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
   color: #ffffff;
   
-  /* Ensure the body can grow to accommodate content */
   min-height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  
-  /* Remove the background from here to avoid conflicts */
+  flex-direction: column;
 }
 
-/* The Fixed Background Layer */
 body::before {
   content: "";
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1; /* Keeps it behind everything */
-  
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+
   background: url("https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?q=80&w=1920&auto=format&fit=crop") no-repeat center center;
   background-size: cover;
   
-  /* This prevents the image from moving on mobile/safari */
-  will-change: transform; 
+  transform: translate3d(0, 0, 0); 
+  backface-visibility: hidden;
 }
 
 .landing-wrapper {
+  flex: 1;
   width: 100%;
-  min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 20px;
+  align-items: flex-start;
+  padding: 40px 20px;
   box-sizing: border-box;
 }
 
