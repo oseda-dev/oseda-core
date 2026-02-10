@@ -5,8 +5,8 @@ import Paginator from "../../components/Paginator/Paginator";
 import AuthorAvatar from "../../components/AuthorAvatar/AuthorAvatar";
 import "./Author.css";
 import { tagsToQueryString } from "../courses/Courses";
-import ClearTags from "../../components/ClearTags/ClearTags";
 import Controller from "../../components/Controller/Controller";
+import GlassPanel from "../../components/GlassPanel/GlassPanel";
 
 const Author = () => {
     const { name } = useParams<{ name: string }>();
@@ -42,13 +42,32 @@ const Author = () => {
         <div className="author-page">
             <span className="author-title">
                 <AuthorAvatar author={name} />
-                <h1>{name}</h1>
+                <GlassPanel
+                    as="div"
+                    style={{
+                        marginLeft: '40px',
+                        padding: '20px 30px',
+                        display: 'block',
+                        width: 'fit-content'
+                    }}
+                >
+                    <div style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        gap: '20px'
+                    }}>
+                        <h1 style={{ margin: 0, lineHeight: 1 }}>{name}</h1>
 
-                <a href={`https://github.com/${name}`}>
-                    <img className="gh-logo"
-                        src="/GitHub_Invertocat_Black.png"
-                        />
-                </a>
+                        <a href={`https://github.com/${name}`} style={{ display: 'flex' }}>
+                            <img
+                                className="gh-logo"
+                                src="/GitHub_Invertocat_Black.png"
+                                style={{ height: '2.2rem', width: 'auto' }}
+                            />
+                        </a>
+                    </div>
+                </GlassPanel>
             </span>
 
             <h1 className="courses-title">Courses:</h1>
