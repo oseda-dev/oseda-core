@@ -3,6 +3,12 @@ const { getCourseConfig } = require("./config");
 const { parseTags, filterFromTags } = require("./tags");
 
 
+/**
+ *  Provides a callback for serving individual courses from an author
+ * @param {string} COURSES_ROOT 
+ * @returns {function(Request, Response): Promise<void>}
+ * a callback for express middleware
+ */
 const serveCoursesFromAuthor = (COURSES_ROOT) => {
     return async (req, res) => {
         const start = Number(req.query.start ?? 0)
@@ -36,7 +42,11 @@ const serveCoursesFromAuthor = (COURSES_ROOT) => {
     }
 }
 
-
+/**
+ *  Callback for getting an authors github avatar based on their name
+ * @returns {function(Request, Response): Promise<void>}
+ * a callback for express middleware
+ */
 const getAuthorAvatarURL = () => {
     return async (req, res) => {
         try {

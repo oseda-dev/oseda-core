@@ -3,7 +3,12 @@ const path = require("path");
 const { getCourseConfig } = require("./config");
 const { parseTags, filterFromTags } = require("./tags");
 
-// Handles getting a SPECIFIC COURSE
+/**
+ *  Callback for serving a specific course from the library
+ * @returns {function(Request, Response): Promise<void>}
+ * a callback for express middleware
+ */
+
 const serveCourseDir = (COURSES_ROOT) => {
 
     return (req, res, next) => {
@@ -28,6 +33,15 @@ const serveCourseDir = (COURSES_ROOT) => {
 };
 
 
+/**
+ * Paginates through directories and applies optional filtering.
+ * * @param {Object} options - The pagination configuration.
+ * @param {string} options.root - The root directory path to scan.
+ * @param {number} options.start - The index to start pagination from (offset).
+ * @param {number} options.limit - The maximum number of directories to return.
+ * @param {function(string): boolean} [options.filter] - An optional filter function that receives a directory name.
+ * @returns {Promise<string[]>} A promise that resolves to an array of directory names.
+ */
 const paginateDirs = async ({ root, start, limit, filter }) => {
     let index = 0
     const result = []

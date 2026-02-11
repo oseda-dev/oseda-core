@@ -1,6 +1,13 @@
 const { getCourseConfig } = require("./config");
 
-
+/**
+ *  Parses raw request tags into array of consumable tag strings
+ *  undefined => []
+ *  string => [string]
+ *  string[] => string[]
+ * @param {string[] | string | undefined } tags 
+ * @returns {string[]} parsed tags 
+ */
 const parseTags = (tags) => {
     if(tags == undefined){
         return [];
@@ -26,9 +33,6 @@ const filterFromTags = (requestedTags, COURSES_ROOT) => {
     } else {
         courseFilter = (courseName) => {
             const config = getCourseConfig(courseName, COURSES_ROOT);
-
-            // console.log(`requested tags: ${requestedTags}`);
-            // console.log(`config tags: ${config.tags}`);
 
             return requestedTags.every(t => config.tags.includes(t));
         }

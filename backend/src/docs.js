@@ -3,7 +3,7 @@ const path = require("path");
 
 
 /**
- * Statically serves all documentation
+ * Statically serves all documentation endpoints
  * @param {Express} server
  */
 const serveDocs = (server) => {
