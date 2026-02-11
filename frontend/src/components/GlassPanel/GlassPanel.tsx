@@ -19,7 +19,10 @@ export default function GlassPanel<T extends React.ElementType = "section">({
   return (
     <Tag className={`glass ${className}`.trim()} {...props}>
       {noise && <span className="glass-noise" aria-hidden="true" />}
-      <div className="glass-content">{children}</div>
+      <div className="glass-content-container">
+        <div className="glass-content">{children}</div>
+      </div>
+      
     </Tag>
   );
 }

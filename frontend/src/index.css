@@ -125,6 +125,13 @@ code {
     animation: glass-noise-float 18s ease-in-out infinite alternate;
 }
 
+.glass-content-container {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
 /* Content layer */
 .glass-content {
     position: relative;
