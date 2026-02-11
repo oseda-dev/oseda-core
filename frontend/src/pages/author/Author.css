@@ -1,15 +1,16 @@
 .author-page {
-    padding: 2em;
     text-align: center;
+    margin-bottom: 2em;
 }
 
 .author-title {
     display: flex; 
     align-items: center;
     justify-content: flex-start; 
-    margin-left: 3rem;
+    padding-left: 3rem;
     margin-top: 1rem;
-    width: 100%; 
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .author-title h1 {

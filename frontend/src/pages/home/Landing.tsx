@@ -10,7 +10,7 @@ const Landing = () => {
     <div className="landing-wrapper">
       <GlassPanel as="main" className="landing-container" noise>
 
-        <img src="OsedaLogoDark.png" className="outline home"></img>
+        <img src="OsedaLogoDark.png" className="home"></img>
         <h1>OSEDA</h1>
         <p>Open Source Education Association</p>
 

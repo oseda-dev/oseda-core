@@ -43,7 +43,7 @@ const Courses = () => {
     }, [queryParams]);
 
     return (
-        <>
+        <section className="courses-container">
             <Controller tags={tags} />
             <div className="courses-grid">
                 {courses.map(courseTitle => (
@@ -57,7 +57,7 @@ const Courses = () => {
                 onNext={() => setCurPage(curPage + 1)}
                 disablePrev={curPage === 0}
             />
-        </>
+        </section>
     );
 };
 
