@@ -34,13 +34,13 @@ const serveCourseDir = (COURSES_ROOT) => {
 
 
 /**
- * Paginates through directories and applies optional filtering.
- * * @param {Object} options - The pagination configuration.
- * @param {string} options.root - The root directory path to scan.
- * @param {number} options.start - The index to start pagination from (offset).
- * @param {number} options.limit - The maximum number of directories to return.
- * @param {function(string): boolean} [options.filter] - An optional filter function that receives a directory name.
- * @returns {Promise<string[]>} A promise that resolves to an array of directory names.
+ * Paginates through a directory with a filter if needed
+ * @param {Object} options - paginator config
+ * @param {string} options.root - root directory path to paginator
+ * @param {number} options.start - index to start pagination from (aka an offset)
+ * @param {number} options.limit - max num of courses to return starting from the offset
+ * @param {function(string): boolean} options.filter - a filter function (takes in a dir name) that will filter paginator options
+ * @returns {Promise<string[]>} promise an array of directory names
  */
 const paginateDirs = async ({ root, start, limit, filter }) => {
     let index = 0
@@ -65,6 +65,12 @@ const paginateDirs = async ({ root, start, limit, filter }) => {
     return result
 }
 
+/**
+ *  Provides a callback for Serving all courses 
+ * @param {string} COURSES_ROOT 
+ * @returns {function(Request, Response): Promise<void>}
+ * a callback for express middleware
+ */
 
 const serveCourses = (COURSES_ROOT) => {
     return async (req, res) => {
