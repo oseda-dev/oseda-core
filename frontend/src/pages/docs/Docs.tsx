@@ -60,11 +60,13 @@ import "./Docs.css"
 
 const Docs: React.FC = () => {
     return (
-        <>
+        <div className="docs-root">
             <div className="docs-container">
                 <Sidebar
                     rootStyles={{
                         color: '#000000ff',
+                        borderRadius: '18px',
+                        overflow: 'hidden',
                     }}
                 >
                     <Menu>
@@ -118,7 +120,7 @@ const Docs: React.FC = () => {
                     <Outlet />
                 </GlassPanel>
             </div>
-        </>
+        </div>
     )
 }
 

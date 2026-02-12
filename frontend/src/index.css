@@ -125,6 +125,13 @@ code {
     animation: glass-noise-float 18s ease-in-out infinite alternate;
 }
 
+.glass-content-container {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
 /* Content layer */
 .glass-content {
     position: relative;
@@ -151,10 +158,3 @@ code {
   }
 }
 
-.outline {
-  filter:
-    drop-shadow(1px 0 0 black)
-    drop-shadow(-1px 0 0 black)
-    drop-shadow(0 1px 0 black)
-    drop-shadow(0 -1px 0 black);
-}

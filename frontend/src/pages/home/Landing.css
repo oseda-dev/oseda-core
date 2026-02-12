@@ -24,17 +24,17 @@ body::before {
 }
 
 .landing-wrapper {
-  flex: 1;
+  height: 100vh;
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   padding: 40px 20px;
   box-sizing: border-box;
 }
 
 .landing-container {
-  width: clamp(400px, 65%, 1100px);
+  width: 400px;
   min-height: 80vh; 
   border-radius: 16px;
   display: flex;
@@ -55,6 +55,10 @@ body::before {
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.home {
+  filter: drop-shadow(4px 4px 4px black); 
 }
 
 .landing-container h1 {

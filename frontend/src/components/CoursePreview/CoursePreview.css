@@ -5,7 +5,7 @@
     flex-direction: column;
     transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
-    margin: 10px; 
+    margin: 0px; 
     border-radius: 20px;
     overflow: hidden;
     position: relative;
@@ -69,18 +69,24 @@
 }
 
 .tag {
-    display: inline-flex;  
-    width: fit-content;  
+    width: fit-content;
+    text-align: center;
     font-size: 0.75rem !important;
     border-radius: 50px !important;
+    margin: 0 !important;
     border: 1px solid rgba(255, 255, 255, 0.2) !important;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.tag .glass-content {
-    padding: 4px 12px !important;
+.tag .glass-content-container {
+  display: flex;
+  justify-content: center;
+}
+
+.tag .glass-content { 
     font-weight: 600;
-    white-space: nowrap;   
+    white-space: nowrap;
+    padding: 4px;
 }
 
 .course-description {
