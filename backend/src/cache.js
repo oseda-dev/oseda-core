@@ -1,5 +1,11 @@
 const NodeCache = require("node-cache");
 
+
+// cache for 10 minutes
+const CACHE_DURATION_SECONDS = 60 * 10;
+
+// cleanup expired keys every 60 seconds
+const CLEANUP_PERIOD_SECONDS = 60;
 /*
 Express middleware for caching GET requests
 Too much data comes from filepath lookups
@@ -9,7 +15,10 @@ This will scale very poorly without a cache
 // testing with five minutes for now
 // will swap in inf (until restart aka deploy)
 // server does not support non get requests anyway
-const cache = new NodeCache({ stdTTL: 60 * 5 });
+const cache = new NodeCache({ 
+    stdTTL: CACHE_DURATION_SECONDS,
+    checkperiod: CLEANUP_PERIOD_SECONDS
+});
 
 const GETcache = () => (req, res, next) => {
 
@@ -35,12 +44,15 @@ const GETcache = () => (req, res, next) => {
         res.send(cachedBody);
         return;
     }
-    
+
     console.log(`cache miss for ${key}`);
 
     res.sendResponse = res.send;
     res.send = (body) => {
         // store the response in cache, then send uncached body
+
+        // nodecache allows you to pass a duration the overrides
+        // the stdTTL. Might consider doing this for specific authors, eg. ReeseHatfield
         cache.set(key, body); 
         res.sendResponse(body);
     };
