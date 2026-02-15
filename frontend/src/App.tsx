@@ -15,15 +15,17 @@ import Commands from "./pages/docs/Commands/Commands";
 import CLI from "./pages/docs/CLI/CLI";
 import Backend from "./pages/docs/Backend/Backend";
 import Frontend from "./pages/docs/Frontend/Frontend";
+import AboutUs from "./pages/about/AboutUs";
 
 function App() {
-  
+
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/landing" element={<Landing />} />
         <Route path="/courses" element={<Courses />} />
+        <Route path="about" element={<AboutUs />} />
 
         {/* All this doc stuff is a little annoying, but I really want the docs to be link-safe */}
         {/* Docs added here must also be added to Docs.tsx */}
@@ -52,9 +54,9 @@ function App() {
 
           <Route path="core">
             <Route path="frontend" element={<Frontend />} />
-            <Route path="backend" element={<Backend />}/>
+            <Route path="backend" element={<Backend />} />
           </Route>
-        </Route> 
+        </Route>
 
         <Route path="/courses/:title" element={<Course />} />
         <Route path="/author/:name" element={<Author />} />

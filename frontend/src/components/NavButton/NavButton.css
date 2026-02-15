@@ -9,8 +9,8 @@
     border-radius: 50px;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
 
-    margin-bottom: 1em;
-    margin-top: 1em;
+    margin-bottom: 0.25em;
+    margin-top: 0.5em;
     size: 3em;
 }
 

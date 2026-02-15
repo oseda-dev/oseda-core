@@ -10,12 +10,6 @@ const Landing = () => {
     <div className="landing-wrapper">
       <GlassPanel as="main" className="landing-container" noise>
 
-        {/* <img src="OsedaLogoDark.png" className="home"></img>
-        <h1>OSEDA</h1>
-        <p>Open Source Education Association</p>
-
-        <p>A comprehensive open-source platform for creating, distributing, and hosting educational presentations.</p> */}
-
         <header>
           <img src="OsedaLogoDark.png" alt="OSEDA logo" className="home" />
 
@@ -39,9 +33,11 @@ const Landing = () => {
           <NavButton text="Documentation" url="/docs" />
         </div>
 
+        <div className="nav-button">
+          <NavButton text="About Us" url="/about"/>
+        </div>
+
         <AuthorSearcher />
-        {/* <div className="nav-button">
-        </div> */}
 
       </GlassPanel>
     </div>
