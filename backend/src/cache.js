@@ -13,7 +13,6 @@ This will scale very poorly without a cache
 */
 
 // testing with five minutes for now
-// will swap in inf (until restart aka deploy)
 // server does not support non get requests anyway
 const cache = new NodeCache({ 
     stdTTL: CACHE_DURATION_SECONDS,
@@ -22,13 +21,10 @@ const cache = new NodeCache({
 
 const GETcache = () => (req, res, next) => {
 
-    console.log("using get cache")
-
     // aside from FS, server should be stateless, 
     // so only cache get requests
     if (req.method !== 'GET') {
 
-        console.log("not a get request")
         return next();
     }
 

@@ -1,34 +1,70 @@
 const fs = require("fs");
+const fsp = fs.promises;
 const path = require("path");
 const { getCourseConfig } = require("./config");
 const { parseTags, filterFromTags } = require("./tags");
+
+// Todo move and export me
+// ripped from old project
+const mimeTypes = {
+    '.html': 'text/html',
+    '.js': 'application/javascript',
+    '.css': 'text/css',
+    '.json': 'application/json',
+    '.png': 'image/png',
+    '.jpg': 'image/jpeg',
+    '.gif': 'image/gif',
+    '.svg': 'image/svg+xml',
+};
 
 /**
  *  Callback for serving a specific course from the library
  * @returns {function(Request, Response): Promise<void>}
  * a callback for express middleware
  */
-
 const serveCourseDir = (COURSES_ROOT) => {
 
-    return (req, res, next) => {
+    return async (req, res, next) => {
         const courseName = req.params.courseName;
         const distDir = path.join(COURSES_ROOT, courseName, "dist");
 
-        if (!fs.existsSync(distDir) || !fs.statSync(distDir).isDirectory()) {
-            return res.status(404).send("course not found");
+        // basically a wrapper for fs.sendFile
+        // its pretty impractical for the cache middleware to wrap sendFile
+        // so we have to read the file manually, then use res.send as to not get cache misses
+        try {
+
+            const stat = await fsp.stat(distDir);
+            if (!stat.isDirectory()) {
+                return res.status(404).send("course not found");
+            }
+
+            // strip the prefix /api/courses/:courseName and serve the rest from dist
+            const requestSubPath = req.path === "/" ? "/index.html" : req.path;
+            const fullPath = path.join(distDir, requestSubPath);
+
+            // access file => on success, leave it
+            // on fail => fallback to index for SPA apps (should be all of them for now)
+            try {
+                await fsp.access(fullPath);
+            } catch {
+                fullPath = path.join(distDir, "index.html");
+            }
+
+            const data = await fsp.readFile(fullPath);
+
+            // express needs to know the mime type since we sending raw file data directly
+            // look it up based on file extension
+
+            const ext = path.extname(fullPath).toLowerCase();
+            res.set('Content-Type', mimeTypes[ext]);
+
+            res.send(data);
+        }
+        catch (err){
+            console.log(err);
+            return res.status(404).send("could not find course")
         }
 
-        // strip the prefix /api/courses/:courseName and serve the rest from dist
-        const requestSubPath = req.path === "/" ? "/index.html" : req.path;
-        const fullPath = path.join(distDir, requestSubPath);
-
-        // if file exists, send it, otherwise fall back to index.html for SPA
-        if (fs.existsSync(fullPath) && fs.statSync(fullPath).isFile()) {
-            return res.sendFile(fullPath);
-        } else {
-            return res.sendFile(path.join(distDir, "index.html"));
-        }
     }
 };
 
@@ -46,7 +82,7 @@ const paginateDirs = async ({ root, start, limit, filter }) => {
     let index = 0
     const result = []
 
-    const dir = await fs.promises.opendir(root)
+    const dir = await fsp.opendir(root)
 
     for await (const dirent of dir) {
         if (!dirent.isDirectory()) continue
@@ -76,11 +112,11 @@ const serveCourses = (COURSES_ROOT) => {
     return async (req, res) => {
         const start = Number(req.query.start ?? 0)
         const limit = Number(req.query.limit ?? 9)
-        
+
         const requestedTags = parseTags(req.query.tag);
 
         const courseFilter = filterFromTags(requestedTags, COURSES_ROOT);
-        
+
         try {
             const courses = await paginateDirs({
                 root: COURSES_ROOT,
