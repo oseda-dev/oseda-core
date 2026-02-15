@@ -1,4 +1,5 @@
 const NodeCache = require("node-cache");
+const path = require("path");
 
 
 // cache for 10 minutes
@@ -19,6 +20,10 @@ const cache = new NodeCache({
     checkperiod: CLEANUP_PERIOD_SECONDS
 });
 
+
+// do not cache assets with these extensions
+const EXT_BLACKLIST = ['.png', '.jpg', '.jpeg', '.gif', '.mp4', '.zip'];
+
 const GETcache = () => (req, res, next) => {
 
     // aside from FS, server should be stateless, 
@@ -28,8 +33,16 @@ const GETcache = () => (req, res, next) => {
         return next();
     }
 
-    
     const key = req.originalUrl;
+
+    // skip caching if blocked ext.
+    const ext = path.extname(req.path).toLowerCase();
+    if (EXT_BLACKLIST.includes(ext)) {
+        console.log(`skipped blacklisted ext ${req.path}`)
+        return next();
+    }
+
+    
 
     // get value from cache
     const cachedBody = cache.get(key);
