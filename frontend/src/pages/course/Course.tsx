@@ -10,18 +10,32 @@ const Course = () => {
     const handle = useFullScreenHandle();
     const iframeRef = useRef<HTMLIFrameElement>(null);
 
+
     const [config, setConfig] = useState<OsedaConfig | null>(null);
+    const [isLoadingConfig, setIsLoadingConfig] = useState(true);
+    const [isPresentationLoaded, setIsPresentationLoaded] = useState(false);
+
+
+    const handleIframeLoad = () => {
+        setIsPresentationLoaded(true);
+    };
 
     useEffect(() => {
         // only fetch if title is passed, TS needs title to be defined
         if (!title) return;
+
+        setIsLoadingConfig(true);
 
         fetch(`/api/info?title=${encodeURIComponent(title)}`)
             .then(res => {
                 if (!res.ok) throw new Error("Failed to fetch course info");
                 return res.json();
             })
-            .then((data: OsedaConfig) => setConfig(data))
+            .then((data: OsedaConfig) =>{
+                setConfig(data);
+                setIsLoadingConfig(false);
+            })
+
             .catch(err => console.error(err));
     }, [title]);
     
@@ -50,7 +64,10 @@ const Course = () => {
             </header>
 
             <FullScreen handle={handle} className="video-wrapper">
+                {!isPresentationLoaded && <p>Loading OSEDA presentation...</p>}
                 <iframe
+                    // keep track on when to render loading...
+                    onLoad={handleIframeLoad}
                     ref={iframeRef}
                     className="course-iframe"
                     src={src}
@@ -60,9 +77,13 @@ const Course = () => {
                 />
             </FullScreen>
 
-            <p>
-                {config?.description}
-            </p>
+            <div className="course-description">
+                {isLoadingConfig ? (
+                    <p className="loading-text">Loading course details...</p>
+                ) : (
+                    <p>{config?.description}</p>
+                )}
+            </div>
         </GlassPanel>
     );
 };
