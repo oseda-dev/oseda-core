@@ -9,6 +9,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^5.1.0",
-    "mime": "^4.0.7"
+    "mime": "^4.0.7",
+    "node-cache": "^5.1.2"
   }
 }

@@ -6,6 +6,7 @@ const courses = require("./courses");
 const config = require("./config");
 const docs = require("./docs");
 const authors = require("./authors");
+const cache = require("./cache");
 
 /**
  * Root directory of the oseda course library
@@ -41,8 +42,10 @@ const buildOsedaExpressServer = (COURSES_ROOT) => {
 
     docs.serveDocs(server)
 
-
+    // global middleware
     server.use(cors());
+    server.use(cache.getCacher())
+    
 
     /*
     serve course dist dynamically:
