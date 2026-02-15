@@ -15,8 +15,12 @@ const mimeTypes = {
     '.jpg': 'image/jpeg',
     '.gif': 'image/gif',
     '.svg': 'image/svg+xml',
+    '.woff': 'font/woff',
+    '.woff2': 'font/woff2',
+    '.ttf': 'font/ttf',
+    '.otf': 'font/otf',
+    '.wasm': 'application/wasm'
 };
-
 /**
  *  Callback for serving a specific course from the library
  * @returns {function(Request, Response): Promise<void>}
@@ -56,7 +60,14 @@ const serveCourseDir = (COURSES_ROOT) => {
             // look it up based on file extension
 
             const ext = path.extname(fullPath).toLowerCase();
-            res.set('Content-Type', mimeTypes[ext]);
+
+            // octet stream seems to be a default
+            const contentType = mimeTypes[ext] || 'application/octet-stream';
+
+            res.set('Content-Type', contentType);
+            
+            // tell the browser to cache what it can 
+            res.set('Cache-Control', 'public, max-age=3600');
 
             res.send(data);
         }
