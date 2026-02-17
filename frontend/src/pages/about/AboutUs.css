@@ -1,0 +1,100 @@
+.about-us-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    
+}
+
+.about-header {
+    text-align: left;
+    color: white;
+    text-shadow: 2px 2px 5px black;
+    background: rgba(65, 62, 62, 0.372);
+    padding: 2em;
+}
+
+.about-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+.about-header p {
+    line-height: 1.8;
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.95); 
+}
+
+.about-header a {
+    /* I eyedropped a sample from our background */
+    color: #64b56f; 
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0 2px;
+    border-bottom: 1px solid rgba(28, 75, 39, 0.3); 
+    transition: all 0.2s ease;
+}
+
+.about-header a:hover {
+    color: #ffffff;
+    border-bottom-color: #ffffff;
+    background: rgba(0, 242, 255, 0.2);
+    text-shadow: 0 0 8px rgba(0, 242, 255, 0.5) !important; /* Glow-y I think */
+}
+.about-content-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.authors-selection-row {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding-bottom: 1rem;
+}
+
+.author-clickable {
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: grayscale(40%);
+}
+
+.author-clickable:hover {
+    transform: scale(1.05);
+    filter: grayscale(0%);
+}
+
+.active-author {
+    filter: grayscale(0%);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+.bio-display-panel {
+    min-height: 300px;
+    width: 100%;
+}
+
+.bio-inner {
+    padding: 2.5rem;
+}
+
+.bio-name {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.bio-divider {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 1.5rem 0;
+}
+
+.bio-text {
+    line-height: 1.6;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
