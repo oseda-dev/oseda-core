@@ -44,6 +44,7 @@ const AboutUs = () => {
                 <GlassPanel as="article" className="bio-display-panel">
                     <div className="bio-inner">
                         <h2 className="bio-name">{selectedAuthor.name}</h2>
+                        <h4>{selectedAuthor.title}</h4>
                         <hr className="bio-divider" />
                         <p className="bio-text">{selectedAuthor.bio}</p>
                     </div>
