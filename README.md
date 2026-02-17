@@ -1,15 +1,15 @@
-# **oseda-core**
+# oseda-core
 
 <p align="center">
-  <a href="https://github.com/oseda-dev/oseda-core">
-    <img src="https://github.com/oseda-dev/oseda-core/blob/main/frontend/public/OsedaLogoDark.png?raw=true" alt="Oseda Logo" width="400" height="370">
+  <a href="https://github.com/oseda-dev/oseda-cli">
+    <img src="https://github.com/oseda-dev/oseda-core/blob/main/frontend/public/OsedaLogoDark.png?raw=true" alt="Oseda Logo" width="350" height="370">
   </a>
 </p>
 
 <h3 align="center"><strong>Oseda-Core</strong></h3>
 
 <p align="center">
-  Core logic for [oseda.net](https://oseda.net)
+  Core logic for <a href="https://oseda.net">oseda.net</a>
   <br>
 </p>
 
