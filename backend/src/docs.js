@@ -33,6 +33,13 @@ const serveDocs = (server) => {
     const backendReadme = path.join(__dirname, "../../backend/README.md");
     server.use("/api/docs/core/backend", express.static(backendReadme));
 
+    const coreReadme = path.join(__dirname, "../../README.md");
+    server.use("/api/docs/core/readme", express.static(coreReadme));
+
+    const libReadme = path.join(__dirname, "../../../oseda-lib/README.md");
+    server.use("/api/docs/lib", express.static(libReadme));
+
+
 
 }
 

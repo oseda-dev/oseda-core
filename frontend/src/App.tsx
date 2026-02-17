@@ -16,6 +16,8 @@ import CLI from "./pages/docs/CLI/CLI";
 import Backend from "./pages/docs/Backend/Backend";
 import Frontend from "./pages/docs/Frontend/Frontend";
 import AboutUs from "./pages/about/AboutUs";
+import CoreDevelopment from "./pages/docs/CoreDevelopment/CoreDevelopment";
+import Library from "./pages/docs/Library/Library";
 
 function App() {
 
@@ -53,8 +55,13 @@ function App() {
           </Route>
 
           <Route path="core">
+            <Route path="development" element={<CoreDevelopment />}/>
             <Route path="frontend" element={<Frontend />} />
             <Route path="backend" element={<Backend />} />
+          </Route>
+
+          <Route path="lib">
+            <Route path="library" element={<Library />} />
           </Route>
         </Route>
 

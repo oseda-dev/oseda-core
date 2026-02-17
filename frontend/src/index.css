@@ -12,6 +12,25 @@ code {
     monospace;
 }
 
+/* thematic links */
+a {
+    /* I eyedropped a sample from our background */
+    color: #64b56f; 
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0 2px;
+    border-bottom: 1px solid rgba(28, 75, 39, 0.3); 
+    transition: all 0.2s ease;
+}
+
+a:hover {
+    color: #ffffff;
+    border-bottom-color: #ffffff;
+    background: rgba(0, 242, 255, 0.2);
+    text-shadow: 0 0 8px rgba(0, 242, 255, 0.5) !important; /* Glow-y thing I think */
+}
+
+
 /* GLASSSSSSSSSSSSS */
 .glass {
   position: relative;

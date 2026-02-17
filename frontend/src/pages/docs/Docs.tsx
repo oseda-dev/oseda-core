@@ -40,8 +40,10 @@ const Docs: React.FC = () => {
                                 Commands
                             </MenuItem>
                         </SubMenu>
-                        {/* todo implement the ones below this */}
                         <SubMenu label="oseda-core">
+                            <MenuItem component={<NavLink to="core/development" />}>
+                                Development
+                            </MenuItem>
                             <MenuItem component={<NavLink to="core/frontend" />}>
                                 Frontend
                             </MenuItem>
@@ -50,11 +52,8 @@ const Docs: React.FC = () => {
                             </MenuItem>
                         </SubMenu>
                         <SubMenu label="oseda-lib">
-                            <MenuItem component={<NavLink to="lib/api" />}>
-                                API
-                            </MenuItem>
-                            <MenuItem component={<NavLink to="lib/internal" />}>
-                                Internals
+                            <MenuItem component={<NavLink to="lib/library" />}>
+                                Library
                             </MenuItem>
                         </SubMenu>
 
