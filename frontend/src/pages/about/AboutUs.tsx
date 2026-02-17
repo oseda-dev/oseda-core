@@ -1,21 +1,8 @@
 import { useState } from "react";
 import GlassPanel from "../../components/GlassPanel/GlassPanel";
 import "./AboutUs.css";
+import { AuthorData, CORE_MAINTAINERS } from "./Maintainers";
 
-interface AuthorData {
-    id: number;
-    name: string;
-    avatar: string;
-    bio: string;
-}
-
-const CORE_MAINTAINERS: AuthorData[] = [
-    { id: 0, name: "Reese Hatfield", avatar: "https://avatars.githubusercontent.com/u/89809693?v=4", bio: "Bio for ReeseHatfield" },
-    { id: 1, name: "Rose Taylor", avatar: "https://avatars.githubusercontent.com/u/150863936?v=4", bio: "Bio for Rose" },
-    { id: 2, name: "Blake Payne", avatar: "https://avatars.githubusercontent.com/u/56892670?v=4", bio: "Bio for Blakers" },
-    { id: 3, name: "Jon Wasky", avatar: "https://avatars.githubusercontent.com/u/111833121?v=4", bio: "Bio for Wamski" },
-    { id: 4, name: "Emily Miller", avatar: "https://avatars.githubusercontent.com/u/132691956?v=4", bio: "Bio for Emily" },
-];
 
 const AboutUs = () => {
     const [selectedAuthor, setSelectedAuthor] = useState<AuthorData>(CORE_MAINTAINERS[0]);
