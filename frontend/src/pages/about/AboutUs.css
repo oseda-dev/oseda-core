@@ -41,7 +41,7 @@
     color: #ffffff;
     border-bottom-color: #ffffff;
     background: rgba(0, 242, 255, 0.2);
-    text-shadow: 0 0 8px rgba(0, 242, 255, 0.5) !important; /* Glow-y I think */
+    text-shadow: 0 0 8px rgba(0, 242, 255, 0.5) !important; /* Glow-y thing I think */
 }
 .about-content-grid {
     display: flex;
@@ -58,6 +58,7 @@
 
 .author-clickable {
     cursor: pointer;
+    /* i definitely understand cubic beziers yeah man */
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     filter: grayscale(40%);
 }

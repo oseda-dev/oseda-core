@@ -7,7 +7,7 @@ const OverviewDoc = () => {
     const [content, setContent] = useState("");
 
     useEffect(() => {
-        fetch("/api/docs/README.md")
+        fetch("/api/docs/overview")
             // comes back as raw text
             .then(res => res.text())
             .then(text => {

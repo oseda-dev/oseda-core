@@ -7,9 +7,9 @@ const path = require("path");
  * @param {Express} server
  */
 const serveDocs = (server) => {
-    const docsPath = path.join(__dirname, "../../docs/");
+    const overviewReadmePath = path.join(__dirname, "../../../README.md");
 
-    server.use("/api/docs", express.static(docsPath));
+    server.use("/api/docs/overview", express.static(overviewReadmePath));
 
 
 
