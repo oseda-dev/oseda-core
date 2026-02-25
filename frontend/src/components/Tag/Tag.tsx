@@ -63,7 +63,7 @@ const Tag: React.FC<TagProps> = ({ tagName }: TagProps) => {
     return (
         <GlassPanel
             as="p"
-            className="author-searcher tag"
+            className="tag"
             style={{ backgroundColor: tagToColor[safeKey] }}
             onClick={onTagClick}
         >

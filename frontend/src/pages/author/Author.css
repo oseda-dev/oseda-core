@@ -13,6 +13,18 @@
     box-sizing: border-box;
 }
 
+.author-title a {
+  border-bottom: none;
+}
+
+.author-title a:hover {
+  background: none;
+}
+
+.author-title .glass-content-container {
+  overflow: visible;
+}
+
 .author-title h1 {
     margin-left: 2rem;
     font-size: 4em;
