@@ -26,8 +26,6 @@ npm install -g typescript ts-node eslint prettier
 
 # repo
 git clone https://github.com/ReeseHatfield/oseda-core.git
-
-
 ```
 You will also need the course library repository at the same level as oseda-core. E.g.
 ```
