@@ -3,6 +3,21 @@
     margin-left: auto;  
     margin-right: auto; 
     margin-top: 1em;
+    padding: 6px;
+}
+
+.author-searcher .glass-content {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.author-searcher input {
+  box-shadow: none;
+  background: hsla(0,0%,0%,.12);
+  padding-left: 4px;
+  box-sizing: border-box;
+  color: white;
 }
 
 
@@ -10,4 +25,8 @@
 .glass::placeholder {
     color: white;
     opacity: 0.8;
+}
+
+.author-searcher button {
+  color: white;
 }

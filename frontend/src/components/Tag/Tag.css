@@ -1,4 +1,5 @@
 .tag {
     width: fit-content;
     white-space: nowrap;
+    padding: 4px;
 }

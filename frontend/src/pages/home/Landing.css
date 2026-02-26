@@ -57,6 +57,10 @@ body::before {
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
+.landing-container .glass-content-container {
+  overflow: unset;
+}
+
 .home {
   filter: drop-shadow(4px 4px 4px black); 
 }
