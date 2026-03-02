@@ -1,11 +1,11 @@
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
-const hosts = require("./hosts");
-const courses = require("./courses");
-const config = require("./config");
-const docs = require("./docs");
-const authors = require("./authors");
+const hosts = require("../utils/hosts");
+const courses = require("../middleware/courses");
+const config = require("../library/config");
+const docs = require("../middleware/docs");
+const authors = require("../utils/authors");
 const cache = require("./cache");
 
 /**

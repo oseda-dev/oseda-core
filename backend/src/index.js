@@ -1,8 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
-const hosts = require("./hosts");
-const server = require("./server");
+const hosts = require("./utils/hosts");
+const server = require("./server/server");
 /**
  * Root directory of the oseda course library
  * This should almost always be oseda-lib, set up like:

@@ -1,5 +1,5 @@
-const { paginateDirs } = require("./courses");
-const { getCourseConfig } = require("./config");
+const { paginateDirs } = require("../middleware/courses");
+const { getCourseConfig } = require("../library/config");
 const { parseTags, filterFromTags } = require("./tags");
 
 

@@ -1,4 +1,4 @@
-const { getCourseConfig } = require("./config");
+const { getCourseConfig } = require("../library/config");
 
 /**
  *  Parses raw request tags into array of consumable tag strings

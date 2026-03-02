@@ -1,8 +1,8 @@
 const fs = require("fs");
 const fsp = fs.promises;
 const path = require("path");
-const { getCourseConfig } = require("./config");
-const { parseTags, filterFromTags } = require("./tags");
+const { getCourseConfig } = require("../library/config");
+const { parseTags, filterFromTags } = require("../utils/tags");
 
 // Todo move and export me
 // ripped from old project
