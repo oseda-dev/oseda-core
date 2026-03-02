@@ -53,4 +53,4 @@ fi
 
 # --- START NODE BACKEND ---
 echo "[5/5] Starting backend..."
-node backend/src/server.js "$MODE"
+node backend/src/index.js "$MODE"

@@ -9,25 +9,6 @@ const authors = require("./authors");
 const cache = require("./cache");
 
 /**
- * Root directory of the oseda course library
- * This should almost always be oseda-lib, set up like:
- *   /oseda
- *   |--oseda-core
- *   |--- oseda-dev
- */
-const COURSES_ROOT = path.join(
-    __dirname,
-    "..",
-    "..",
-    "..",
-    "oseda-lib",
-    "courses"
-);
-
-const HOST = hosts.determineHost();
-const PORT = 3001;
-
-/**
  * Builds the oseda server
  * This servers the frontend statically
  * This also serves each course directories output dynamically (static serve)
@@ -86,11 +67,6 @@ const buildOsedaExpressServer = (COURSES_ROOT) => {
     return server;
 };
 
-// oseda server
-const oseda = buildOsedaExpressServer(COURSES_ROOT);
-
-// listen for requests continually.
-oseda.listen(PORT, HOST, () => {
-    console.log(`Backend listening on http://${HOST}:${PORT}`);
-    console.log(`COURSES_ROOT=${COURSES_ROOT}`);
-});
+module.exports = {
+    buildOsedaExpressServer,
+}
