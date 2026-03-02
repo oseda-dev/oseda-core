@@ -12,3 +12,7 @@ test('undefined tags should be empty array', () => {
   // strict equality weirdness 
   // [] === [] -> false 
 })
+
+// .toBe on primitives, same reference equality
+// .toEqual	on arrays, objects, structs 
+// .toStrictEqual if that fails lol
