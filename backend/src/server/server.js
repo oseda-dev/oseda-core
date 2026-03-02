@@ -19,7 +19,7 @@ const cache = require("./cache");
 const buildOsedaExpressServer = (COURSES_ROOT) => {
     const server = express();
 
-    server.use(express.static(path.join(__dirname, "../../frontend/build")));
+    server.use(express.static(path.join(__dirname, "../../../frontend/build")));
 
     docs.serveDocs(server)
 
