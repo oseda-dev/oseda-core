@@ -50,7 +50,8 @@ When I’m not in the lab or TA-ing for CS-1181, I’m building anything from in
         id: 4,
         name: "Emily Miller",
         avatar: "https://avatars.githubusercontent.com/u/132691956?v=4",
-        title: "Title",
-        bio: `Bio for Emily`,
+        title: "Quality Assurance Developer",
+        bio: `Quality assurance developer and backend maintainer for OSEDA. Computer science student, security researcher, and discrete mathematics teaching assistant.
+Committed to helping students understand the fundamental mathematical topics that are crucial for computer science education. Currently conducting research on improving analysis of malware through reverse engineering utilizing knowledge graphs. Always open to learning new tools and frameworks to help contribute to projects and hone my skills as a developer.`,
     },
 ];
