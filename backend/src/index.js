@@ -12,7 +12,11 @@ const server = require("./server/server");
  */
 const COURSES_ROOT = path.join(
     __dirname,
-    "../../../oseda-lib/courses/"
+    "..",
+    "..",
+    "..",
+    "oseda-lib",
+    "courses"
 );
 
 const HOST = hosts.determineHost();

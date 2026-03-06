@@ -1,6 +1,10 @@
 const path = require("path");
 const fs = require("fs");
 
+// This is in the library package b/c it is meant for stuff that directly
+// interacts with oseda-lib, but without an HTTP stuff
+// We might change this going forward - Reese
+
 /**
  * @typedef {Object} OsedaConfig
  * @property {string} title - title of the course or project

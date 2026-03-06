@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 
+// applies a bunch of middleware
 
 /**
  * Statically serves all documentation endpoints
