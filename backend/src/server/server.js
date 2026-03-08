@@ -46,7 +46,6 @@ const buildOsedaExpressServer = (COURSES_ROOT) => {
     // load oseda-config.json for a particular course via query params
     server.get("/api/info", (req, res) => {
         const title = req.query.title;
-        // console.log("got here")
 
         try {
             const conf = config.getCourseConfig(title, COURSES_ROOT);
@@ -61,7 +60,7 @@ const buildOsedaExpressServer = (COURSES_ROOT) => {
     // technically, is just a reroute for everything.
     // works fine without it, but a link directly to a course breaks
     server.get(/^\/(?!api\/).*/, (req, res) => {
-        res.sendFile(path.join(__dirname, "../../frontend/build/index.html"));
+        res.sendFile(path.join(__dirname, "../../../frontend/build/index.html"));
     });
 
     return server;
