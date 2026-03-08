@@ -137,6 +137,48 @@ test('testing for multiple tags, should return false', () => {
 
 })
 
+test('testing for invalid course name, should return error message', () => {
+  const path = require('path');
+
+  const absolutePath = path.join(
+    __dirname,
+    "..",
+    "..",
+    "..",
+    "..",
+    "oseda-lib",
+    "courses"
+);
+
+  const input = ["Engineering", "Politics", "ComputerScience"];
+
+  const filter = tags.filterFromTags(input, absolutePath);
+
+  expect(() => filter("aaa")).toThrow('Course not found');
+
+})
+
+test('testing for no course name provided, should return error message', () => {
+  const path = require('path');
+
+  const absolutePath = path.join(
+    __dirname,
+    "..",
+    "..",
+    "..",
+    "..",
+    "oseda-lib",
+    "courses"
+);
+
+  const input = ["Engineering", "Politics", "ComputerScience"];
+
+  const filter = tags.filterFromTags(input, absolutePath);
+
+  expect(() => filter()).toThrow('No title provided');
+
+})
+
 
 
 // .toBe on primitives, same reference equality
