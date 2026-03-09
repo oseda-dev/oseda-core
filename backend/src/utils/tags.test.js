@@ -1,5 +1,5 @@
 const tags = require("./tags");
-
+const test_common = require("../test-common");
 
 test('undefined tags should be empty array', () => {
 
@@ -31,21 +31,10 @@ test('a single string should return an array with just that string', () => {
 
 
 test('no tags should return true when filtering (which will show all courses)', () => {
-  const path = require('path');
-
-  const absolutePath = path.join(
-    __dirname,
-    "..",
-    "..",
-    "..",
-    "..",
-    "oseda-lib",
-    "courses"
-);
 
   const input = [];
 
-  const filter = tags.filterFromTags(input, absolutePath);
+  const filter = tags.filterFromTags(input, test_common.mock_course_root);
 
   expect(filter()).toEqual(true);
 
@@ -53,21 +42,10 @@ test('no tags should return true when filtering (which will show all courses)', 
 
 
 test('testing for one tag, should return true', () => {
-  const path = require('path');
-
-  const absolutePath = path.join(
-    __dirname,
-    "..",
-    "..",
-    "..",
-    "..",
-    "oseda-lib",
-    "courses"
-);
 
   const input = ["Engineering"];
 
-  const filter = tags.filterFromTags(input, absolutePath);
+  const filter = tags.filterFromTags(input, test_common.mock_course_root);
 
   expect(filter("Algorithms101")).toEqual(true);
 
@@ -75,105 +53,46 @@ test('testing for one tag, should return true', () => {
 
 
 test('testing for one tag, should return false', () => {
-  const path = require('path');
-
-  const absolutePath = path.join(
-    __dirname,
-    "..",
-    "..",
-    "..",
-    "..",
-    "oseda-lib",
-    "courses"
-);
 
   const input = ["Science"];
 
-  const filter = tags.filterFromTags(input, absolutePath);
+  const filter = tags.filterFromTags(input, test_common.mock_course_root);
 
   expect(filter("Graphics")).toEqual(false);
 
 })
 
 test('testing for multiple tags, should return true', () => {
-  const path = require('path');
-
-  const absolutePath = path.join(
-    __dirname,
-    "..",
-    "..",
-    "..",
-    "..",
-    "oseda-lib",
-    "courses"
-);
-
   const input = ["Engineering", "Geography", "Economics"];
 
-  const filter = tags.filterFromTags(input, absolutePath);
+  const filter = tags.filterFromTags(input, test_common.mock_course_root);
 
   expect(filter("TagTest")).toEqual(true);
 
 })
 
 test('testing for multiple tags, should return false', () => {
-  const path = require('path');
-
-  const absolutePath = path.join(
-    __dirname,
-    "..",
-    "..",
-    "..",
-    "..",
-    "oseda-lib",
-    "courses"
-);
-
   const input = ["Engineering", "Politics", "ComputerScience"];
 
-  const filter = tags.filterFromTags(input, absolutePath);
+  const filter = tags.filterFromTags(input, test_common.mock_course_root);
 
   expect(filter("German-101")).toEqual(false);
 
 })
 
 test('testing for invalid course name, should return error message', () => {
-  const path = require('path');
-
-  const absolutePath = path.join(
-    __dirname,
-    "..",
-    "..",
-    "..",
-    "..",
-    "oseda-lib",
-    "courses"
-);
-
   const input = ["Engineering", "Politics", "ComputerScience"];
 
-  const filter = tags.filterFromTags(input, absolutePath);
+  const filter = tags.filterFromTags(input, test_common.mock_course_root);
 
   expect(() => filter("aaa")).toThrow('Course not found');
 
 })
 
 test('testing for no course name provided, should return error message', () => {
-  const path = require('path');
-
-  const absolutePath = path.join(
-    __dirname,
-    "..",
-    "..",
-    "..",
-    "..",
-    "oseda-lib",
-    "courses"
-);
-
   const input = ["Engineering", "Politics", "ComputerScience"];
 
-  const filter = tags.filterFromTags(input, absolutePath);
+  const filter = tags.filterFromTags(input, test_common.mock_course_root);
 
   expect(() => filter()).toThrow('No title provided');
 
