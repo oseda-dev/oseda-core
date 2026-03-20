@@ -3,6 +3,29 @@ const cors = require("cors");
 const path = require("path");
 const hosts = require("./utils/hosts");
 const server = require("./server/server");
+
+
+const getMode = () => {
+    const mode = process.argv[2];
+
+    if (!mode) {
+        console.error("You must pass a mode (dev or prod)");
+        process.exit(1);
+    }
+
+    console.log("mode was: " + mode);
+
+    if (mode !== "dev" && mode !== "prod"){
+        console.error("You must pass a mode (dev or prod)");
+        
+        process.exit(1);
+    }
+
+    return mode;
+}
+
+const MODE = getMode();
+
 /**
  * Root directory of the oseda course library
  * This should almost always be oseda-lib, set up like:
@@ -16,10 +39,10 @@ const COURSES_ROOT = path.join(
     "..",
     "..",
     "oseda-lib",
-    "courses"
+    MODE === "prod" ? "courses" : "courses-test"
 );
 
-const HOST = hosts.determineHost();
+const HOST = hosts.determineHost(MODE);
 const PORT = 3001;
 
 // oseda server

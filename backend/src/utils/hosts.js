@@ -13,15 +13,10 @@ const Hosts = Object.freeze({
 /**
  * Determines the host based on process.argv[2]
  * Almost always via `run.sh [dev | prod]`
+ * @param {String} mode ('dev' or 'prod')
  * @returns {this.Hosts} the host
  */
-const determineHost = () => {
-    const mode = process.argv[2];
-
-    if (!mode) {
-        console.error("You must pass a mode (dev or prod)");
-        process.exit(1);
-    }
+const determineHost = (mode) => {
 
     console.log(`Running backend server in mode=${mode}...`);
 
@@ -31,7 +26,6 @@ const determineHost = () => {
 
     return Hosts.LOCAL;
 };
-
 
 module.exports = {
     Hosts,
