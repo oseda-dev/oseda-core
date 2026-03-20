@@ -15,21 +15,20 @@ const Modes = Object.freeze({
  * @returns {Modes} mode for oseda sever
  */
 const getMode = () => {
-    const mode = process.argv[2];
+    const givenMode = process.argv[2];
 
-    if (!mode) {
+    if (!givenMode) {
         console.error("You must pass a mode (dev or prod)");
         process.exit(1);
     }
 
 
-    if (mode !== "dev" && mode !== "prod"){
+    if (!Object.values(Modes).includes(givenMode)) {
         console.error("You must pass a mode (dev or prod)");
-        
         process.exit(1);
     }
 
-    return mode;
+    return givenMode;
 }
 
 module.exports = {
