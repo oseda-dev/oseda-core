@@ -3,28 +3,10 @@ const cors = require("cors");
 const path = require("path");
 const hosts = require("./utils/hosts");
 const server = require("./server/server");
+const modes = require("./utils/mode");
 
 
-const getMode = () => {
-    const mode = process.argv[2];
-
-    if (!mode) {
-        console.error("You must pass a mode (dev or prod)");
-        process.exit(1);
-    }
-
-    console.log("mode was: " + mode);
-
-    if (mode !== "dev" && mode !== "prod"){
-        console.error("You must pass a mode (dev or prod)");
-        
-        process.exit(1);
-    }
-
-    return mode;
-}
-
-const MODE = getMode();
+const MODE = modes.getMode();
 
 /**
  * Root directory of the oseda course library
