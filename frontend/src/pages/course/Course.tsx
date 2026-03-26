@@ -83,9 +83,9 @@ const Course = () => {
 
             <div className="course-description">
                 {isLoadingConfig ? (
-                    <p className="loading-text">Loading course details...</p>
+                    <p className="loading-text" >Loading course details...</p>
                 ) : (
-                    <p>{config?.description}</p>
+                    <p style={ {fontSize:"1.2em"} }>{config?.description}</p>
                 )}
             </div>
         </GlassPanel>
