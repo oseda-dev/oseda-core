@@ -12,6 +12,12 @@ sudo kill $(pgrep npm)
 set -e
 
 # --- BUILD COURSES ---
+
+# pull in the cli, the documentation could need updated
+rm -rf ~/oseda-cli
+git clone git@github.com:oseda-dev/oseda-cli.git
+
+
 rm -rf ~/oseda-lib
 git clone git@github.com:oseda-dev/oseda-lib.git
 cd ~/oseda-lib/courses
