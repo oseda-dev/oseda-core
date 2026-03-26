@@ -25,7 +25,7 @@ const buildOsedaExpressServer = (COURSES_ROOT) => {
 
     // global middleware
     server.use(cors());
-    server.use("/api", cache.getCacher());
+    // server.use("/api", cache.getCacher());
     
 
     /*
