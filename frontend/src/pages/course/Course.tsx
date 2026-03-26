@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, NavigateFunction, useNavigate } from "react-router-dom";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import { useRef, useEffect, useState } from "react";
 import "./Course.css";
@@ -7,6 +7,7 @@ import { OsedaConfig } from "../..";
 import NavButton from "../../components/NavButton/NavButton";
 
 const Course = () => {
+    const nav = useNavigate();
     const { title } = useParams<{ title: string }>();
     const handle = useFullScreenHandle();
     const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -57,9 +58,7 @@ const Course = () => {
     return (
         <GlassPanel as="div" className="course-container">
             <header className="course-header">
-                <div className="fullscreen-btn">
-                    <NavButton text="<-" url="/courses" />
-                </div>
+                <img src="/OsedaBack.png" alt="<-" onClick={() => nav("/courses")}/>
                 <h1>{title}</h1>
                 <GlassPanel as="button" className="fullscreen-btn" onClick={handle.enter}>
                     {/* cool fullscreen character :) */}
