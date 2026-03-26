@@ -21,6 +21,17 @@
     font-weight: 700;
 }
 
+.course-header img {
+    height: 60px;
+    width: 60px;
+    filter: drop-shadow(4px 4px 4px black);
+}
+
+.course-header img:hover {
+    transform: scale(1.1);
+    transition: ease-in-out 0.25s;
+}
+
 /* react-full-screen uses this .fullscreen. Need it to be a flexbox 
    so the iframe can fill it completely, but only when in fullscreen mode. (i think)*/
 .fullscreen {
