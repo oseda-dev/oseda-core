@@ -4,6 +4,7 @@ import { useRef, useEffect, useState } from "react";
 import "./Course.css";
 import GlassPanel from "../../components/GlassPanel/GlassPanel";
 import { OsedaConfig } from "../..";
+import NavButton from "../../components/NavButton/NavButton";
 
 const Course = () => {
     const { title } = useParams<{ title: string }>();
@@ -56,6 +57,9 @@ const Course = () => {
     return (
         <GlassPanel as="div" className="course-container">
             <header className="course-header">
+                <div className="fullscreen-btn">
+                    <NavButton text="<-" url="/courses" />
+                </div>
                 <h1>{title}</h1>
                 <GlassPanel as="button" className="fullscreen-btn" onClick={handle.enter}>
                     {/* cool fullscreen character :) */}
