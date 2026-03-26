@@ -12,7 +12,10 @@ sudo kill $(pgrep npm)
 set -e
 
 # --- BUILD COURSES ---
+rm -rf ~/oseda-lib
+git clone git@github.com:oseda-dev/oseda-lib.git
 cd ~/oseda-lib/courses
+
 
 echo "Building courses with npx vite..."
 for dir in */; do
