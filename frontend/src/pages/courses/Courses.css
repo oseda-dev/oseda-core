@@ -13,6 +13,20 @@
     scrollbar-width: 0;
 }
 
+@media only screen and (max-width: 600px) {
+    .courses-grid {
+        display: grid;
+        /* fix mobile formatting. Only 1 column on mobile */
+        grid-template-columns: 1fr;
+        gap: 2em;
+        width: 100vw;
+        box-sizing: border-box;
+        overflow: hidden;
+        padding: 2em;
+        scrollbar-width: 0;
+    }
+}
+
 
 .page-buttons-container {
     display: flex;
