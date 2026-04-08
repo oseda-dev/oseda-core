@@ -7,30 +7,33 @@
     display: flex; 
     align-items: center;
     justify-content: flex-start; 
-    padding-left: 3rem;
+    padding: 0 3rem;
     margin-top: 1rem;
     width: 100%;
     box-sizing: border-box;
 }
 
+.author-glass-panel {
+    margin-left: 40px;
+}
+
 .author-title a {
-  border-bottom: none;
+    border-bottom: none;
+    text-decoration: none;
 }
 
 .author-title a:hover {
-  background: none;
+    background: none;
 }
 
 .author-title .glass-content-container {
-  overflow: visible;
+    overflow: visible;
 }
 
 .author-title h1 {
-    margin-left: 2rem;
     font-size: 4em;
     color: #171717;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin: 0;
 }
 
 .gh-logo {
@@ -46,7 +49,59 @@
 
 .courses-title {
     margin-left: 3.5rem;
-    margin-bottom: 0;
+    margin-bottom: 1rem;
     text-align: left;
+    font-size: 2.5rem;
 }
 
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 0 3rem;
+    margin-top: 2rem;
+}
+
+
+@media (max-width: 768px) {
+    .author-title {
+        flex-direction: column;
+        padding: 0 1rem;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .author-glass-panel {
+        margin-left: 0; 
+        margin-top: 20px;
+        width: 90%;
+        box-sizing: border-box;
+    }
+
+    .author-glass-panel > div {
+        justify-content: center;
+        gap: 10px !important;
+    }
+
+    .author-title h1 {
+        font-size: 2.2rem; 
+        word-break: break-word;
+    }
+
+    .gh-logo {
+        width: 2rem;
+        height: 2rem;
+        margin-left: 0.5rem;
+    }
+
+    .courses-title {
+        margin-left: 1rem;
+        text-align: center; 
+        font-size: 1.8rem;
+    }
+
+    .courses-grid {
+        padding: 0 1rem;
+        grid-template-columns: 1fr; 
+    }
+}

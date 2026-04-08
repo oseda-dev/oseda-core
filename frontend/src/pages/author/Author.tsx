@@ -44,8 +44,8 @@ const Author = () => {
                 <AuthorAvatar author={name} />
                 <GlassPanel
                     as="div"
+                    className="author-glass-panel"
                     style={{
-                        marginLeft: '40px',
                         padding: '20px 30px',
                         display: 'block',
                         width: 'fit-content'
