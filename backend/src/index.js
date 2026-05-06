@@ -6,7 +6,7 @@ const server = require("./server/server");
 const modes = require("./utils/mode");
 
 
-const MODE = modes.getMode();
+const MODE = modes.getMode(process.argv[2]);
 
 /**
  * Root directory of the oseda course library
