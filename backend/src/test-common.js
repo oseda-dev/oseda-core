@@ -6,7 +6,7 @@ const mock_course_root = path.join(
     "..",
     "..",
     "oseda-lib",
-    "courses"
+    "courses-test"
 );
 
 module.exports = {

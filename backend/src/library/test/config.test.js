@@ -7,14 +7,14 @@ test('empty course, should return error', () => {
 
     const input = "";
 
-    expect(() => config.getCourseConfig(input, test_common.mock_course_root).toThrow('No title provided'))
+    expect(() => config.getCourseConfig(input, test_common.mock_course_root)).toThrow('No title provided');
 })
 
 test('invalid course name, should return error', () => {
 
     const input = "aaa";
 
-    expect(() => config.getCourseConfig(input, test_common.mock_course_root).toThrow('Course not found'))
+    expect(() => config.getCourseConfig(input, test_common.mock_course_root)).toThrow('Course not found');
 })
 
 test('checking to make sure all paramters exist', () => {
@@ -32,7 +32,7 @@ test('checking to make sure all paramters exist', () => {
 test('testing for bad config file, should return error', () => {
     const input = "";
 
-    expect(() => config.parse_config(input).toThrow('Failed to read config'));
+    expect(() => config.parse_config(input)).toThrow({ status: 500, message: "Failed to read config" });
 })
 
 test('valid config path', () => {
@@ -41,7 +41,7 @@ test('valid config path', () => {
         "sample-config.json"
     );
 
-    expect(() => config.parse_config(input).toThrow('Failed to read config'));
+    expect(() => config.parse_config(input)).toThrow('Failed to read config');
 })
 
 test('valid config path', () => {
@@ -51,12 +51,12 @@ test('valid config path', () => {
     );
 
     const sample_config = config.parse_config(input)
-    expect(() => config.parse_config(input).not.toThrow());
+    expect(() => config.parse_config(input)).not.toThrow();
 
-    expect(sample_config.title).toEqual("title-here")
-    expect(sample_config.author).toEqual("authorhere")
-    expect(sample_config.tags).toEqual(["ComputerScience"])
-    expect(sample_config.last_updated).toEqual("2025-07-08T23:35:13.890968259Z")
-    expect(sample_config.color).toEqual("#4287f5")
-    expect(sample_config.description).toEqual("description here")
+    expect(sample_config.title).toEqual("title-here");
+    expect(sample_config.author).toEqual("authorhere");
+    expect(sample_config.tags).toEqual(["ComputerScience"]);
+    expect(sample_config.last_updated).toEqual("2025-07-08T23:35:13.890968259Z");
+    expect(sample_config.color).toEqual("#4287f5");
+    expect(sample_config.description).toEqual("description here");
 })
