@@ -41,15 +41,6 @@ test('valid config path', () => {
         "sample-config.json"
     );
 
-    expect(() => config.parse_config(input)).toThrow('Failed to read config');
-})
-
-test('valid config path', () => {
-    const input = path.join(
-        __dirname,
-        "sample-config.json"
-    );
-
     const sample_config = config.parse_config(input)
     expect(() => config.parse_config(input)).not.toThrow();
 

@@ -39,10 +39,9 @@ const parse_config = (configPath) => {
     try {
         return JSON.parse(fs.readFileSync(configPath, "utf-8"));
     } catch (err) {
-        // console.error(err);
-        console.log("error state reached");
+        console.error(err);
+        // console.log("error state reached");
         throw { status: 500, message: "Failed to read config" };
-        // throw new Error("err");
     }
 }
 
