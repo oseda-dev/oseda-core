@@ -4,7 +4,7 @@
 
 .courses-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(20vw, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 2em;
     width: 100vw;
     box-sizing: border-box;
