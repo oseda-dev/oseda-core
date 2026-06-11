@@ -13,30 +13,49 @@ const Author = () => {
 
     const [courses, setCourses] = useState<string[]>([]);
     const [curPage, setCurPage] = useState<number>(0);
+    const [hasNextPage, setHasNextPage] = useState<boolean>(false);
 
     const [queryParams] = useSearchParams();
     const tags = queryParams.getAll("tag");
 
-
     const coursesPerPage = 8;
 
-    console.log(`/api/author/${name}?start=${curPage * coursesPerPage}&limit=${coursesPerPage}${tagsToQueryString(tags)}`)
-
     useEffect(() => {
-        const fullURL = new URL(`/api/author/${name}?start=${curPage * coursesPerPage}&limit=${coursesPerPage}${tagsToQueryString(tags)}`, window.location.href);
+        if (!name) return;
+
+        const limitWithPeek = coursesPerPage + 1;
+        const fullURL = new URL(
+            `/api/author/${name}?start=${curPage * coursesPerPage}&limit=${limitWithPeek}${tagsToQueryString(tags)}`, 
+            window.location.origin
+        );
 
         fetch(fullURL)
             .then(res => res.json())
-            .then((data: string[]) => setCourses(data))
+            .then((data: string[]) => {
+                // if we got back more than 8 items, there is a next page
+                if (data.length > coursesPerPage) {
+                // drop secret ninth item and only render the first 0-8
+                    setHasNextPage(true);
+                    setCourses(data.slice(0, coursesPerPage));
+                } else {
+                    setHasNextPage(false);
+                    setCourses(data);
+                }
+            })
             .catch(err => console.error("Failed to fetch courses:", err));
-    }, [name, curPage]);
+    }, [name, curPage, queryParams]);
+
+    useEffect(() => {
+        setCurPage(0);
+    }, [queryParams]);
 
     if (name === undefined) {
-        return <div>
-            Please specify an author
-        </div>;
+        return (
+            <div>
+                Please specify an author
+            </div>
+        );
     }
-
 
     return (
         <div className="author-page">
@@ -79,12 +98,12 @@ const Author = () => {
                 ))}
             </div>
 
-
             <Paginator
                 curPage={curPage}
-                onPrev={() => setCurPage(curPage - 1)}
-                onNext={() => setCurPage(curPage + 1)}
+                onPrev={() => setCurPage(prev => Math.max(0, prev - 1))}
+                onNext={() => setCurPage(prev => prev + 1)}
                 disablePrev={curPage === 0}
+                disableNext={!hasNextPage}
             />
         </div>
     );
