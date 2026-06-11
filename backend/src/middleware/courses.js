@@ -134,6 +134,7 @@ const serveCourses = (COURSES_ROOT) => {
                 start,
                 limit,
                 filter: courseFilter
+                
             })
 
             res.json(courses)

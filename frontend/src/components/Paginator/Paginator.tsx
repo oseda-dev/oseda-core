@@ -5,6 +5,7 @@ type PaginationProps = {
     onPrev: () => void;
     onNext: () => void;
     disablePrev?: boolean;
+    disableNext?: boolean;
 };
 
 const Pagination = ({
@@ -12,6 +13,7 @@ const Pagination = ({
     onPrev,
     onNext,
     disablePrev = false,
+    disableNext = false,
 }: PaginationProps) => {
     return (
         <span className="page-buttons-container">
@@ -29,14 +31,15 @@ const Pagination = ({
                 {curPage}
             </GlassPanel>
 
-            {/* should probably conditionally render on last page, but would need the backend to track that */}
-            <GlassPanel
-                className="page-button"
-                as="button"
-                onClick={onNext}
-            >
-                Next
-            </GlassPanel>
+            {!disableNext && (
+                <GlassPanel
+                    className="page-button"
+                    as="button"
+                    onClick={onNext}
+                    >
+                    Next
+                </GlassPanel>
+            )}
         </span>
     );
 };
