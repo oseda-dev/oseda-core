@@ -13,6 +13,7 @@ import Controller from "../../components/Controller/Controller";
 export const tagsToQueryString = (tags: string[]): string => tags.map(tag => `&tag=${tag}`).join("")
 
 
+
 const Courses = () => {
 
     const [courses, setCourses] = useState<string[]>([]);
@@ -24,15 +25,20 @@ const Courses = () => {
 
     const coursesPerPage = 8;
 
+    const fetchCourses = async () => {
+        await fetch(`/api/courses?start=${curPage * coursesPerPage}&limit=${coursesPerPage}${tagsToQueryString(tags)}`)
+            .then(res => res.json())
+            .then((data: string[]) => setCourses(data))
+            .catch(err => console.error("Failed to fetch courses:", err));
+    }
+
+    const hasMore = () => {
+        // todo implement this
+        return true;
+    }
+
+
     useEffect(() => {
-
-        const fetchCourses = async () => {
-            await fetch(`/api/courses?start=${curPage * coursesPerPage}&limit=${coursesPerPage}${tagsToQueryString(tags)}`)
-                .then(res => res.json())
-                .then((data: string[]) => setCourses(data))
-                .catch(err => console.error("Failed to fetch courses:", err));
-        }
-
         fetchCourses();
 
     }, [curPage, queryParams]);
@@ -56,6 +62,7 @@ const Courses = () => {
                 onPrev={() => setCurPage(curPage - 1)}
                 onNext={() => setCurPage(curPage + 1)}
                 disablePrev={curPage === 0}
+                disableNext={hasMore()}
             />
         </section>
     );
