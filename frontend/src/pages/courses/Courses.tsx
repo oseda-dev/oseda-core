@@ -18,6 +18,7 @@ const Courses = () => {
 
     const [courses, setCourses] = useState<string[]>([]);
     const [curPage, setCurPage] = useState<number>(0);
+    const [hasNextPage, setHasNextPage] = useState<boolean>(false);
 
     const [queryParams] = useSearchParams();
 
@@ -25,24 +26,32 @@ const Courses = () => {
 
     const coursesPerPage = 8;
 
-    const fetchCourses = async () => {
-        await fetch(`/api/courses?start=${curPage * coursesPerPage}&limit=${coursesPerPage}${tagsToQueryString(tags)}`)
-            .then(res => res.json())
-            .then((data: string[]) => setCourses(data))
-            .catch(err => console.error("Failed to fetch courses:", err));
-    }
-
-    const hasMore = () => {
-        // todo implement this
-        return true;
-    }
-
-
     useEffect(() => {
+        const fetchCourses = async () => {
+            
+            const limitWithPeek = coursesPerPage + 1;
+
+            try {
+                // request 1 extra item to see if there are more pages to render
+                const res = await fetch(`/api/courses?start=${curPage * coursesPerPage}&limit=${limitWithPeek}${tagsToQueryString(tags)}`);
+                const data: string[] = await res.json();
+
+                if (data.length > coursesPerPage) {
+                    setHasNextPage(true);
+                    setCourses(data.slice(0, coursesPerPage));
+                } else {
+                    // if the amount we got is less than what can render on a single page
+                    // we know there are no more pages left to render
+                    setHasNextPage(false);
+                    setCourses(data);
+                }
+            } catch (err) {
+                console.error("Failed to fetch courses:", err);
+            }
+        };
+
         fetchCourses();
-
     }, [curPage, queryParams]);
-
     // reset current page on tag change
     useEffect(() => {
         setCurPage(0);
@@ -62,7 +71,7 @@ const Courses = () => {
                 onPrev={() => setCurPage(curPage - 1)}
                 onNext={() => setCurPage(curPage + 1)}
                 disablePrev={curPage === 0}
-                disableNext={hasMore()}
+                disableNext={!hasNextPage}
             />
         </section>
     );
