@@ -11,23 +11,14 @@ if [[ "$MODE" != "dev" && "$MODE" != "prod" ]]; then
     exit 1
 fi
 
-OSEDA_CORE_DIR=$(pwd)
-
 echo "======================================================"
 echo "Running OSEDA in MODE: $MODE"
 echo "======================================================"
 
-echo "[?/3] Updating CLI documentation"
-RELATIVE_LOC_OF_CLI="../oseda-cli/"
-cd "$RELATIVE_LOC_OF_CLI"
-
-cargo run --bin oseda-usage
-cd "$OSEDA_CORE_DIR"
-
 # --- FRONTEND ---
 echo "[1/3] Installing frontend dependencies..."
 cd frontend
-npm install
+npm ci
 
 # this is really slow, but the way the backend works, it needs all files statically
 echo "[2/3] Building frontend..."
@@ -37,7 +28,7 @@ cd ..
 # --- BACKEND ---
 echo "[3/3] Installing backend dependencies..."
 cd backend
-npm install
+npm ci
 cd ..
 
 # --- APACHE SETUP IN PROD
