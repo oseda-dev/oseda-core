@@ -18,7 +18,7 @@ echo "======================================================"
 # --- FRONTEND ---
 echo "[1/3] Installing frontend dependencies..."
 cd frontend
-npm ci
+npm install
 
 # this is really slow, but the way the backend works, it needs all files statically
 echo "[2/3] Building frontend..."
@@ -28,7 +28,7 @@ cd ..
 # --- BACKEND ---
 echo "[3/3] Installing backend dependencies..."
 cd backend
-npm ci
+npm install
 cd ..
 
 # --- APACHE SETUP IN PROD
