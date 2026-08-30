@@ -1,7 +1,7 @@
 const path = require("path");
 const modes = require("./utils/mode");
 
-const MODE = modes.getMode();
+const MODE = modes.getMode(process.argv[2]);
 
 const PROJECT_ROOT = path.join(__dirname, "..", "..", "..");
 
