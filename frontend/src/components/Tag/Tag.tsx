@@ -30,14 +30,33 @@ export interface TagProps {
     tagName: string;    
 }
 
+// it deeply saddens me that JS has not std. library way of handling this
+function stringToIndex(str: string, arrayLength: number) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+        hash = (hash << 7) - hash + str.charCodeAt(i);
+    }
+    
+    return (hash >>> 0) % arrayLength;
+}
+
 const Tag: React.FC<TagProps> = ({ tagName }: TagProps) => {
-    const normaledTagName = tagName.toLowerCase() as TagName
+    const normalizedTagName = tagName.toLowerCase() as TagName
 
-    const safeKey: TagName =
-        normaledTagName in tagToColor
-            ? normaledTagName
-            : "computerscience"
+    let color: string;
+    if(normalizedTagName in tagToColor){
+        color = tagToColor[normalizedTagName];
+    }
+    else {
+        const idx = stringToIndex(normalizedTagName, Object.keys(tagToColor).length);
+        
+        color = tagToColor[Object.keys(tagToColor)[idx] as TagName];
 
+        console.log("Tag " + normalizedTagName+ " not pre-defined, using: " + color);
+        console.log("Index computer: " + idx);
+    }
+    
+    
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -64,7 +83,7 @@ const Tag: React.FC<TagProps> = ({ tagName }: TagProps) => {
         <GlassPanel
             as="p"
             className="tag"
-            style={{ backgroundColor: tagToColor[safeKey] }}
+            style={{ backgroundColor: color }}
             onClick={onTagClick}
         >
             {tagName}
