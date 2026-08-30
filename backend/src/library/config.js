@@ -1,5 +1,6 @@
 const path = require("path");
 const fs = require("fs");
+const { config } = require("process");
 
 // This is in the library package b/c it is meant for stuff that directly
 // interacts with oseda-lib, but without an HTTP stuff
@@ -20,7 +21,7 @@ const fs = require("fs");
 /**
  * 
  * @param {string} title title of course 
- * @param {*} COURSES_ROOT path to root of courses
+ * @param {string} COURSES_ROOT path to root of courses
  * @returns {OsedaConfig} config for course
  */
 const getCourseConfig = (title, COURSES_ROOT) => {
@@ -30,14 +31,19 @@ const getCourseConfig = (title, COURSES_ROOT) => {
 
     if (!fs.existsSync(configPath)) throw { status: 404, message: "Course not found" };
 
+    return parse_config(configPath)
+
+}
+
+const parse_config = (configPath) => {
     try {
         return JSON.parse(fs.readFileSync(configPath, "utf-8"));
     } catch (err) {
-        console.error(err);
         throw { status: 500, message: "Failed to read config" };
     }
 }
 
 module.exports = {
-    getCourseConfig
+    getCourseConfig,
+    parse_config
 }

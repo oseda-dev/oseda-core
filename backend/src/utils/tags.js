@@ -29,7 +29,7 @@ const parseTags = (tags) => {
 const filterFromTags = (requestedTags, COURSES_ROOT) => {
     let courseFilter;
     if (requestedTags.length == 0) {
-        courseFilter = () => true;
+        courseFilter = (courseName) => true;
     } else {
         courseFilter = (courseName) => {
             const config = getCourseConfig(courseName, COURSES_ROOT);

@@ -23,8 +23,13 @@ const determineHost = (mode) => {
     if (mode === "prod") {
         return Hosts.ALL_NETWORK_INTERFACES;
     }
+    else if (mode === "dev") {
+        return Hosts.LOCAL;
+    }
+    else {
+        throw {message: "Incorrect mode type"}
+    }
 
-    return Hosts.LOCAL;
 };
 
 module.exports = {

@@ -11,22 +11,15 @@ const Modes = Object.freeze({
 });
 
 /**
- *  Determines server mode from process argv (via run.sh)
- * @returns {Modes} mode for oseda sever
+ * Determines server mode from process argv (via run.sh)
+ * @param {string} givenMode the mode for the current process, should be process.argv[2]
+ * @returns {Modes} mode for oseda server
  */
-const getMode = () => {
-    const givenMode = process.argv[2];
+const getMode = (givenMode) => {
 
-    if (!givenMode) {
-        console.error("You must pass a mode (dev or prod)");
-        process.exit(1);
-    }
+    if (!givenMode) throw new Error("You must pass a mode (dev or prod)");
 
-
-    if (!Object.values(Modes).includes(givenMode)) {
-        console.error("You must pass a mode (dev or prod)");
-        process.exit(1);
-    }
+    if (!Object.values(Modes).includes(givenMode)) throw new Error("You must pass a valid mode (dev or prod)");
 
     return givenMode;
 }
