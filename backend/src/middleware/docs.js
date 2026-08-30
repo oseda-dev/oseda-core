@@ -1,45 +1,39 @@
 const express = require("express");
 const path = require("path");
 
-// Root paths
-const PROJECT_ROOT = path.join(__dirname, "../../../..");
+const { PROJECT_ROOT, REPOSITORIES } = require("../paths");
 
-const PATHS = {
-    core: path.join(PROJECT_ROOT, "oseda-course"),
-    cli: path.join(PROJECT_ROOT, "oseda-cli"),
-    lib: path.join(PROJECT_ROOT, "oseda-lib"),
-};
 
-// Route → file mapping
+// route => file mapping
 const DOC_ROUTES = {
-    "/api/docs/overview": path.join(PATHS.core, "README.md"),
+    "/api/docs/overview": path.join(REPOSITORIES.core, "README.md"),
 
-    "/api/docs/cli": path.join(PATHS.cli, "README.md"),
-    "/api/docs/cli/usage": path.join(PATHS.cli, "Usage.md"),
+    "/api/docs/cli": path.join(REPOSITORIES.cli, "README.md"),
+    "/api/docs/cli/usage": path.join(REPOSITORIES.cli, "Usage.md"),
 
     "/api/docs/contributing/getting-started": path.join(
-        PATHS.core,
+        REPOSITORIES.core,
         "docs/COURSE_CONTRIBUTING.md"
     ),
     "/api/docs/contributing/guidelines": path.join(
-        PATHS.core,
+        REPOSITORIES.core,
         "docs/CODE_OF_CONDUCT.MD"
     ),
 
     "/api/docs/core/frontend": path.join(
-        PATHS.core,
+        REPOSITORIES.core,
         "frontend/README.md"
     ),
     "/api/docs/core/backend": path.join(
-        PATHS.core,
+        REPOSITORIES.core,
         "backend/README.md"
     ),
     "/api/docs/core/readme": path.join(
-        PATHS.core,
+        REPOSITORIES.core,
         "README.md"
     ),
 
-    "/api/docs/lib": path.join(PATHS.lib, "README.md"),
+    "/api/docs/lib": path.join(REPOSITORIES.lib, "README.md"),
 };
 
 /**
