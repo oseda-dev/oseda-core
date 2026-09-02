@@ -84,9 +84,15 @@ const Course = () => {
                 {isLoadingConfig ? (
                     <p className="loading-text" >Loading course details...</p>
                 ) : (
-                    <p style={ {fontSize:"1.2em"} }>{config?.description}</p>
+                    <>
+                        <GlassPanel as="div">
+                            {config?.license}
+                        </GlassPanel>
+                        <p style={ {fontSize:"1.2em"} }>{config?.description}</p>
+                    </>
                 )}
             </div>
+
         </GlassPanel>
     );
 };
