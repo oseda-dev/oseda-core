@@ -14,6 +14,7 @@ const { config } = require("process");
  * @property {string} last_updated - datae config was most recently updated
  * @property {string} color - hex color code for course
  * @property {string} description - brief summary of the content.
+ * @property {string} license - spdx license of the content.
  */
 
 
