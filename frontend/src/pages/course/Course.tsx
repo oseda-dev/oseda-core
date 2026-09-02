@@ -82,16 +82,21 @@ const Course = () => {
 
             <div className="course-description">
                 {isLoadingConfig ? (
-                    <p className="loading-text" >Loading course details...</p>
+                    <p className="loading-text">Loading course details...</p>
                 ) : (
                     <>
-                        <GlassPanel as="div">
-                            {config?.license}
-                        </GlassPanel>
-                        <p style={ {fontSize:"1.2em"} }>{config?.description}</p>
+                        <p className="course-text">{config?.description}</p>
+                        <div className="course-meta">
+                            {config?.license && (
+                            <GlassPanel as="div" className="license-badge" noise={false}>
+                                <span className="license-label">License: </span>
+                                <span className="license-text">{config.license}</span>
+                            </GlassPanel>
+                            )}
+                        </div>
                     </>
                 )}
-            </div>
+                </div>
 
         </GlassPanel>
     );
