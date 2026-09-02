@@ -11,6 +11,7 @@ export interface OsedaConfig {
     last_updated: string;
     color: string;
     description: string;
+    license: string;
 }
 
 const root = ReactDOM.createRoot(
