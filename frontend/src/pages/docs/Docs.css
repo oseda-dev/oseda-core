@@ -28,7 +28,7 @@
 }
 
 .docs-container .glass {
-  overflow: hidden;
+  overflow: scroll;
   color: white;
   text-shadow: 2px 2px 4px black;
   background-color: rgba(52, 52, 52, 0.5);
