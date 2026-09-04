@@ -61,6 +61,12 @@ You can always add custom tags later, but only the predefined tags will get a un
 ## Color:
 Select a theme color for your course (e.g. Math=Red, Science=Blue, etc)
 
+## Description:
+Give a short, several sentence blurb about your presentation
+
+## License:
+Add an SPDX license ID from the [popular/strong community approved licenses](https://opensource.org/licenses?categories=popular-strong-community)
+
 After running `oseda init`, you will have a new directory with the name of your project.
 Take a look at the structure of an OSEDA project
 
@@ -94,7 +100,9 @@ This file contains the OSEDA project information. It should look something like:
     "ComputerScience"
   ],
   "last_updated": "2026-01-25T22:34:30.097833938Z",
-  "color": "#FF0000"
+  "color": "#FF0000",
+  "description": "Introduction to computer programming",
+  "license": "MIT"
 }
 ```
 You can edit these fields as you see fit, but note that your author *MUST* match your Github username.
