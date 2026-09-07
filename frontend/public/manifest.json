@@ -9,7 +9,7 @@
     "orientation": "portrait",
     "icons": [
         {
-            "src": "%PUBLIC_URL%/OsedaLogo.png",
+            "src": "%PUBLIC_URL%/OsedaLogoDark.png",
             "sizes": "512x512",
             "type": "image/png"
         }
