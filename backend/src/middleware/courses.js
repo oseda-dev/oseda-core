@@ -1,6 +1,7 @@
 const fs = require("fs");
 const fsp = fs.promises;
 const path = require("path");
+const express = require("express");
 const { getCourseConfig } = require("../library/config");
 const { parseTags, filterFromTags } = require("../utils/tags");
 
@@ -29,6 +30,7 @@ const mimeTypes = {
 const serveCourseDir = (COURSES_ROOT) => {
 
     return async (req, res, next) => {
+
         const courseName = req.params.courseName;
         const distDir = path.join(COURSES_ROOT, courseName, "dist");
 
@@ -39,18 +41,28 @@ const serveCourseDir = (COURSES_ROOT) => {
 
             const stat = await fsp.stat(distDir);
             if (!stat.isDirectory()) {
-                return res.status(404).send("course not found");
+                return res.status(404).send("Course not found");
             }
 
-            // strip the prefix /api/courses/:courseName and serve the rest from dist
-            const requestSubPath = req.path === "/" ? "/index.html" : req.path;
-            const fullPath = path.join(distDir, requestSubPath);
+            // switched to serving courses as directories
+            // which default to index
+            // so we need to strip out leading /index.html if the request subpath received it explicitly
+            let subPath = req.path.replace(/^\/index\.html/, "");
+            if (subPath === "" || subPath === "/") {
+                subPath = "/index.html";
+            }
+
+            let fullPath = path.join(distDir, subPath);
 
             // access file => on success, leave it
             // on fail => fallback to index for SPA apps (should be all of them for now)
             try {
                 await fsp.access(fullPath);
             } catch {
+                // check for missing file extensions, then tell the user to go away
+                if (req.path.match(/\.(css|js|png|jpg|jpeg|gif|svg|ico|woff2?|ttf|otf|wasm|map)$/i)) {
+                    return res.status(404).send("asset not found");
+                }
                 fullPath = path.join(distDir, "index.html");
             }
 

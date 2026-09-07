@@ -53,7 +53,7 @@ const Course = () => {
     // all hooks must run before content returns sadly
     if (!title) return <div>No course selected</div>;
 
-    const src = `/api/courses/${encodeURIComponent(title)}/index.html`;
+    const src = `/api/courses/${encodeURIComponent(title)}/`;
 
     return (
         <GlassPanel as="div" className="course-container">
