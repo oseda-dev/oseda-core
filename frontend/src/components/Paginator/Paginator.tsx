@@ -1,4 +1,5 @@
 import GlassPanel from "../GlassPanel/GlassPanel";
+import "./Paginator.css";
 
 type PaginationProps = {
     curPage: number;
@@ -16,31 +17,34 @@ const Pagination = ({
     disableNext = false,
 }: PaginationProps) => {
     return (
-        <span className="page-buttons-container">
-            {!disablePrev && (
-                <GlassPanel
-                    className="page-button"
-                    as="button"
-                    onClick={onPrev}
-                >
-                    Prev
-                </GlassPanel>
-            )}
+        <div className="paginator">
 
-            <GlassPanel className="page-button" as="button">
-                {curPage}
-            </GlassPanel>
-
-            {!disableNext && (
-                <GlassPanel
-                    className="page-button"
-                    as="button"
-                    onClick={onNext}
+            <span className="page-buttons-container">
+                {!disablePrev && (
+                    <GlassPanel
+                        className="page-button"
+                        as="button"
+                        onClick={onPrev}
                     >
-                    Next
+                        Prev
+                    </GlassPanel>
+                )}
+
+                <GlassPanel className="page-button" as="button">
+                    {curPage}
                 </GlassPanel>
-            )}
-        </span>
+
+                {!disableNext && (
+                    <GlassPanel
+                        className="page-button"
+                        as="button"
+                        onClick={onNext}
+                        >
+                        Next
+                    </GlassPanel>
+                )}
+            </span>
+        </div>
     );
 };
 
