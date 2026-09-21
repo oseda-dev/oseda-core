@@ -8,7 +8,7 @@ const Landing = () => {
 
   return (
     <div className="landing-wrapper">
-      <GlassPanel as="main" className="landing-container" noise>
+      <GlassPanel as="main" className="landing-container">
 
         <header>
           <img src="OsedaLogoDark.png" alt="OSEDA logo" className="home" />
