@@ -3,14 +3,15 @@
 }
 
 .courses-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2em;
-    width: 100vw;
-    box-sizing: border-box;
-    overflow: hidden;
-    padding: 2em;
-    scrollbar-width: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2em;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 2em;
+  scrollbar-width: none;
 }
 
 @media only screen and (max-width: 600px) {
