@@ -2,6 +2,19 @@
 set -e
 echo "Starting deployment..."
 
+# check if you are on main
+if [ "$(git rev-parse --abbrev-ref HEAD)" != "main" ]; then
+    echo "Error, you need to be on main for this script to work"
+    exit 1
+fi
+
+# ensure you are not forgetting any changes
+if ! git diff --quiet; then
+    echo "Error: You have unstaged local changes. Please commit or stash"
+    exit 1
+fi
+
+
 ssh aws << 'EOF'
 
 
