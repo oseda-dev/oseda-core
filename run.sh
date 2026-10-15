@@ -11,27 +11,25 @@ if [[ "$MODE" != "dev" && "$MODE" != "prod" ]]; then
     exit 1
 fi
 
-echo "======================================================"
 echo "Running OSEDA in MODE: $MODE"
-echo "======================================================"
 
-# --- FRONTEND ---
-echo "[1/3] Installing frontend dependencies..."
+# frontend stuff
+echo "Installing frontend dependencies..."
 cd frontend
 npm install
 
 # this is really slow, but the way the backend works, it needs all files statically
-echo "[2/3] Building frontend..."
+echo "Building frontend..."
 npm run build
 cd ..
 
-# --- BACKEND ---
-echo "[3/3] Installing backend dependencies..."
+# backend stuff
+echo "Installing backend dependencies..."
 cd backend
 npm install
 cd ..
 
-# --- APACHE SETUP IN PROD
+# setup apache if in production
 if [[ "$MODE" == "prod" ]]; then
     echo "[4/5] Configuring Apache for prod..."
     
@@ -47,10 +45,9 @@ if [[ "$MODE" == "prod" ]]; then
     #  should already be enabled
     sudo a2enmod proxy proxy_http ssl rewrite
 
-# restart server
+    # restart server
     sudo systemctl reload apache2
 fi
 
-# --- START NODE BACKEND ---
-echo "[5/5] Starting backend..."
+echo " Starting backend..."
 node backend/src/index.js "$MODE"
