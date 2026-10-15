@@ -58,14 +58,17 @@ const Courses = () => {
     }, [queryParams]);
 
     return (
-        <section className="courses-container">
-            <Controller tags={tags} />
-            <div className="courses-grid">
-                {courses.map(courseTitle => (
-                    <CoursePreview key={courseTitle} title={courseTitle} />
-                ))}
-            </div>
+        <>
+            <section className="courses-container">
+                <Controller tags={tags} />
+                <div className="courses-grid">
+                    {courses.map(courseTitle => (
+                        <CoursePreview key={courseTitle} title={courseTitle} />
+                    ))}
+                </div>
 
+            </section>
+            
             <Paginator
                 curPage={curPage}
                 onPrev={() => setCurPage(curPage - 1)}
@@ -73,7 +76,7 @@ const Courses = () => {
                 disablePrev={curPage === 0}
                 disableNext={!hasNextPage}
             />
-        </section>
+        </>
     );
 };
 
