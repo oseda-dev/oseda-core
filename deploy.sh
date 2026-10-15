@@ -14,8 +14,16 @@ if ! git diff --quiet; then
     exit 1
 fi
 
+# Host aws
+#     HostName IP
+#     User [definitely not ubuntu]
+#     IdentityFile [path to pem file]
 
-ssh aws << 'EOF'
+# I should in theory be the only one doing server deployment
+# so match my config or else
+ALIAS=aws
+
+ssh $ALIAS << 'EOF'
 
 
 echo "Killing old Node processes..."
