@@ -1,40 +1,36 @@
-.courses-container {
-    margin-bottom: 2em;
-}
-
 .courses-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2em;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 2rem 2rem 2rem 7rem;
+  scrollbar-width: none;
+}
+
+@media only screen and (max-width: 1300px) {
+  .courses-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .courses-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding-left: 3rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .courses-grid {
+    grid-template-columns: 1fr;
     gap: 2em;
-    width: 100%;
-    max-width: 1600px;
-    margin: 0 auto;
+    width: 100vw;
     box-sizing: border-box;
+    overflow: hidden;
     padding: 2em;
-    scrollbar-width: none;
-}
-
-@media only screen and (max-width: 600px) {
-    .courses-grid {
-        display: grid;
-        /* fix mobile formatting. Only 1 column on mobile */
-        grid-template-columns: 1fr;
-        gap: 2em;
-        width: 100vw;
-        box-sizing: border-box;
-        overflow: hidden;
-        padding: 2em;
-        scrollbar-width: 0;
-    }
-}
-
-.courses-container {
-  margin-bottom: 2em;
-  padding-left: 5em;
-}
-
-@media only screen and (max-width: 600px) {
-  .courses-container {
-    padding-left: 0;
+    scrollbar-width: 0;
   }
 }

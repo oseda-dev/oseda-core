@@ -1,8 +1,8 @@
 .paginator {
   position: fixed;
-  left: 2em;
+  left: 3.5em;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,6 +38,7 @@
 }
 
 .page-number .glass-content {
+  margin-top: 0.75em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,7 +47,7 @@
   font-weight: 600;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 900px) {
   .paginator {
     position: static;
     transform: none;

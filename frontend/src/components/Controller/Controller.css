@@ -1,28 +1,15 @@
 .controller {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-left: 3rem;
-    margin-top: 1rem;
-}
-
-.controller img {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-    cursor: pointer;
-    filter: drop-shadow(4px 4px 4px black);
-}
-
-.controller img:hover{
-  transform: scale(1.1);
-  transition: ease-in-out 0.25s;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 3rem;
+  margin-top: 1rem;
 }
 
 .controller .tag {
-    display: inline-flex;
+  display: inline-flex;
 }
 
 .controller .glass-content {
-    text-align: left;
+  text-align: left;
 }

@@ -1,7 +1,19 @@
 img.home-btn {
-    /* im sorry - Reese */
-    width: 100px !important;
-    height: 100px !important;
-    object-fit: contain;
-    cursor: pointer;
+  /* im sorry - Reese */
+  width: 100px !important;
+  height: 100px !important;
+  object-fit: contain;
+  cursor: pointer;
+
+  position: fixed;
+  left: 3.5em;
+  bottom: 2em;
+  transform: translateX(-50%);
+  z-index: 10;
+  filter: drop-shadow(4px 4px 4px black);
+}
+
+img.home-btn:hover {
+  transform: translateX(-50%) scale(1.1);
+  transition: ease-in-out 0.25s;
 }

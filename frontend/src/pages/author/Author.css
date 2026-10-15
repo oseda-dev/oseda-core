@@ -54,14 +54,14 @@
     font-size: 2.5rem;
 }
 
-.courses-grid {
+/* .courses-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
     padding: 0 3rem;
     margin-top: 2rem;
 }
-
+ */
 
 @media (max-width: 768px) {
     .author-title {
